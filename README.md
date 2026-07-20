@@ -87,6 +87,7 @@ interpretadas como avaliação final de desempenho.
 - [Experimentos e visualizações](docs/05-experimentos-e-visualizacoes.md)
 - [Execução, Issues e trabalho paralelo](docs/06-execucao-e-rastreamento.md)
 - [Contratos e critérios de aceite](docs/07-contratos-e-criterios-de-aceite.md)
+- [Relatório v0.1](docs/08-relatorio-v0.1.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento
