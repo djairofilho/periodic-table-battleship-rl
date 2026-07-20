@@ -1,0 +1,181 @@
+episode_id,run_id,policy_id,seed,scenario,valid_cells,valid_shots,invalid_attempts,hit_segments,won,truncated,auc_discovery,first_hit_shot,first_sunk_shot
+v0.2-attack-battleship-ppo-test-seed-3101-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3101,battleship,100,93,0,17,True,False,0.5029411764705882,9,65
+v0.2-attack-battleship-ppo-test-seed-3102-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3102,battleship,100,94,0,17,True,False,0.5529411764705883,3,44
+v0.2-attack-battleship-ppo-test-seed-3103-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3103,battleship,100,97,0,17,True,False,0.5135294117647059,6,30
+v0.2-attack-battleship-ppo-test-seed-3104-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3104,battleship,100,85,0,17,True,False,0.5794117647058824,5,33
+v0.2-attack-battleship-ppo-test-seed-3105-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3105,battleship,100,95,0,17,True,False,0.5141176470588236,2,53
+v0.2-attack-battleship-ppo-test-seed-3106-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3106,battleship,100,97,0,17,True,False,0.5264705882352941,1,69
+v0.2-attack-battleship-ppo-test-seed-3107-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3107,battleship,100,97,0,17,True,False,0.5758823529411765,3,53
+v0.2-attack-battleship-ppo-test-seed-3108-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3108,battleship,100,99,0,17,True,False,0.5611764705882353,7,52
+v0.2-attack-battleship-ppo-test-seed-3109-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3109,battleship,100,91,0,17,True,False,0.5611764705882353,2,51
+v0.2-attack-battleship-ppo-test-seed-3110-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3110,battleship,100,100,0,17,True,False,0.46705882352941175,5,62
+v0.2-attack-battleship-ppo-test-seed-3111-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3111,battleship,100,98,0,17,True,False,0.4776470588235294,14,71
+v0.2-attack-battleship-ppo-test-seed-3112-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3112,battleship,100,88,0,17,True,False,0.6252941176470588,3,31
+v0.2-attack-battleship-ppo-test-seed-3113-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3113,battleship,100,94,0,17,True,False,0.48,5,79
+v0.2-attack-battleship-ppo-test-seed-3114-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3114,battleship,100,94,0,17,True,False,0.5529411764705883,3,53
+v0.2-attack-battleship-ppo-test-seed-3115-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3115,battleship,100,98,0,17,True,False,0.46058823529411763,3,64
+v0.2-attack-battleship-ppo-test-seed-3116-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3116,battleship,100,94,0,17,True,False,0.4811764705882353,4,88
+v0.2-attack-battleship-ppo-test-seed-3117-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3117,battleship,100,99,0,17,True,False,0.6241176470588236,4,34
+v0.2-attack-battleship-ppo-test-seed-3118-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3118,battleship,100,100,0,17,True,False,0.44176470588235295,19,49
+v0.2-attack-battleship-ppo-test-seed-3119-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3119,battleship,100,99,0,17,True,False,0.39176470588235296,9,65
+v0.2-attack-battleship-ppo-test-seed-3120-episode-000,v0.2-attack-battleship-ppo-test,MaskablePPO (selected),3120,battleship,100,100,0,17,True,False,0.5476470588235294,7,38
+v0.2-attack-battleship-hunt_target-v1-test-seed-3101-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3101,battleship,100,44,0,17,True,False,0.7664705882352941,4,17
+v0.2-attack-battleship-hunt_target-v1-test-seed-3102-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3102,battleship,100,61,0,17,True,False,0.7035294117647058,2,13
+v0.2-attack-battleship-hunt_target-v1-test-seed-3103-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3103,battleship,100,60,0,17,True,False,0.768235294117647,4,21
+v0.2-attack-battleship-hunt_target-v1-test-seed-3104-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3104,battleship,100,63,0,17,True,False,0.7164705882352941,2,7
+v0.2-attack-battleship-hunt_target-v1-test-seed-3105-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3105,battleship,100,89,0,17,True,False,0.6758823529411765,1,10
+v0.2-attack-battleship-hunt_target-v1-test-seed-3106-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3106,battleship,100,65,0,17,True,False,0.6488235294117647,5,6
+v0.2-attack-battleship-hunt_target-v1-test-seed-3107-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3107,battleship,100,78,0,17,True,False,0.5976470588235294,1,12
+v0.2-attack-battleship-hunt_target-v1-test-seed-3108-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3108,battleship,100,49,0,17,True,False,0.7052941176470588,13,17
+v0.2-attack-battleship-hunt_target-v1-test-seed-3109-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3109,battleship,100,49,0,17,True,False,0.7458823529411764,1,11
+v0.2-attack-battleship-hunt_target-v1-test-seed-3110-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3110,battleship,100,72,0,17,True,False,0.7447058823529412,5,6
+v0.2-attack-battleship-hunt_target-v1-test-seed-3111-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3111,battleship,100,66,0,17,True,False,0.7052941176470588,4,7
+v0.2-attack-battleship-hunt_target-v1-test-seed-3112-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3112,battleship,100,56,0,17,True,False,0.7123529411764706,5,11
+v0.2-attack-battleship-hunt_target-v1-test-seed-3113-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3113,battleship,100,41,0,17,True,False,0.8411764705882353,1,17
+v0.2-attack-battleship-hunt_target-v1-test-seed-3114-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3114,battleship,100,63,0,17,True,False,0.7511764705882353,2,8
+v0.2-attack-battleship-hunt_target-v1-test-seed-3115-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3115,battleship,100,68,0,17,True,False,0.7588235294117647,2,10
+v0.2-attack-battleship-hunt_target-v1-test-seed-3116-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3116,battleship,100,80,0,17,True,False,0.7382352941176471,2,14
+v0.2-attack-battleship-hunt_target-v1-test-seed-3117-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3117,battleship,100,37,0,17,True,False,0.831764705882353,3,7
+v0.2-attack-battleship-hunt_target-v1-test-seed-3118-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3118,battleship,100,57,0,17,True,False,0.7205882352941176,13,20
+v0.2-attack-battleship-hunt_target-v1-test-seed-3119-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3119,battleship,100,78,0,17,True,False,0.6570588235294118,5,15
+v0.2-attack-battleship-hunt_target-v1-test-seed-3120-episode-000,v0.2-attack-battleship-hunt_target-v1-test,hunt_target-v1,3120,battleship,100,77,0,17,True,False,0.6341176470588236,5,8
+v0.2-attack-battleship-random_masked-v1-test-seed-3101-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3101,battleship,100,92,0,17,True,False,0.5470588235294118,4,37
+v0.2-attack-battleship-random_masked-v1-test-seed-3102-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3102,battleship,100,97,0,17,True,False,0.4588235294117647,2,66
+v0.2-attack-battleship-random_masked-v1-test-seed-3103-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3103,battleship,100,95,0,17,True,False,0.5152941176470588,4,65
+v0.2-attack-battleship-random_masked-v1-test-seed-3104-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3104,battleship,100,100,0,17,True,False,0.56,2,24
+v0.2-attack-battleship-random_masked-v1-test-seed-3105-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3105,battleship,100,96,0,17,True,False,0.5129411764705882,1,45
+v0.2-attack-battleship-random_masked-v1-test-seed-3106-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3106,battleship,100,95,0,17,True,False,0.47294117647058825,5,60
+v0.2-attack-battleship-random_masked-v1-test-seed-3107-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3107,battleship,100,99,0,17,True,False,0.4476470588235294,1,50
+v0.2-attack-battleship-random_masked-v1-test-seed-3108-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3108,battleship,100,99,0,17,True,False,0.4411764705882353,13,23
+v0.2-attack-battleship-random_masked-v1-test-seed-3109-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3109,battleship,100,97,0,17,True,False,0.5735294117647058,1,55
+v0.2-attack-battleship-random_masked-v1-test-seed-3110-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3110,battleship,100,100,0,17,True,False,0.4376470588235294,5,50
+v0.2-attack-battleship-random_masked-v1-test-seed-3111-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3111,battleship,100,98,0,17,True,False,0.48823529411764705,4,59
+v0.2-attack-battleship-random_masked-v1-test-seed-3112-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3112,battleship,100,100,0,17,True,False,0.4435294117647059,5,39
+v0.2-attack-battleship-random_masked-v1-test-seed-3113-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3113,battleship,100,95,0,17,True,False,0.5294117647058824,1,39
+v0.2-attack-battleship-random_masked-v1-test-seed-3114-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3114,battleship,100,98,0,17,True,False,0.47294117647058825,2,47
+v0.2-attack-battleship-random_masked-v1-test-seed-3115-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3115,battleship,100,99,0,17,True,False,0.5352941176470588,2,58
+v0.2-attack-battleship-random_masked-v1-test-seed-3116-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3116,battleship,100,87,0,17,True,False,0.6294117647058823,2,62
+v0.2-attack-battleship-random_masked-v1-test-seed-3117-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3117,battleship,100,100,0,17,True,False,0.5647058823529412,3,46
+v0.2-attack-battleship-random_masked-v1-test-seed-3118-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3118,battleship,100,99,0,17,True,False,0.42176470588235293,13,56
+v0.2-attack-battleship-random_masked-v1-test-seed-3119-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3119,battleship,100,88,0,17,True,False,0.5670588235294117,5,40
+v0.2-attack-battleship-random_masked-v1-test-seed-3120-episode-000,v0.2-attack-battleship-random_masked-v1-test,random_masked-v1,3120,battleship,100,99,0,17,True,False,0.45,5,78
+v0.2-attack-dense-118-ppo-test-seed-3101-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3101,dense-118,118,118,0,17,True,False,0.49401794616151545,18,89
+v0.2-attack-dense-118-ppo-test-seed-3102-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3102,dense-118,118,112,0,17,True,False,0.5034895314057827,1,49
+v0.2-attack-dense-118-ppo-test-seed-3103-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3103,dense-118,118,98,0,17,True,False,0.6535393818544367,7,38
+v0.2-attack-dense-118-ppo-test-seed-3104-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3104,dense-118,118,117,0,17,True,False,0.6021934197407777,8,40
+v0.2-attack-dense-118-ppo-test-seed-3105-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3105,dense-118,118,115,0,17,True,False,0.48504486540378866,3,88
+v0.2-attack-dense-118-ppo-test-seed-3106-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3106,dense-118,118,115,0,17,True,False,0.5169491525423728,3,60
+v0.2-attack-dense-118-ppo-test-seed-3107-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3107,dense-118,118,100,0,17,True,False,0.5702891326021934,1,33
+v0.2-attack-dense-118-ppo-test-seed-3108-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3108,dense-118,118,97,0,17,True,False,0.6116650049850448,6,60
+v0.2-attack-dense-118-ppo-test-seed-3109-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3109,dense-118,118,118,0,17,True,False,0.6111665004985045,1,31
+v0.2-attack-dense-118-ppo-test-seed-3110-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3110,dense-118,118,118,0,17,True,False,0.4905284147557328,9,53
+v0.2-attack-dense-118-ppo-test-seed-3111-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3111,dense-118,118,111,0,17,True,False,0.4760717846460618,1,59
+v0.2-attack-dense-118-ppo-test-seed-3112-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3112,dense-118,118,112,0,17,True,False,0.48504486540378866,4,80
+v0.2-attack-dense-118-ppo-test-seed-3113-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3113,dense-118,118,115,0,17,True,False,0.5438683948155534,3,63
+v0.2-attack-dense-118-ppo-test-seed-3114-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3114,dense-118,118,117,0,17,True,False,0.4995014955134596,1,92
+v0.2-attack-dense-118-ppo-test-seed-3115-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3115,dense-118,118,114,0,17,True,False,0.5822532402791625,1,45
+v0.2-attack-dense-118-ppo-test-seed-3116-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3116,dense-118,118,107,0,17,True,False,0.5319042871385843,2,33
+v0.2-attack-dense-118-ppo-test-seed-3117-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3117,dense-118,118,115,0,17,True,False,0.45663010967098705,13,90
+v0.2-attack-dense-118-ppo-test-seed-3118-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3118,dense-118,118,88,0,17,True,False,0.654037886340977,1,8
+v0.2-attack-dense-118-ppo-test-seed-3119-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3119,dense-118,118,100,0,17,True,False,0.47208374875373876,5,65
+v0.2-attack-dense-118-ppo-test-seed-3120-episode-000,v0.2-attack-dense-118-ppo-test,MaskablePPO (selected),3120,dense-118,118,113,0,17,True,False,0.6201395812562313,2,27
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3101-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3101,dense-118,118,62,0,17,True,False,0.788135593220339,1,5
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3102-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3102,dense-118,118,100,0,17,True,False,0.5747756729810568,21,32
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3103-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3103,dense-118,118,83,0,17,True,False,0.7637088733798604,5,12
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3104-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3104,dense-118,118,63,0,17,True,False,0.7666999002991027,4,15
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3105-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3105,dense-118,118,96,0,17,True,False,0.767198404785643,1,15
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3106-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3106,dense-118,118,68,0,17,True,False,0.7008973080757727,8,12
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3107-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3107,dense-118,118,101,0,17,True,False,0.7273180458624128,3,6
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3108-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3108,dense-118,118,58,0,17,True,False,0.744765702891326,2,7
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3109-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3109,dense-118,118,65,0,17,True,False,0.6535393818544367,16,23
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3110-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3110,dense-118,118,92,0,17,True,False,0.6839481555333998,9,12
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3111-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3111,dense-118,118,66,0,17,True,False,0.7372881355932204,4,7
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3112-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3112,dense-118,118,56,0,17,True,False,0.7642073778664008,4,8
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3113-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3113,dense-118,118,52,0,17,True,False,0.8245264207377866,4,6
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3114-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3114,dense-118,118,93,0,17,True,False,0.5234297108673978,29,37
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3115-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3115,dense-118,118,90,0,17,True,False,0.7871385842472582,3,17
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3116-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3116,dense-118,118,66,0,17,True,False,0.6979062811565304,1,7
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3117-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3117,dense-118,118,68,0,17,True,False,0.7268195413758723,2,9
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3118-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3118,dense-118,118,84,0,17,True,False,0.765702891326022,1,7
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3119-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3119,dense-118,118,69,0,17,True,False,0.656530408773679,7,11
+v0.2-attack-dense-118-hunt_target-v1-test-seed-3120-episode-000,v0.2-attack-dense-118-hunt_target-v1-test,hunt_target-v1,3120,dense-118,118,77,0,17,True,False,0.6914257228315055,1,13
+v0.2-attack-dense-118-random_masked-v1-test-seed-3101-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3101,dense-118,118,116,0,17,True,False,0.5533399800598205,1,44
+v0.2-attack-dense-118-random_masked-v1-test-seed-3102-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3102,dense-118,118,115,0,17,True,False,0.4740777666999003,21,55
+v0.2-attack-dense-118-random_masked-v1-test-seed-3103-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3103,dense-118,118,115,0,17,True,False,0.503988035892323,5,55
+v0.2-attack-dense-118-random_masked-v1-test-seed-3104-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3104,dense-118,118,117,0,17,True,False,0.47058823529411764,4,86
+v0.2-attack-dense-118-random_masked-v1-test-seed-3105-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3105,dense-118,118,110,0,17,True,False,0.5588235294117647,1,44
+v0.2-attack-dense-118-random_masked-v1-test-seed-3106-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3106,dense-118,118,116,0,17,True,False,0.48205383848454636,8,42
+v0.2-attack-dense-118-random_masked-v1-test-seed-3107-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3107,dense-118,118,110,0,17,True,False,0.4481555333998006,3,79
+v0.2-attack-dense-118-random_masked-v1-test-seed-3108-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3108,dense-118,118,110,0,17,True,False,0.5099700897308076,2,29
+v0.2-attack-dense-118-random_masked-v1-test-seed-3109-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3109,dense-118,118,117,0,17,True,False,0.3285144566301097,16,106
+v0.2-attack-dense-118-random_masked-v1-test-seed-3110-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3110,dense-118,118,111,0,17,True,False,0.44516450648055833,9,66
+v0.2-attack-dense-118-random_masked-v1-test-seed-3111-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3111,dense-118,118,113,0,17,True,False,0.4361914257228315,4,71
+v0.2-attack-dense-118-random_masked-v1-test-seed-3112-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3112,dense-118,118,118,0,17,True,False,0.5244267198404786,4,59
+v0.2-attack-dense-118-random_masked-v1-test-seed-3113-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3113,dense-118,118,83,0,17,True,False,0.7108673978065803,4,37
+v0.2-attack-dense-118-random_masked-v1-test-seed-3114-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3114,dense-118,118,118,0,17,True,False,0.33649052841475574,29,83
+v0.2-attack-dense-118-random_masked-v1-test-seed-3115-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3115,dense-118,118,118,0,17,True,False,0.49202392821535396,3,47
+v0.2-attack-dense-118-random_masked-v1-test-seed-3116-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3116,dense-118,118,117,0,17,True,False,0.48554336989032904,1,75
+v0.2-attack-dense-118-random_masked-v1-test-seed-3117-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3117,dense-118,118,116,0,17,True,False,0.6694915254237288,2,39
+v0.2-attack-dense-118-random_masked-v1-test-seed-3118-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3118,dense-118,118,112,0,17,True,False,0.5428713858424726,1,33
+v0.2-attack-dense-118-random_masked-v1-test-seed-3119-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3119,dense-118,118,117,0,17,True,False,0.49750747756729813,7,68
+v0.2-attack-dense-118-random_masked-v1-test-seed-3120-episode-000,v0.2-attack-dense-118-random_masked-v1-test,random_masked-v1,3120,dense-118,118,116,0,17,True,False,0.5139581256231306,1,50
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3101-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3101,periodic-table-battleship,118,118,0,17,True,False,0.40229312063808575,13,53
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3102-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3102,periodic-table-battleship,118,118,0,17,True,False,0.3778664007976072,1,87
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3103-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3103,periodic-table-battleship,118,118,0,17,True,False,0.5712861415752741,1,59
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3104-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3104,periodic-table-battleship,118,106,0,17,True,False,0.4576271186440678,23,65
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3105-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3105,periodic-table-battleship,118,114,0,17,True,False,0.5463609172482552,10,47
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3106-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3106,periodic-table-battleship,118,117,0,17,True,False,0.5608175473579262,1,54
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3107-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3107,periodic-table-battleship,118,118,0,17,True,False,0.5169491525423728,4,39
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3108-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3108,periodic-table-battleship,118,117,0,17,True,False,0.5189431704885344,3,39
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3109-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3109,periodic-table-battleship,118,115,0,17,True,False,0.47357926221335994,7,83
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3110-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3110,periodic-table-battleship,118,118,0,17,True,False,0.5314057826520439,4,47
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3111-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3111,periodic-table-battleship,118,116,0,17,True,False,0.4511465603190429,8,26
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3112-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3112,periodic-table-battleship,118,106,0,17,True,False,0.5029910269192422,9,45
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3113-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3113,periodic-table-battleship,118,113,0,17,True,False,0.4865403788634098,7,79
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3114-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3114,periodic-table-battleship,118,116,0,17,True,False,0.4621136590229312,2,73
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3115-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3115,periodic-table-battleship,118,117,0,17,True,False,0.47557328015952144,14,33
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3116-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3116,periodic-table-battleship,118,115,0,17,True,False,0.5518444666001994,9,62
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3117-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3117,periodic-table-battleship,118,114,0,17,True,False,0.4356929212362911,9,62
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3118-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3118,periodic-table-battleship,118,117,0,17,True,False,0.4905284147557328,6,54
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3119-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3119,periodic-table-battleship,118,116,0,17,True,False,0.4436689930209372,1,59
+v0.2-attack-periodic-table-battleship-ppo-test-seed-3120-episode-000,v0.2-attack-periodic-table-battleship-ppo-test,MaskablePPO (selected),3120,periodic-table-battleship,118,115,0,17,True,False,0.557826520438684,3,45
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3101-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3101,periodic-table-battleship,118,44,0,17,True,False,0.8150548354935194,1,5
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3102-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3102,periodic-table-battleship,118,61,0,17,True,False,0.7751744765702892,1,7
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3103-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3103,periodic-table-battleship,118,64,0,17,True,False,0.7083748753738783,3,8
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3104-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3104,periodic-table-battleship,118,76,0,17,True,False,0.6570289132602194,1,5
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3105-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3105,periodic-table-battleship,118,98,0,17,True,False,0.773678963110668,1,8
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3106-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3106,periodic-table-battleship,118,76,0,17,True,False,0.7452642073778664,1,8
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3107-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3107,periodic-table-battleship,118,102,0,17,True,False,0.7028913260219342,1,9
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3108-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3108,periodic-table-battleship,118,79,0,17,True,False,0.7073778664007976,8,19
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3109-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3109,periodic-table-battleship,118,56,0,17,True,False,0.8040877367896311,3,8
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3110-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3110,periodic-table-battleship,118,64,0,17,True,False,0.8080757726819542,1,6
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3111-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3111,periodic-table-battleship,118,55,0,17,True,False,0.8280159521435693,1,9
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3112-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3112,periodic-table-battleship,118,70,0,17,True,False,0.7053838484546361,14,24
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3113-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3113,periodic-table-battleship,118,65,0,17,True,False,0.6784646061814557,4,14
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3114-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3114,periodic-table-battleship,118,71,0,17,True,False,0.6610169491525424,1,9
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3115-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3115,periodic-table-battleship,118,53,0,17,True,False,0.7647058823529411,5,7
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3116-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3116,periodic-table-battleship,118,60,0,17,True,False,0.8100697906281157,1,6
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3117-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3117,periodic-table-battleship,118,42,0,17,True,False,0.8280159521435693,3,16
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3118-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3118,periodic-table-battleship,118,89,0,17,True,False,0.6450648055832503,9,11
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3119-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3119,periodic-table-battleship,118,44,0,17,True,False,0.8280159521435693,1,7
+v0.2-attack-periodic-table-battleship-hunt_target-v1-test-seed-3120-episode-000,v0.2-attack-periodic-table-battleship-hunt_target-v1-test,hunt_target-v1,3120,periodic-table-battleship,118,74,0,17,True,False,0.7851445663010967,1,10
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3101-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3101,periodic-table-battleship,118,114,0,17,True,False,0.48953140578265203,1,23
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3102-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3102,periodic-table-battleship,118,118,0,17,True,False,0.4860418743768694,1,59
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3103-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3103,periodic-table-battleship,118,115,0,17,True,False,0.4900299102691924,3,42
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3104-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3104,periodic-table-battleship,118,110,0,17,True,False,0.53938185443669,1,54
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3105-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3105,periodic-table-battleship,118,105,0,17,True,False,0.49401794616151545,1,73
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3106-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3106,periodic-table-battleship,118,114,0,17,True,False,0.5687936191425723,1,56
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3107-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3107,periodic-table-battleship,118,113,0,17,True,False,0.5289132602193419,1,75
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3108-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3108,periodic-table-battleship,118,118,0,17,True,False,0.4561316051844467,8,64
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3109-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3109,periodic-table-battleship,118,99,0,17,True,False,0.5458624127617149,3,52
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3110-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3110,periodic-table-battleship,118,114,0,17,True,False,0.5049850448654037,1,93
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3111-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3111,periodic-table-battleship,118,114,0,17,True,False,0.5413758723828515,1,78
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3112-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3112,periodic-table-battleship,118,118,0,17,True,False,0.48205383848454636,14,59
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3113-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3113,periodic-table-battleship,118,118,0,17,True,False,0.4436689930209372,4,57
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3114-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3114,periodic-table-battleship,118,116,0,17,True,False,0.4910269192422732,1,45
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3115-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3115,periodic-table-battleship,118,114,0,17,True,False,0.5159521435692921,5,48
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3116-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3116,periodic-table-battleship,118,111,0,17,True,False,0.580259222333001,1,59
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3117-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3117,periodic-table-battleship,118,100,0,17,True,False,0.5887337986041874,3,52
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3118-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3118,periodic-table-battleship,118,116,0,17,True,False,0.5069790628115654,9,33
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3119-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3119,periodic-table-battleship,118,116,0,17,True,False,0.5443668993020937,1,79
+v0.2-attack-periodic-table-battleship-random_masked-v1-test-seed-3120-episode-000,v0.2-attack-periodic-table-battleship-random_masked-v1-test,random_masked-v1,3120,periodic-table-battleship,118,116,0,17,True,False,0.44715852442671983,1,71
