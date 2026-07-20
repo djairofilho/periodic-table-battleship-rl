@@ -17,8 +17,9 @@ tradicional. A pergunta é simples: como uma topologia irregular, com lacunas e
 O núcleo reproduzível está disponível: topologias, frotas legais, ambientes
 Gymnasium mascarados de ataque e posicionamento, baselines, persistência de
 resultados, renderização pública de episódios e o microambiente tabular de
-Q-learning/SARSA. O treinamento MaskablePPO e os relatórios visuais completos
-seguem nas próximas etapas.
+Q-learning/SARSA. Os pipelines MaskablePPO, avaliações cegas, tabelas,
+gráficos e GIFs também estão disponíveis. A próxima etapa é ampliar os
+orçamentos de treino e executar o protocolo final em múltiplas seeds.
 
 ## Cenários
 
@@ -64,6 +65,19 @@ estão em [`runs/initial-baselines-v0`](runs/initial-baselines-v0).
 Estes números são uma linha de base, não um resultado de treinamento. Cada
 manifesto registra o commit, o hash de `uv.lock`, seeds e ambiente de execução.
 
+## Artefatos visuais e smoke runs PPO
+
+Os dados iniciais dos baselines já têm [CSV e tabela](artifacts/initial-baselines-v0/tables),
+[gráfico comparativo](artifacts/initial-baselines-v0/figures/mean-valid-shots.png)
+e [GIF público de ataque](artifacts/initial-baselines-v0/gifs/hunt-target-demo.gif).
+
+Também há demonstrações ponta a ponta de PPO para
+[ataque](runs/attack-ppo-smoke-v0) e
+[posicionamento](runs/placement-ppo-smoke-v0), além de
+[gráficos, heatmap e GIF](artifacts/placement-ppo-smoke-v0). Elas usam somente
+512 passos de treino e servem para verificar o pipeline. Não devem ser
+interpretadas como avaliação final de desempenho.
+
 ## Documentação
 
 - [Análise do jogo de origem](docs/01-analise-do-jogo-origem.md)
@@ -80,13 +94,14 @@ manifesto registra o commit, o hash de `uv.lock`, seeds e ambiente de execução
 O projeto usa [uv](https://docs.astral.sh/uv/) e Python 3.11.
 
 ```powershell
-uv sync --all-groups
+uv sync --all-groups --extra visual
 uv run ruff check .
 uv run pytest
 ```
 
-As dependências de treinamento pesado serão opcionais. O núcleo do ambiente
-ficará leve, baseado em `gymnasium` e `numpy`.
+Para treinar PPO, acrescente `--extra train`. As dependências de visualização e
+treino continuam opcionais; o núcleo do ambiente fica leve, baseado em
+`gymnasium` e `numpy`.
 
 ## Escopo inicial
 
