@@ -1,6 +1,7 @@
 """Topology-v1 public API."""
 
 from .model import Cell, Orientation, Topology
+from .dense import DENSE_118, DENSE_118_SCENARIO
 from .scenarios import (
     BATTLESHIP,
     CANVAS_COLUMNS,
@@ -17,6 +18,8 @@ __all__ = [
     "CANVAS_COLUMNS",
     "CANVAS_ROWS",
     "Cell",
+    "DENSE_118",
+    "DENSE_118_SCENARIO",
     "IUPAC_PERIODIC_TABLE_SOURCE",
     "Orientation",
     "PERIODIC_TABLE_BATTLESHIP",

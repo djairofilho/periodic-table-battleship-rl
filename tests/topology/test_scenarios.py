@@ -8,6 +8,7 @@ from periodic_table_battleship_rl.topology import (
     BATTLESHIP,
     CANVAS_COLUMNS,
     CANVAS_ROWS,
+    DENSE_118,
     IUPAC_PERIODIC_TABLE_SOURCE,
     PERIODIC_TABLE_BATTLESHIP,
     get_topology,
@@ -135,7 +136,8 @@ def test_periodic_cell_metadata_matches_known_iupac_positions():
     )
 
 
-def test_topology_lookup_rejects_unknown_names():
+def test_topology_lookup_returns_known_controls_and_rejects_unknown_names():
     assert get_topology("battleship") is BATTLESHIP
+    assert get_topology("dense-118") is DENSE_118
     with pytest.raises(ValueError, match="unknown topology"):
-        get_topology("dense-118")
+        get_topology("not-a-topology")

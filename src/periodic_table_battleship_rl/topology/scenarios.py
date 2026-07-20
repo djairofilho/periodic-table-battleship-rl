@@ -154,6 +154,13 @@ TOPOLOGIES = MappingProxyType(
 def get_topology(name: str) -> Topology:
     """Return one of the immutable ``topology-v1`` scenarios."""
 
+    if name == "dense-118":
+        # Kept lazy because the control topology reuses this module's canvas
+        # constants to make its geometry explicit.
+        from .dense import DENSE_118
+
+        return DENSE_118
+
     try:
         return TOPOLOGIES[name]
     except KeyError as error:
