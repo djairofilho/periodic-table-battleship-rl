@@ -17,6 +17,11 @@ train = [
     "sb3-contrib>=2.6,<3.0",
     "stable-baselines3>=2.6,<3.0",
 ]
+visual = [
+    "matplotlib>=3.8,<4.0",
+    "pillow>=10.0,<12.0",
+    "seaborn>=0.13,<1.0",
+]
 
 [dependency-groups]
 dev = [
