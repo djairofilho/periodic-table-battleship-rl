@@ -1,0 +1,10 @@
+source_scenario,target_scenario,episode_count,valid_shots,win_rate,run_manifest
+battleship,battleship,100,"{'mean': 94.8, 'std': 5.262791055796315, 'median': 97.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\battleship\battleship\manifest.json
+battleship,dense-118,100,"{'mean': 111.52, 'std': 5.695080279850266, 'median': 112.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\battleship\dense-118\manifest.json
+battleship,periodic-table-battleship,100,"{'mean': 109.88, 'std': 7.3282075750231215, 'median': 111.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\battleship\periodic-table-battleship\manifest.json
+dense-118,battleship,100,"{'mean': 94.77, 'std': 5.044959480671392, 'median': 96.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\dense-118\battleship\manifest.json
+dense-118,dense-118,100,"{'mean': 111.7, 'std': 6.747240363678511, 'median': 113.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\dense-118\dense-118\manifest.json
+dense-118,periodic-table-battleship,100,"{'mean': 111.29, 'std': 6.73794471555674, 'median': 114.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\dense-118\periodic-table-battleship\manifest.json
+periodic-table-battleship,battleship,100,"{'mean': 94.21, 'std': 6.852405019075751, 'median': 97.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\periodic-table-battleship\battleship\manifest.json
+periodic-table-battleship,dense-118,100,"{'mean': 111.87, 'std': 5.980870177558453, 'median': 113.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\periodic-table-battleship\dense-118\manifest.json
+periodic-table-battleship,periodic-table-battleship,100,"{'mean': 111.02, 'std': 5.740129868660718, 'median': 113.0}","{'mean': 1.0, 'std': 0.0, 'median': 1.0}",runs\v0.4-cross-topology\periodic-table-battleship\periodic-table-battleship\manifest.json

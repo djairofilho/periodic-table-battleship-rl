@@ -17,9 +17,10 @@ tradicional. A pergunta é simples: como uma topologia irregular, com lacunas e
 O núcleo reproduzível está disponível: topologias, frotas legais, ambientes
 Gymnasium mascarados de ataque e posicionamento, baselines, persistência de
 resultados, renderização pública de episódios e o microambiente tabular de
-Q-learning/SARSA. A campanha piloto controlada v0.2 também está concluída,
-com PPO mascarado, avaliação cega, tabelas, gráficos e GIFs públicos. O passo
-seguinte é ampliar o orçamento de treino, mantendo o mesmo protocolo.
+Q-learning/SARSA. As campanhas v0.2 e v0.3 e a análise v0.4 estão concluídas,
+com avaliação cega, tabelas, gráficos e GIFs públicos. O resultado atual não
+promove o PPO: a prioridade passa a ser uma mudança de representação ou
+algoritmo, escolhida por validação antes de uma nova campanha ampliada.
 
 ## Cenários
 
@@ -49,6 +50,45 @@ treinamento.
 Os dois experimentos são independentes na primeira rodada. O segundo começa
 contra atacantes fixos para que a recompensa seja estável. Self-play só entra
 depois, como extensão.
+
+## Análise e experimentos v0.4
+
+A análise por seed confirma o resultado da v0.3: o PPO de ataque permanece
+atrás de `hunt-target-v1` nos três cenários e o PPO de posicionamento não tem
+vantagem robusta contra a mistura fixa. A análise reduz as repetições dentro
+de cada seed antes do bootstrap, evitando contar episódios correlacionados
+como evidência independente. Veja o [relatório por seed](artifacts/v0.3-fixed-suite/analysis/analysis-summary.md).
+
+A ablação pré-registrada do atacante avaliou três braços no cenário periódico:
+controle v0.3, penalidade de erro mais suave e um plano público de ações ainda
+disponíveis. Cada braço usou três seeds de treino, checkpoints escolhidos em
+validação e 100 seeds cegas no teste. Nenhuma alteração foi conclusiva.
+
+| Variante | Média de tiros | Diferença vs. controle (IC 95%) |
+| --- | ---: | ---: |
+| Controle v0.3 | 111,05 | — |
+| Canal de disponibilidade | 110,91 | −0,14 [−1,02; +0,77] |
+| Recompensa de exploração | 111,67 | +0,62 [−0,28; +1,54] |
+
+![Ablação cega do ataque](artifacts/v0.4-attack-ablation/ablation-comparison.png)
+
+A matriz explícita de transferência entre as três topologias usou 100 seeds
+cegas em cada uma das nove células. A diagonal é controle, e as células fora
+dela preservam separadamente a topologia de treino, a topologia de teste e os
+hashes do checkpoint. Os resultados não indicam transferência espacial útil:
+todos ficam próximos ao PPO de origem e continuam muito distantes de
+`hunt-target-v1`. Consulte a [avaliação cross-topology](docs/16-avaliacao-cross-topology.md).
+
+| Treino \ Teste | Clássico | `dense-118` | Periódico |
+| --- | ---: | ---: | ---: |
+| Clássico | 94,80 | 111,52 | 109,88 |
+| `dense-118` | 94,77 | 111,70 | 111,29 |
+| Periódico | 94,21 | 111,87 | 111,02 |
+
+A interface local permite jogar ou revisar um replay público sem revelar a
+frota durante o episódio. O contrato para uma futura liga de self-play e a
+decisão de não escalar para GPU sem variante promissora também estão
+documentados.
 
 ## Resultados da campanha v0.3
 
@@ -175,6 +215,11 @@ interpretadas como avaliação final de desempenho.
 - [Relatório da campanha v0.2](docs/10-relatorio-v0.2.md)
 - [Protocolo da campanha v0.3](docs/11-protocolo-v0.3.md)
 - [Relatório da campanha v0.3](docs/12-relatorio-v0.3.md)
+- [Demonstração local e replays](docs/13-demonstracao-local.md)
+- [Ablação de ataque v0.4](docs/14-ablacao-ataque-v0.4.md)
+- [Decisão de escala CPU/GPU](docs/14-decisao-de-escala-gpu.md)
+- [Liga e snapshots para self-play](docs/15-self-play-liga-e-snapshots.md)
+- [Avaliação cross-topology](docs/16-avaliacao-cross-topology.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento

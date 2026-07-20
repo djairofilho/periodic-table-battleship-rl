@@ -21,7 +21,7 @@ de 17 segmentos; somente o custo imediato de erro muda.
 ## Protocolo executado
 
 O estudo completo foi executado em CPU, uma thread PyTorch, no commit
-`953a79a46470fec06803e20b0b35d5eea877d592`:
+`5c66951d8f2e855b5e7ef2f3fae592b98405fc13`:
 
 | Item | Valor |
 | --- | --- |
