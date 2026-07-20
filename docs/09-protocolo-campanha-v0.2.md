@@ -27,7 +27,7 @@ selecionado na validação de ataque do mesmo cenário.
 | Seeds de treinamento | `1101`, `1102`, `1103` |
 | Seeds de validação | `2101` a `2105` |
 | Seeds de teste cegos | `3101` a `3120` |
-| PPO por seed | 2.048 passos de ambiente |
+| PPO por seed | 512 passos de ambiente |
 | `n_steps` / `batch_size` | 256 / 64 |
 | Episódios por seed de avaliação | 1 |
 | Bootstrap | 10.000 reamostragens, IC percentil de 95% |
