@@ -159,11 +159,13 @@ def plot_placement_comparison(
     *,
     policy_by_run: Mapping[str, str] | None = None,
 ) -> Path:
-    """Plot mean survival by attacker component and frozen mixture.
+    """Plot mean survival by scenario, attacker component, and frozen mixture.
 
     Higher values mean that the placement policy made the attacker's task take
-    longer.  The frozen mixture is kept as a distinct category, rather than
-    being blended into its components.
+    longer.  Each scenario receives its own panel, so its component and
+    mixture results are never aggregated with a different board.  The chart
+    deliberately uses compact display labels; the companion CSV and Markdown
+    table retain the complete policy and attacker identifiers.
     """
 
     rows = placement_result_rows(results, policy_by_run=policy_by_run)
@@ -178,31 +180,131 @@ def plot_placement_comparison(
     import seaborn as sns
 
     destination = _prepare_destination(path)
-    attackers = sorted({str(row["attacker_id"]) for row in rows})
+    data = pd.DataFrame(rows).assign(
+        attacker_label=lambda frame: frame["attacker_id"].map(_attacker_display_label),
+        policy_label=lambda frame: frame["policy_id"].map(_placement_policy_display_label),
+    )
+    attackers = sorted(
+        {str(row["attacker_id"]) for row in rows}, key=_attacker_sort_key
+    )
+    attacker_labels = [_attacker_display_label(attacker) for attacker in attackers]
     policies = sorted({str(row["policy_id"]) for row in rows})
+    policy_labels = [_placement_policy_display_label(policy) for policy in policies]
+    scenarios = sorted({str(row["scenario"]) for row in rows})
     with sns.axes_style("whitegrid"):
-        figure, axis = plt.subplots(figsize=(max(7.0, 2.45 * len(attackers)), 4.8))
-        sns.barplot(
-            data=pd.DataFrame(rows),
-            x="attacker_id",
-            y="valid_shots_to_sink",
-            hue="policy_id",
-            order=attackers,
-            hue_order=policies,
-            estimator="mean",
-            errorbar=None,
-            palette="colorblind",
-            ax=axis,
+        figure, axes = plt.subplots(
+            nrows=1,
+            ncols=len(scenarios),
+            figsize=(max(7.0, 5.3 * len(scenarios)), 5.25),
+            sharey=True,
+            squeeze=False,
         )
-        axis.set_title("Placement survival by attacker and frozen mixture")
-        axis.set_xlabel("Attacker or frozen mixture")
-        axis.set_ylabel("Mean valid shots to sink fleet")
-        axis.tick_params(axis="x", rotation=18)
-        axis.legend(title="Placement policy")
-        figure.tight_layout()
+        for index, (scenario, axis) in enumerate(zip(scenarios, axes[0], strict=True)):
+            scenario_data = data.loc[data["scenario"] == scenario]
+            sns.barplot(
+                data=scenario_data,
+                x="attacker_label",
+                y="valid_shots_to_sink",
+                hue="policy_label",
+                order=attacker_labels,
+                hue_order=policy_labels,
+                estimator="mean",
+                errorbar=None,
+                palette="colorblind",
+                ax=axis,
+            )
+            axis.set_title(_scenario_display_label(scenario))
+            axis.set_xlabel("Attacker or frozen mixture")
+            axis.set_ylabel("Mean valid shots to sink fleet" if index == 0 else "")
+            axis.tick_params(axis="x", rotation=0)
+            legend = axis.get_legend()
+            if legend is not None:
+                legend.remove()
+
+        handles, legend_labels = axes[0][0].get_legend_handles_labels()
+        figure.legend(
+            handles,
+            legend_labels,
+            title="Placement policy",
+            loc="upper center",
+            ncols=min(4, len(policy_labels)),
+            bbox_to_anchor=(0.5, 0.99),
+        )
+        figure.suptitle("Placement survival by scenario and attacker", y=1.08)
+        figure.text(
+            0.5,
+            0.01,
+            "Complete attacker and policy IDs are retained in the CSV and Markdown summary.",
+            ha="center",
+            fontsize=8,
+        )
+        figure.tight_layout(rect=(0.0, 0.05, 1.0, 0.91))
         figure.savefig(destination, dpi=160, metadata={"Date": None})
         plt.close(figure)
     return destination
+
+
+def _attacker_display_label(attacker_id: str) -> str:
+    """Return a short visual label while source artifacts retain the full ID."""
+
+    known_labels = {
+        "random-masked-v1": "Random",
+        "hunt-target-v1": "Hunt-target",
+        "frozen-defensive-mixture-v1": "Frozen\nmixture",
+    }
+    if attacker_id in known_labels:
+        return known_labels[attacker_id]
+    if attacker_id.startswith("maskable-ppo-v1:"):
+        return "Frozen PPO\nattacker"
+    if attacker_id.endswith("random-hunt-frozen-ppo"):
+        return "Frozen PPO\nmixture"
+    return _short_identifier(attacker_id)
+
+
+def _attacker_sort_key(attacker_id: str) -> tuple[int, str]:
+    """Keep baseline components and the frozen mixture in comparison order."""
+
+    order = {
+        "random-masked-v1": 0,
+        "hunt-target-v1": 1,
+        "frozen-defensive-mixture-v1": 2,
+    }
+    if attacker_id.startswith("maskable-ppo-v1:"):
+        return 2, attacker_id
+    if attacker_id.endswith("random-hunt-frozen-ppo"):
+        return 3, attacker_id
+    return order.get(attacker_id, 3), attacker_id
+
+
+def _placement_policy_display_label(policy_id: str) -> str:
+    """Return concise legend text for known placement-policy implementations."""
+
+    known_labels = {
+        "random-legal-placement-v1": "Random legal",
+        "dispersion-placement-v1": "Dispersion",
+        "hunt-target-resistant-placement-v1": "Hunt-target resistant",
+        "MaskablePPO placement (multi-seed)": "MaskablePPO (multi-seed)",
+    }
+    return known_labels.get(policy_id, _short_identifier(policy_id))
+
+
+def _scenario_display_label(scenario: str) -> str:
+    """Return a readable scenario title without altering persisted scenario IDs."""
+
+    known_labels = {
+        "battleship": "Classic Battleship",
+        "dense-118": "Dense 118-cell board",
+        "periodic-table-battleship": "Periodic Table Battleship",
+    }
+    return known_labels.get(scenario, _short_identifier(scenario))
+
+
+def _short_identifier(identifier: str, *, maximum_length: int = 28) -> str:
+    """Avoid a long unknown identifier overwhelming a static chart axis."""
+
+    if len(identifier) <= maximum_length:
+        return identifier.replace("-", "\n")
+    return f"{identifier[: maximum_length - 1].replace('-', ' ')}…"
 
 
 def plot_placement_segment_heatmap(

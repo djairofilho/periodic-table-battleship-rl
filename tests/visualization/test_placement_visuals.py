@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 import csv
+from dataclasses import replace
 
 from PIL import Image
 
 from periodic_table_battleship_rl.evaluation import PlacementResult
 from periodic_table_battleship_rl.topology import BATTLESHIP, PERIODIC_TABLE_BATTLESHIP
 from periodic_table_battleship_rl.visualization.placement import (
+    _attacker_display_label,
+    _placement_policy_display_label,
+    _scenario_display_label,
     placement_result_rows,
     placement_summary_markdown,
     plot_placement_comparison,
@@ -99,6 +103,31 @@ def test_placement_artifacts_are_ordered_readable_and_deterministic(tmp_path) ->
         tuple(reversed(results)), policy_by_run=labels
     )
     assert chart_path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
+
+
+def test_placement_chart_uses_short_labels_without_changing_source_ids(tmp_path) -> None:
+    periodic_result = replace(
+        _results()[2],
+        episode_id="periodic-mixture-a",
+        scenario="periodic-table-battleship",
+        attacker_id="v0.3-fixed-suite-random-hunt-frozen-ppo",
+    )
+    chart_path = plot_placement_comparison(
+        (*_results(), periodic_result), tmp_path / "scenario-comparison.png"
+    )
+
+    assert _attacker_display_label("v0.3-fixed-suite-random-hunt-frozen-ppo") == (
+        "Frozen PPO\nmixture"
+    )
+    assert _attacker_display_label("maskable-ppo-v1:attack-checkpoint") == (
+        "Frozen PPO\nattacker"
+    )
+    assert _placement_policy_display_label("hunt-target-resistant-placement-v1") == (
+        "Hunt-target resistant"
+    )
+    assert _scenario_display_label("periodic-table-battleship") == "Periodic Table Battleship"
+    with Image.open(chart_path) as image:
+        assert image.width >= 1_600
 
 
 def test_heatmap_and_gif_preserve_topology_gaps_and_sequence(tmp_path) -> None:
