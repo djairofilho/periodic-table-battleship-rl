@@ -138,6 +138,24 @@ validação, não houve campanha ampliada nem abertura de teste cego. O
 [relatório v0.6](docs/24-relatorio-v0.6.md) reúne protocolo, evidências e
 limitações.
 
+## Ciclo v0.7: calibração e destilação pública
+
+O ciclo v0.7 testou a robustez do planejador Bayesiano e tentou destilá-lo em
+CNN e GNN públicas. A calibração no microtabuleiro cobre 100% do suporte exato
+e não produz massa ilegal, mas ainda mede pequeno viés do amostrador. Na
+validação de dez seeds, Bayes venceu `hunt-target` de forma conclusiva somente
+em `dense-118`; os intervalos dos cenários clássico e periódico cruzam zero.
+
+As estudantes CNN/GNN não generalizaram: a GNN ganhou pontualmente na tabela
+periódica, mas ambas perderam em outros cenários. Por isso nenhuma candidata
+foi promovida, o teste cego novo permaneceu fechado e o self-play condicional
+não foi aberto. O [relatório v0.7](docs/31-relatorio-v0.7.md) contém a tabela,
+gráficos, dados e a decisão completa.
+
+![Validação Bayesiana multi-topologia](artifacts/v0.7-bayes-cross-topology-validation/full/paired-valid-shots.png)
+
+![Destilação pública](artifacts/v0.7-bayesian-students/student-valid-shots.png)
+
 ## Resultados da campanha v0.3
 
 A campanha controlada v0.3 está concluída. Ela usa HPO estritamente em
@@ -284,6 +302,12 @@ interpretadas como avaliação final de desempenho.
 - [Self-play Bayesiano](docs/23-self-play-bayesiano-v0.6.md)
 - [Relatório v0.6](docs/24-relatorio-v0.6.md)
 - [Q-learning e SARSA contra o oráculo](docs/25-q-learning-sarsa-micro-oraculo.md)
+- [Protocolo v0.7](docs/26-protocolo-v0.7.md)
+- [Calibração do amostrador Bayesiano](docs/27-calibracao-amostrador-bayesiano.md)
+- [Validação Bayesiana multi-topologia](docs/28-validacao-bayesiana-multi-topologia-v0.7.md)
+- [Demonstrações Bayesianas públicas](docs/29-demonstracoes-bayesianas-publicas.md)
+- [Destilação neural Bayesiana](docs/30-destilacao-neural-bayesiana-v0.7.md)
+- [Relatório v0.7](docs/31-relatorio-v0.7.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento

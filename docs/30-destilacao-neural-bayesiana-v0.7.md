@@ -57,10 +57,20 @@ explicitamente `blind_test_used: false`.
 
 ## Resultado inicial e decisão
 
-O piloto mínimo foi executado com duas amostras Monte Carlo e quatro epochs.
-O GNN teve resultado pontual melhor que `hunt-target` apenas em Batalha Naval
-clássica (46,00 vs. 54,00 tiros), mas CNN e GNN ficaram piores nas duas
-topologias de 118 células. O acordo fora do treino foi baixo (1,7% a 11,4%).
+O piloto reprodutível foi executado com oito amostras Monte Carlo por decisão
+e 24 epochs. O relatório é determinístico quando reexecutado com a mesma
+configuração: o SHA-256 do JSON de saída permaneceu idêntico em duas execuções
+consecutivas. A melhor estudante por topologia não forma um padrão promovível:
+
+| Topologia | Melhor estudante | Tiros | Hunt-target |
+| --- | --- | ---: | ---: |
+| `battleship` | CNN | 62,00 | 54,00 |
+| `dense-118` | GNN | 61,00 | 48,50 |
+| `periodic-table-battleship` | GNN | 52,00 | 65,50 |
+
+CNN e GNN ficam piores em dois cenários e o acordo fora do treino permanece
+baixo. O ganho pontual da GNN na tabela periódica não compensa a falta de
+generalização nem as duas seeds insuficientes para inferência estatística.
 
 Portanto, nenhum estudante é promovido. Além do desempenho inconsistente, duas
 seeds são insuficientes para uma decisão de promoção: a promoção exige a
