@@ -1,0 +1,50 @@
+{
+  "protocol": "exact-public-belief-dp-v1",
+  "board": {
+    "rows": 3,
+    "columns": 3,
+    "ship_lengths": [
+      2
+    ]
+  },
+  "uniform_prior_fleet_count": 12,
+  "oracle": {
+    "expected_shots": 4.5,
+    "optimal_first_actions": [
+      1,
+      3,
+      4,
+      5,
+      7
+    ],
+    "first_action_values": {
+      "0": 4.666666666666666,
+      "1": 4.5,
+      "2": 4.666666666666666,
+      "3": 4.5,
+      "4": 4.5,
+      "5": 4.5,
+      "6": 4.666666666666666,
+      "7": 4.5,
+      "8": 4.666666666666666
+    },
+    "memoized_belief_states": 2353
+  },
+  "baselines": [
+    {
+      "name": "random-masked",
+      "expected_shots": 6.666666666666665,
+      "regret_vs_oracle": 2.166666666666665
+    },
+    {
+      "name": "hunt-target",
+      "expected_shots": 4.944444444444445,
+      "regret_vs_oracle": 0.44444444444444464
+    },
+    {
+      "name": "posterior-greedy",
+      "expected_shots": 4.5,
+      "regret_vs_oracle": 0.0
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+policy,expected_shots,regret_vs_oracle,status
+dynamic-programming-oracle,4.5,0.0,optimal exact
+random-masked,6.666666666666665,2.166666666666665,baseline exact evaluation
+hunt-target,4.944444444444445,0.44444444444444464,baseline exact evaluation
+posterior-greedy,4.5,0.0,baseline exact evaluation

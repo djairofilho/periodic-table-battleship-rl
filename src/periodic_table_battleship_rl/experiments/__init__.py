@@ -56,9 +56,18 @@ from .placement_baselines import (
     PlacementBaselineEvaluation,
     run_placement_baseline_evaluation,
 )
+from .belief_evaluation import (
+    BELIEF_HORIZON_POLICY_ID,
+    BELIEF_INFORMATION_POLICY_ID,
+    BELIEF_PROBABILITY_POLICY_ID,
+    run_belief_planner_evaluation,
+)
 
 __all__ = [
     "ATTACK_TUNING_SCHEMA_VERSION",
+    "BELIEF_HORIZON_POLICY_ID",
+    "BELIEF_INFORMATION_POLICY_ID",
+    "BELIEF_PROBABILITY_POLICY_ID",
     "AttackAblationArm",
     "AttackAblationSchedule",
     "AttackBaselineRun",
@@ -85,6 +94,7 @@ __all__ = [
     "compare_ablation_arms",
     "default_periodic_ablation_arms",
     "run_attack_hyperparameter_search",
+    "run_belief_planner_evaluation",
     "run_initial_attack_baselines",
     "run_cross_topology_matrix",
     "run_cross_topology_ppo_attack_evaluation",
