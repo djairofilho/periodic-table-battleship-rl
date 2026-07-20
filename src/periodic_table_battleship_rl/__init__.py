@@ -1,3 +1,3 @@
-\"\"\"Ambientes e ferramentas de benchmark para Periodic Table Battleship RL.\"\"\"
+"""Ambientes e ferramentas de benchmark para Periodic Table Battleship RL."""
 
 __version__ = "0.1.0"
