@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Instalar Python
+        run: uv python install 3.11
+      - name: Sincronizar dependências
+        run: uv sync --all-groups
+      - name: Verificar estilo
+        run: uv run ruff check .
+      - name: Executar testes
+        run: uv run pytest
