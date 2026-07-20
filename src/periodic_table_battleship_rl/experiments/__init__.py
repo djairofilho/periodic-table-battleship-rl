@@ -1,5 +1,12 @@
 """Reproducible experiment runners for benchmark scenarios."""
 
+from .attack_ablation import (
+    AttackAblationArm,
+    AttackAblationSchedule,
+    compare_ablation_arms,
+    default_periodic_ablation_arms,
+)
+
 from .attack_baselines import (
     AttackBaselineRun,
     HUNT_TARGET_POLICY_ID,
@@ -26,6 +33,14 @@ from .ppo_evaluation import (
     run_ppo_attack_evaluation,
     validate_ppo_checkpoint,
 )
+from .cross_topology import (
+    CROSS_TOPOLOGY_PROTOCOL,
+    CrossTopologyMatrix,
+    CrossTopologyPpoAttackEvaluation,
+    CrossTopologyPpoSource,
+    run_cross_topology_matrix,
+    run_cross_topology_ppo_attack_evaluation,
+)
 from .placement_evaluation import (
     PLACEMENT_ENVIRONMENT_VERSION,
     PlacementEvaluation,
@@ -39,6 +54,8 @@ from .placement_baselines import (
 
 __all__ = [
     "ATTACK_TUNING_SCHEMA_VERSION",
+    "AttackAblationArm",
+    "AttackAblationSchedule",
     "AttackBaselineRun",
     "AttackCandidateScore",
     "AttackHyperparameterCandidate",
@@ -46,6 +63,10 @@ __all__ = [
     "AttackTuningResult",
     "AttackTuningTrial",
     "AttackTuningTrialRequest",
+    "CROSS_TOPOLOGY_PROTOCOL",
+    "CrossTopologyMatrix",
+    "CrossTopologyPpoAttackEvaluation",
+    "CrossTopologyPpoSource",
     "HUNT_TARGET_POLICY_ID",
     "PLACEMENT_ENVIRONMENT_VERSION",
     "PlacementEvaluation",
@@ -55,8 +76,12 @@ __all__ = [
     "RANDOM_MASKED_POLICY_ID",
     "persist_attack_tuning_result",
     "run_attack_baseline",
+    "compare_ablation_arms",
+    "default_periodic_ablation_arms",
     "run_attack_hyperparameter_search",
     "run_initial_attack_baselines",
+    "run_cross_topology_matrix",
+    "run_cross_topology_ppo_attack_evaluation",
     "run_ppo_attack_evaluation",
     "run_placement_evaluation",
     "run_placement_baseline_evaluation",

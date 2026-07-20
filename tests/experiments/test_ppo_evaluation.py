@@ -142,6 +142,32 @@ def test_policy_receives_only_public_observation_and_mask(tmp_path: Path) -> Non
     assert all(result.invalid_attempts == 0 for result in evaluation.results)
 
 
+def test_evaluation_restores_the_persisted_observation_profile(tmp_path: Path) -> None:
+    checkpoint, metadata = _artifacts(tmp_path)
+    contents = _metadata()
+    contents["environment"]["configuration"] = {
+        "observation_profile": "outcomes-plus-available-v1",
+        "reward_profile": "hit-miss-terminal-v1",
+    }
+    metadata.write_text(json.dumps(contents), encoding="utf-8")
+    model = _PublicOnlyModel()
+
+    run_ppo_attack_evaluation(
+        _config(),
+        BATTLESHIP,
+        MaskableAttackPolicy(model=model),
+        tmp_path / "profile-run",
+        checkpoint_path=checkpoint,
+        training_metadata_path=metadata,
+        git_commit="a" * 40,
+        uv_lock_path=PROJECT_ROOT / "uv.lock",
+        software=SOFTWARE,
+        hardware=HARDWARE,
+    )
+
+    assert model.calls[0][0].shape == (5, 10, 18)
+
+
 def test_checkpoint_metadata_must_match_supplied_topology(tmp_path: Path) -> None:
     checkpoint, metadata = _artifacts(tmp_path, topology_name="battleship")
 

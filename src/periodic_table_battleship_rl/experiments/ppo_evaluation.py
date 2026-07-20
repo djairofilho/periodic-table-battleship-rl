@@ -13,7 +13,7 @@ from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 
-from periodic_table_battleship_rl.envs import AttackEnv
+from periodic_table_battleship_rl.envs import AttackEnvironmentConfig, AttackEnv
 from periodic_table_battleship_rl.evaluation.schemas import (
     EpisodeManifest,
     EpisodeResult,
@@ -84,6 +84,7 @@ def run_ppo_attack_evaluation(
             run_id=evaluated_config.run_id,
             seed=seed,
             episode_index=episode_index,
+            environment_config=_environment_config(metadata),
         )
         for seed in evaluated_config.seeds
         for episode_index in range(evaluated_config.episodes_per_seed)
@@ -166,6 +167,16 @@ def _validate_config(
         raise ValueError(f"PPO attack evaluation requires policy {ATTACK_POLICY_ID!r}")
 
 
+def _environment_config(metadata: Mapping[str, Any]) -> AttackEnvironmentConfig:
+    """Read the model's public environment choice, defaulting v0.3 metadata."""
+    environment = metadata["environment"]
+    assert isinstance(environment, dict)
+    configuration = environment.get("configuration", {})
+    if not isinstance(configuration, dict):
+        raise ValueError("PPO training environment configuration must be an object")
+    return AttackEnvironmentConfig.from_public_dict(configuration)
+
+
 def _with_checkpoint_provenance(
     config: RunConfig, checkpoint_path: Path, metadata_path: Path
 ) -> RunConfig:
@@ -189,10 +200,11 @@ def _run_episode(
     run_id: str,
     seed: int,
     episode_index: int,
+    environment_config: AttackEnvironmentConfig,
 ) -> EpisodeResult:
     """Play one episode without reading any non-public ``AttackEnv`` state."""
 
-    environment = AttackEnv(topology)
+    environment = AttackEnv(topology, config=environment_config)
     observation, _ = environment.reset(seed=seed)
     hit_segments = 0
     discovery_area = 0

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any
+from dataclasses import dataclass
+from typing import Any, Literal
 
 import gymnasium as gym
 import numpy as np
@@ -10,6 +11,53 @@ from gymnasium import spaces
 
 from periodic_table_battleship_rl.game import Fleet, sample_random_legal_fleet
 from periodic_table_battleship_rl.topology import Topology
+
+
+@dataclass(frozen=True, slots=True)
+class AttackEnvironmentConfig:
+    """Public, versioned choices for the attack observation and reward.
+
+    ``outcomes-v1`` and ``hit-miss-terminal-v1`` exactly preserve the v0.3
+    environment.  Alternative values are deliberately opt-in so benchmark
+    runs cannot silently change their learning objective or observation
+    shape.
+    """
+
+    observation_profile: Literal[
+        "outcomes-v1", "outcomes-plus-available-v1"
+    ] = "outcomes-v1"
+    reward_profile: Literal["hit-miss-terminal-v1", "exploration-v1"] = (
+        "hit-miss-terminal-v1"
+    )
+
+    def __post_init__(self) -> None:
+        if self.observation_profile not in {
+            "outcomes-v1",
+            "outcomes-plus-available-v1",
+        }:
+            raise ValueError("unsupported attack observation profile")
+        if self.reward_profile not in {"hit-miss-terminal-v1", "exploration-v1"}:
+            raise ValueError("unsupported attack reward profile")
+
+    @property
+    def observation_channels(self) -> int:
+        """Return the public number of observation planes."""
+        return 4 if self.observation_profile == "outcomes-v1" else 5
+
+    def public_dict(self) -> dict[str, str]:
+        """Return JSON-native provenance suitable for model metadata."""
+        return {
+            "observation_profile": self.observation_profile,
+            "reward_profile": self.reward_profile,
+        }
+
+    @classmethod
+    def from_public_dict(cls, values: dict[str, Any]) -> "AttackEnvironmentConfig":
+        """Restore a configuration persisted in training metadata."""
+        return cls(
+            observation_profile=str(values.get("observation_profile", "outcomes-v1")),
+            reward_profile=str(values.get("reward_profile", "hit-miss-terminal-v1")),
+        )
 
 
 class AttackEnv(gym.Env[np.ndarray, int]):
@@ -22,18 +70,24 @@ class AttackEnv(gym.Env[np.ndarray, int]):
 
     metadata = {"render_modes": []}
 
-    def __init__(self, topology: Topology) -> None:
+    def __init__(
+        self,
+        topology: Topology,
+        *,
+        config: AttackEnvironmentConfig | None = None,
+    ) -> None:
         """Create an attack environment for a fixed 10 by 18 topology."""
         super().__init__()
         if topology.action_count != 180:
             raise ValueError("attack environments require a 10x18 action canvas")
 
         self.topology = topology
+        self.config = AttackEnvironmentConfig() if config is None else config
         self.action_space = spaces.Discrete(topology.action_count)
         self.observation_space = spaces.Box(
             low=0,
             high=1,
-            shape=(4, topology.rows, topology.columns),
+            shape=(self.config.observation_channels, topology.rows, topology.columns),
             dtype=np.uint8,
         )
         self.max_total_attempts = 2 * topology.valid_cell_count
@@ -106,7 +160,7 @@ class AttackEnv(gym.Env[np.ndarray, int]):
         self._valid_shots += 1
         is_hit = action_value in self._ship_id_by_cell
         sunk_ship_length = 0
-        reward = 1.0 if is_hit else -1.0
+        reward = self._shot_reward(is_hit)
         if is_hit:
             self._hit_cells.add(action_value)
             ship_id = self._ship_id_by_cell[action_value]
@@ -153,7 +207,20 @@ class AttackEnv(gym.Env[np.ndarray, int]):
             if cells:
                 rows, columns = zip(*(self.topology.coordinate_for(cell) for cell in cells))
                 observation[channel, rows, columns] = 1
+        if self.config.observation_profile == "outcomes-plus-available-v1":
+            observation[4] = self.action_masks().reshape(
+                self.topology.rows, self.topology.columns
+            )
         return observation
+
+    def _shot_reward(self, is_hit: bool) -> float:
+        """Return the configured immediate reward without exposing fleet state."""
+        if self.config.reward_profile == "hit-miss-terminal-v1":
+            return 1.0 if is_hit else -1.0
+        # The alternative keeps a hit's reward unchanged while reducing the
+        # miss penalty.  Its explicit hypothesis is that PPO will explore
+        # enough to exploit the local information revealed by a hit.
+        return 1.0 if is_hit else -0.2
 
     def _info(self, *, is_hit: bool, sunk_ship_length: int) -> dict[str, int | bool]:
         return {

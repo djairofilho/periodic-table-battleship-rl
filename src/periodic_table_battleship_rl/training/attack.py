@@ -13,14 +13,14 @@ different vectorisation strategies.
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 import importlib.metadata
 import json
 from pathlib import Path
 from statistics import fmean
 from typing import Any
 
-from periodic_table_battleship_rl.envs.attack import AttackEnv
+from periodic_table_battleship_rl.envs.attack import AttackEnvironmentConfig, AttackEnv
 from periodic_table_battleship_rl.evaluation.storage import write_json_atomic
 from periodic_table_battleship_rl.topology import Topology
 
@@ -67,6 +67,7 @@ class AttackTrainingConfig:
     learning_rate: float = 3e-4
     device: str = "auto"
     policy_id: str = ATTACK_POLICY_ID
+    environment_config: AttackEnvironmentConfig = field(default_factory=AttackEnvironmentConfig)
 
     def __post_init__(self) -> None:
         if not self.run_id.strip():
@@ -93,6 +94,7 @@ class AttackTrainingConfig:
         """Return JSON-native public configuration, excluding path internals."""
         values = asdict(self)
         values["checkpoint_directory"] = str(self.checkpoint_directory)
+        values["environment_config"] = self.environment_config.public_dict()
         return values
 
 
@@ -234,6 +236,7 @@ def _metadata(
             "action_mask_method": "action_masks",
             "action_count": topology.action_count,
             "valid_cells": topology.valid_cell_count,
+            "configuration": config.environment_config.public_dict(),
         },
         "config": config.public_dict(),
         "dependencies": {
@@ -298,6 +301,7 @@ def evaluate_attack_validation(
     validation: AttackValidationConfig,
     *,
     training_step: int,
+    environment_config: AttackEnvironmentConfig | None = None,
 ) -> tuple[AttackValidationResult, ...]:
     """Evaluate a model on fixed public validation episodes only.
 
@@ -312,7 +316,7 @@ def evaluate_attack_validation(
     results: list[AttackValidationResult] = []
     for seed in validation.seeds:
         for episode_index in range(validation.episodes_per_seed):
-            environment = AttackEnv(topology)
+            environment = AttackEnv(topology, config=environment_config)
             observation, _ = environment.reset(seed=seed)
             hit_segments = 0
             discovery_area = 0
@@ -382,7 +386,7 @@ def train_attack_policy(
     if validation is not None:
         _validate_schedule(config, validation)
     maskable_ppo = _require_maskable_ppo()
-    environment = AttackEnv(topology)
+    environment = AttackEnv(topology, config=config.environment_config)
     environment.reset(seed=config.seed)
     model = maskable_ppo(
         "MlpPolicy",
@@ -417,6 +421,7 @@ def train_attack_policy(
                 MaskableAttackPolicy(model=model),
                 validation,
                 training_step=training_step,
+                environment_config=config.environment_config,
             )
             captured.append(
                 AttackCheckpointArtifact(

@@ -19,6 +19,7 @@ from .attack import (
     evaluate_attack_validation,
     train_attack_policy,
 )
+from periodic_table_battleship_rl.envs.attack import AttackEnvironmentConfig
 from .placement import (
     PLACEMENT_POLICY_ID,
     PLACEMENT_TRAINING_SCHEMA_VERSION,
@@ -33,6 +34,7 @@ from .placement import (
 
 __all__ = [
     "ATTACK_POLICY_ID",
+    "AttackEnvironmentConfig",
     "VALIDATION_CURVE_SCHEMA_VERSION",
     "AttackCheckpointArtifact",
     "AttackTrainingArtifact",

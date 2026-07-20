@@ -1,6 +1,6 @@
 """Gymnasium environments for Periodic Table Battleship RL."""
 
-from .attack import AttackEnv
+from .attack import AttackEnvironmentConfig, AttackEnv
 from .placement import PlacementEnv
 
-__all__ = ["AttackEnv", "PlacementEnv"]
+__all__ = ["AttackEnvironmentConfig", "AttackEnv", "PlacementEnv"]

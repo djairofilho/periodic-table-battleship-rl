@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from gymnasium.utils.env_checker import check_env
 
-from periodic_table_battleship_rl.envs import AttackEnv
+from periodic_table_battleship_rl.envs import AttackEnvironmentConfig, AttackEnv
 from periodic_table_battleship_rl.topology import BATTLESHIP, PERIODIC_TABLE_BATTLESHIP
 
 
@@ -109,3 +109,35 @@ def test_sunk_ship_moves_all_of_its_hit_segments_to_sunk_channel() -> None:
         row, column = env.topology.coordinate_for(action)
         assert observation[1, row, column] == 0
         assert observation[2, row, column] == 1
+
+
+def test_available_observation_profile_tracks_public_action_mask() -> None:
+    env = AttackEnv(
+        BATTLESHIP,
+        config=AttackEnvironmentConfig(observation_profile="outcomes-plus-available-v1"),
+    )
+    observation, _ = env.reset(seed=4)
+
+    assert observation.shape == (5, 10, 18)
+    assert np.array_equal(observation[4].reshape(-1), env.action_masks())
+    env.step(next(iter(BATTLESHIP.valid_actions)))
+    observation = env._observation()
+    assert np.array_equal(observation[4].reshape(-1), env.action_masks())
+
+
+def test_exploration_reward_only_changes_miss_penalty() -> None:
+    control = AttackEnv(BATTLESHIP)
+    exploration = AttackEnv(
+        BATTLESHIP,
+        config=AttackEnvironmentConfig(reward_profile="exploration-v1"),
+    )
+    control.reset(seed=4)
+    exploration.reset(seed=4)
+    assert control._fleet is not None
+    miss = next(action for action in BATTLESHIP.valid_actions if action not in control._fleet.occupied_cells)
+
+    _, control_reward, _, _, _ = control.step(miss)
+    _, exploration_reward, _, _, _ = exploration.step(miss)
+
+    assert control_reward == -1.0
+    assert exploration_reward == -0.2

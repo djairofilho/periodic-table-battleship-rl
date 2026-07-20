@@ -10,6 +10,7 @@ import numpy as np
 import pytest
 
 from periodic_table_battleship_rl.topology import BATTLESHIP
+from periodic_table_battleship_rl.envs import AttackEnvironmentConfig
 from periodic_table_battleship_rl.training import attack
 from periodic_table_battleship_rl.training.attack import (
     ATTACK_POLICY_ID,
@@ -99,6 +100,10 @@ def test_train_writes_checkpoint_and_public_metadata(
     metadata = load_training_metadata(artifact.metadata_path)
     assert metadata["scenario"] == "battleship"
     assert metadata["environment"]["action_mask_method"] == "action_masks"
+    assert metadata["environment"]["configuration"] == {
+        "observation_profile": "outcomes-v1",
+        "reward_profile": "hit-miss-terminal-v1",
+    }
     assert metadata["config"]["seed"] == 11
     assert artifact.policy_id == ATTACK_POLICY_ID
 
@@ -120,8 +125,9 @@ def test_train_captures_validation_checkpoints_without_test_schedule(
         validation: AttackValidationConfig,
         *,
         training_step: int,
+        environment_config: AttackEnvironmentConfig | None = None,
     ) -> tuple[AttackValidationResult, ...]:
-        del topology, policy
+        del topology, policy, environment_config
         observed_steps.append(training_step)
         return tuple(
             AttackValidationResult(
