@@ -50,6 +50,48 @@ Os dois experimentos são independentes na primeira rodada. O segundo começa
 contra atacantes fixos para que a recompensa seja estável. Self-play só entra
 depois, como extensão.
 
+## Resultados da campanha v0.3
+
+A campanha controlada v0.3 está concluída. Ela usa HPO estritamente em
+treino/validação, cinco seeds finais por cenário, checkpoints selecionados
+somente na validação e 100 seeds cegos de teste. O protocolo, dados por
+episódio e relatório completo estão em
+[docs/11-protocolo-v0.3.md](docs/11-protocolo-v0.3.md),
+[docs/12-relatorio-v0.3.md](docs/12-relatorio-v0.3.md),
+[runs/v0.3-fixed-suite](runs/v0.3-fixed-suite) e
+[artifacts/v0.3-fixed-suite](artifacts/v0.3-fixed-suite).
+
+No ataque, menos tiros é melhor. O MaskablePPO ficou melhor que a política
+aleatória, mas não superou `hunt-target` em nenhum cenário. A diferença é PPO
+menos hunt-target: valores positivos favorecem hunt-target, e todos os
+intervalos bootstrap de 95% ficam acima de zero.
+
+| Cenário | PPO | Hunt-target | Diferença PPO − hunt (IC 95%) |
+| --- | ---: | ---: | ---: |
+| `battleship` | 94,23 | 61,75 | +32,48 [+29,43; +35,57] |
+| `dense-118` | 111,60 | 71,62 | +39,98 [+37,03; +43,00] |
+| `periodic-table-battleship` | 110,78 | 69,33 | +41,45 [+37,87; +44,91] |
+
+![Comparação do ataque no teste cego v0.3](artifacts/v0.3-fixed-suite/figures/attack-test-comparison.png)
+
+No posicionamento, mais tiros para afundar a frota é melhor. Contra a mistura
+fixa de aleatório, hunt-target e PPO congelado, o PPO de posicionamento não
+demonstrou vantagem estatisticamente robusta sobre nenhum baseline: todos os
+intervalos bootstrap de 95% das comparações pareadas cruzam zero. Este é um
+resultado útil, não uma falha omitida: ele motiva as ablações e o self-play da
+próxima fase.
+
+![Comparação do posicionamento no teste cego v0.3](artifacts/v0.3-fixed-suite/figures/placement-test-comparison.png)
+
+Os replays e curvas usam somente estado público e preservam a frota adversária
+oculta durante o episódio.
+
+![Curva de aprendizagem do ataque periódico](artifacts/v0.3-fixed-suite/figures/attack-periodic-table-battleship-learning-curve.gif)
+
+![Ataque PPO na tabela periódica](artifacts/v0.3-fixed-suite/figures/periodic-ppo-attack.gif)
+
+![Posicionamento PPO na tabela periódica](artifacts/v0.3-fixed-suite/figures/periodic-ppo-placement.gif)
+
 ## Resultados rápidos da campanha v0.2
 
 Esta é uma campanha piloto controlada, não uma alegação de desempenho final:
@@ -131,6 +173,8 @@ interpretadas como avaliação final de desempenho.
 - [Relatório v0.1](docs/08-relatorio-v0.1.md)
 - [Protocolo e resultados v0.2](docs/09-protocolo-campanha-v0.2.md)
 - [Relatório da campanha v0.2](docs/10-relatorio-v0.2.md)
+- [Protocolo da campanha v0.3](docs/11-protocolo-v0.3.md)
+- [Relatório da campanha v0.3](docs/12-relatorio-v0.3.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento

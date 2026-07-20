@@ -26,7 +26,7 @@ usada nesta versão porque a instalação atual do PyTorch não contém CUDA.
 | Fase | Cenários | Treino | Validação | Teste |
 | --- | --- | --- | --- | --- |
 | Busca | clássico, `dense-118`, periódico | 3 candidatos × 3 seeds × 20 mil passos | 10 seeds | nenhum |
-| Final | os três | 5 seeds × 50 mil passos | 10 seeds, checkpoints em 10k/25k/50k | 100 seeds cegos |
+| Final | os três | 5 seeds × 50 mil passos | 10 seeds, checkpoints em 10k/20k/30k/40k/50k | 100 seeds cegos |
 
 Os candidatos variam taxa de aprendizado e tamanho de rollout. A seleção usa
 menor média de `valid_shots`; empates usam `candidate_id` de modo determinístico.
@@ -58,7 +58,7 @@ mesmo cenário.
 ## Artefatos esperados
 
 O executor `scripts/run_v0_3_campaign.py` grava checkpoints locais em
-`.local-runs/v0.3-controlled` e resultados públicos em
-`runs/v0.3-controlled` e `artifacts/v0.3-controlled`. A release v0.3 deverá
+`.local-runs/v0.3-fixed-suite` e resultados públicos em
+`runs/v0.3-fixed-suite` e `artifacts/v0.3-fixed-suite`. A release v0.3 deve
 incluir JSONL, manifests, tabelas, gráficos, heatmaps, curvas por checkpoint e
 GIFs sem revelar frotas privadas.

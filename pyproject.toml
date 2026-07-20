@@ -1,6 +1,6 @@
 [project]
 name = "periodic-table-battleship-rl"
-version = "0.2.0"
+version = "0.3.0"
 description = "Ambiente Gymnasium e benchmark de reinforcement learning para Batalha Naval na tabela periódica."
 readme = "README.md"
 requires-python = ">=3.11"
