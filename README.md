@@ -97,6 +97,8 @@ protótipo GNN periódico. Nenhum piloto de validação é exibido como vencedor
 uma política só entra no placar acima após seleção multi-seed e teste cego
 isolado. O [protocolo](docs/17-protocolo-v0.5.md) e a
 [apresentação visual](docs/19-apresentacao-v0.5.md) descrevem esse gate.
+As primeiras validações rejeitaram CNN, DQN e imitação antes do teste cego;
+veja o [relatório v0.5](docs/20-relatorio-validacao-v0.5.md).
 
 ## Resultados da campanha v0.3
 
@@ -235,6 +237,7 @@ interpretadas como avaliação final de desempenho.
 - [Protótipo GNN periódico](docs/18-gnn-periodic-prototype.md)
 - [Operação de agentes v0.5](docs/18-operacao-agentes-v0.5.md)
 - [Apresentação de resultados v0.5](docs/19-apresentacao-v0.5.md)
+- [Relatório de validação v0.5](docs/20-relatorio-validacao-v0.5.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento
