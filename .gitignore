@@ -11,3 +11,5 @@ wheels/
 
 # Local checkpoints and smoke-training intermediates
 .local-runs/
+artifacts/*-smoke/
+runs/*-smoke/
