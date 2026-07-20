@@ -62,12 +62,20 @@ from .belief_evaluation import (
     BELIEF_PROBABILITY_POLICY_ID,
     run_belief_planner_evaluation,
 )
+from .micro_rl import (
+    MicroRLComparison,
+    MicroRLTrial,
+    evaluate_greedy_q_table_exact,
+    run_micro_rl_comparison,
+)
 
 __all__ = [
     "ATTACK_TUNING_SCHEMA_VERSION",
     "BELIEF_HORIZON_POLICY_ID",
     "BELIEF_INFORMATION_POLICY_ID",
     "BELIEF_PROBABILITY_POLICY_ID",
+    "MicroRLComparison",
+    "MicroRLTrial",
     "AttackAblationArm",
     "AttackAblationSchedule",
     "AttackBaselineRun",
@@ -96,6 +104,7 @@ __all__ = [
     "run_attack_hyperparameter_search",
     "run_belief_planner_evaluation",
     "run_initial_attack_baselines",
+    "run_micro_rl_comparison",
     "run_cross_topology_matrix",
     "run_cross_topology_ppo_attack_evaluation",
     "run_dqn_attack_evaluation",
@@ -104,6 +113,7 @@ __all__ = [
     "run_placement_baseline_evaluation",
     "select_attack_hyperparameters",
     "summarize_attack_results",
+    "evaluate_greedy_q_table_exact",
     "validate_placement_checkpoint",
     "validate_dqn_checkpoint",
     "validate_ppo_checkpoint",

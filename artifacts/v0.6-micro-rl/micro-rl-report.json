@@ -1,0 +1,109 @@
+{
+  "protocol": "micro-rl-exact-oracle-v1",
+  "board": {
+    "rows": 3,
+    "columns": 3,
+    "ship_lengths": [
+      2
+    ]
+  },
+  "training": {
+    "seeds": [
+      7101,
+      7102,
+      7103,
+      7104
+    ],
+    "episodes_per_seed": 5000,
+    "alpha": 0.15,
+    "gamma": 1.0,
+    "epsilon_start": 0.3,
+    "epsilon_end": 0.02
+  },
+  "evaluation": {
+    "kind": "exact-public-belief-enumeration",
+    "hidden_fleets": 12,
+    "oracle_expected_shots": 4.5
+  },
+  "rows": [
+    {
+      "algorithm": "dynamic-programming-oracle",
+      "seed": "exact",
+      "expected_shots": 4.5,
+      "regret_vs_oracle": 0.0,
+      "visited_states": 0
+    },
+    {
+      "algorithm": "q_learning",
+      "seed": 7101,
+      "expected_shots": 6.532986111111111,
+      "regret_vs_oracle": 2.0329861111111107,
+      "visited_states": 2349
+    },
+    {
+      "algorithm": "q_learning",
+      "seed": 7102,
+      "expected_shots": 5.987461419753086,
+      "regret_vs_oracle": 1.4874614197530862,
+      "visited_states": 2348
+    },
+    {
+      "algorithm": "q_learning",
+      "seed": 7103,
+      "expected_shots": 6.156134259259259,
+      "regret_vs_oracle": 1.6561342592592592,
+      "visited_states": 2347
+    },
+    {
+      "algorithm": "q_learning",
+      "seed": 7104,
+      "expected_shots": 6.262326388888889,
+      "regret_vs_oracle": 1.762326388888889,
+      "visited_states": 2347
+    },
+    {
+      "algorithm": "sarsa",
+      "seed": 7101,
+      "expected_shots": 6.717013888888889,
+      "regret_vs_oracle": 2.2170138888888893,
+      "visited_states": 2346
+    },
+    {
+      "algorithm": "sarsa",
+      "seed": 7102,
+      "expected_shots": 6.470138888888888,
+      "regret_vs_oracle": 1.9701388888888882,
+      "visited_states": 2346
+    },
+    {
+      "algorithm": "sarsa",
+      "seed": 7103,
+      "expected_shots": 6.0210262345679,
+      "regret_vs_oracle": 1.5210262345679002,
+      "visited_states": 2348
+    },
+    {
+      "algorithm": "sarsa",
+      "seed": 7104,
+      "expected_shots": 6.560763888888889,
+      "regret_vs_oracle": 2.0607638888888893,
+      "visited_states": 2344
+    },
+    {
+      "algorithm": "q_learning-mean",
+      "seed": "aggregate",
+      "expected_shots": 6.234727044753086,
+      "regret_vs_oracle": 1.7347270447530863,
+      "visited_states": 2348
+    },
+    {
+      "algorithm": "sarsa-mean",
+      "seed": "aggregate",
+      "expected_shots": 6.442235725308642,
+      "regret_vs_oracle": 1.9422357253086417,
+      "visited_states": 2346
+    }
+  ],
+  "git_commit": "5588e3a3bb6c677663f9fd231ede5892211bc8d1",
+  "working_tree_dirty": true
+}

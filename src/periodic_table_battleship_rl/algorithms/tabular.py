@@ -9,10 +9,24 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from dataclasses import dataclass
+from typing import Any, Protocol
 
 import numpy as np
 
-from periodic_table_battleship_rl.toy import TinyBattleshipEnv
+
+
+class MaskedTabularEnv(Protocol):
+    """Finite environment contract consumed by the tabular learners."""
+
+    action_space: Any
+
+    def reset(
+        self, *, seed: int | None = None, options: dict[str, Any] | None = None
+    ) -> tuple[int, dict[str, Any]]: ...
+
+    def step(self, action: int) -> tuple[int, float, bool, bool, dict[str, Any]]: ...
+
+    def action_masks(self) -> np.ndarray: ...
 
 
 @dataclass(frozen=True, slots=True)
@@ -198,7 +212,7 @@ def sarsa_update(
 
 
 def train_q_learning(
-    env: TinyBattleshipEnv,
+    env: MaskedTabularEnv,
     config: TabularTrainingConfig,
     *,
     seed: int,
@@ -253,7 +267,7 @@ def train_q_learning(
 
 
 def train_sarsa(
-    env: TinyBattleshipEnv,
+    env: MaskedTabularEnv,
     config: TabularTrainingConfig,
     *,
     seed: int,
@@ -318,7 +332,7 @@ def train_sarsa(
 
 
 def evaluate_greedy_policy(
-    env: TinyBattleshipEnv,
+    env: MaskedTabularEnv,
     q_table: SparseQTable,
     *,
     episodes: int,
@@ -330,7 +344,7 @@ def evaluate_greedy_policy(
 
 
 def evaluate_random_policy(
-    env: TinyBattleshipEnv, *, episodes: int, seed: int
+    env: MaskedTabularEnv, *, episodes: int, seed: int
 ) -> AlgorithmEvaluation:
     """Evaluate the legal masked-random reference on the same seed protocol."""
 
@@ -338,7 +352,7 @@ def evaluate_random_policy(
 
 
 def _evaluate(
-    env: TinyBattleshipEnv,
+    env: MaskedTabularEnv,
     *,
     episodes: int,
     seed: int,
