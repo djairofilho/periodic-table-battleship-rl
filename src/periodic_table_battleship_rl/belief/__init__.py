@@ -25,16 +25,33 @@ from .features import (
     BeliefAugmentedAttackEnv,
     BeliefFeatureConfig,
 )
+from .calibration import (
+    CALIBRATION_SCHEMA_VERSION,
+    CalibrationCase,
+    CalibrationCaseResult,
+    CalibrationMetrics,
+    SamplerCalibration,
+    calibrate_constrained_sampler,
+    default_micro_calibration_cases,
+    rectangular_micro_topology,
+)
 
 __all__ = [
     "BeliefPlanner",
     "BeliefAugmentedAttackEnv",
     "BeliefFeatureConfig",
     "BELIEF_FEATURE_SCHEMA_VERSION",
+    "CALIBRATION_SCHEMA_VERSION",
+    "CalibrationCase",
+    "CalibrationCaseResult",
+    "CalibrationMetrics",
     "BeliefPopulation",
     "CompatibleFleetLimitError",
     "MonteCarloDiagnostics",
     "PublicAttackState",
+    "SamplerCalibration",
+    "calibrate_constrained_sampler",
+    "default_micro_calibration_cases",
     "enumerate_compatible_fleets",
     "exact_belief",
     "information_action",
@@ -42,4 +59,5 @@ __all__ = [
     "probability_action",
     "sample_compatible_fleets",
     "short_horizon_action",
+    "rectangular_micro_topology",
 ]
