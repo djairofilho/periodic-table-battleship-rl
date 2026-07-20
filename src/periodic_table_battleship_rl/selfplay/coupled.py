@@ -155,6 +155,7 @@ class CoupledTrainingOutput:
     checkpoint_path: Path
     source_run_id: str
     runtime_opponent: FleetSampler | DefensiveEvaluator
+    policy_id: str | None = None
 
     def __post_init__(self) -> None:
         if not self.checkpoint_path.is_file():
@@ -236,9 +237,12 @@ class CoupledSelfPlayRunner:
             ),
             role=plan.learner_role,
             policy_id=(
-                ATTACK_POLICY_ID
-                if plan.learner_role == "attacker"
-                else PLACEMENT_POLICY_ID
+                output.policy_id
+                or (
+                    ATTACK_POLICY_ID
+                    if plan.learner_role == "attacker"
+                    else PLACEMENT_POLICY_ID
+                )
             ),
             scenario=self.topology.name,
             source_run_id=output.source_run_id,

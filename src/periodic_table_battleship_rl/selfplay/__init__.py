@@ -7,6 +7,7 @@ evaluation protocol.
 """
 
 from .league import (
+    BELIEF_ATTACK_POLICY_IDS,
     SELF_PLAY_SCHEMA_VERSION,
     AlternatingSelfPlaySchedule,
     FrozenEvaluationSuite,
@@ -16,6 +17,11 @@ from .league import (
     SnapshotLeague,
     SnapshotProvenance,
     persist_self_play_campaign,
+)
+from .bayesian import (
+    BayesianAttackEvaluator,
+    BayesianAttackPolicy,
+    ValidationFrozenSuiteEvaluator,
 )
 from .coupled import (
     CoupledAttackEnv,
@@ -30,6 +36,7 @@ from .coupled import (
 
 __all__ = [
     "SELF_PLAY_SCHEMA_VERSION",
+    "BELIEF_ATTACK_POLICY_IDS",
     "AlternatingSelfPlaySchedule",
     "FrozenEvaluationSuite",
     "SelfPlayCampaignConfig",
@@ -46,4 +53,7 @@ __all__ = [
     "PlacementPolicyFleetSampler",
     "PublicActionPolicy",
     "PublicAttackPolicyEvaluator",
+    "BayesianAttackEvaluator",
+    "BayesianAttackPolicy",
+    "ValidationFrozenSuiteEvaluator",
 ]

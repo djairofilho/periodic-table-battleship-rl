@@ -8,6 +8,7 @@ import pytest
 
 from periodic_table_battleship_rl.selfplay import (
     AlternatingSelfPlaySchedule,
+    BELIEF_ATTACK_POLICY_IDS,
     FrozenEvaluationSuite,
     SelfPlayCampaignConfig,
     SelfPlayCampaignRecord,
@@ -160,6 +161,20 @@ def test_snapshot_contract_rejects_nonportable_or_incompatible_provenance(
 
     with pytest.raises(ValueError, match=message):
         SnapshotProvenance(**values)
+
+
+def test_snapshot_contract_preserves_a_bayesian_attacker_identity() -> None:
+    snapshot = SnapshotProvenance(
+        snapshot_id="bayes-bootstrap",
+        role="attacker",
+        policy_id="belief_probability_mc-v1",
+        scenario=SCENARIO,
+        source_run_id="v06-bayes-validation",
+        checkpoint_sha256="a" * 64,
+        training_round=0,
+    )
+
+    assert snapshot.policy_id in BELIEF_ATTACK_POLICY_IDS
 
 
 def test_league_rejects_missing_parent_and_wrong_scenario() -> None:

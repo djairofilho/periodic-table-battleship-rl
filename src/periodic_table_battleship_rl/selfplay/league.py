@@ -30,6 +30,20 @@ SELF_PLAY_SCHEMA_VERSION = "self-play-v1"
 SelfPlayRole = Literal["attacker", "placer"]
 """The two alternating learners in a self-play campaign."""
 
+BELIEF_ATTACK_POLICY_IDS = frozenset(
+    {
+        "belief_probability_mc-v1",
+        "belief_information_mc-v1",
+        "belief_horizon2_mc-v1",
+    }
+)
+"""Public-history planners that can be represented as frozen attackers.
+
+The league originally accepted only learned MaskablePPO attackers.  A Bayesian
+planner is a legitimate, reproducible frozen opponent too, and preserving its
+own policy ID is necessary to avoid falsely claiming that a snapshot is PPO.
+"""
+
 
 def _require_identifier(value: str, name: str) -> None:
     if not isinstance(value, str) or not value.strip():
@@ -80,12 +94,15 @@ class SnapshotProvenance:
         if self.snapshot_id in self.parent_snapshot_ids:
             raise ValueError("a snapshot cannot list itself as a parent")
 
-        expected_policy = (
-            ATTACK_POLICY_ID if self.role == "attacker" else PLACEMENT_POLICY_ID
+        permitted_policies = (
+            frozenset({ATTACK_POLICY_ID}).union(BELIEF_ATTACK_POLICY_IDS)
+            if self.role == "attacker"
+            else frozenset({PLACEMENT_POLICY_ID})
         )
-        if self.policy_id != expected_policy:
+        if self.policy_id not in permitted_policies:
             raise ValueError(
-                f"{self.role} snapshots must use policy_id {expected_policy!r}"
+                f"unsupported policy_id {self.policy_id!r}; {self.role} snapshots "
+                "must use a registered policy identity"
             )
 
     def to_dict(self) -> dict[str, object]:
