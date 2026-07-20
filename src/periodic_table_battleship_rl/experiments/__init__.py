@@ -32,6 +32,10 @@ from .placement_evaluation import (
     run_placement_evaluation,
     validate_placement_checkpoint,
 )
+from .placement_baselines import (
+    PlacementBaselineEvaluation,
+    run_placement_baseline_evaluation,
+)
 
 __all__ = [
     "ATTACK_TUNING_SCHEMA_VERSION",
@@ -45,6 +49,7 @@ __all__ = [
     "HUNT_TARGET_POLICY_ID",
     "PLACEMENT_ENVIRONMENT_VERSION",
     "PlacementEvaluation",
+    "PlacementBaselineEvaluation",
     "PpoAttackEvaluation",
     "PpoAttackTuningExecutor",
     "RANDOM_MASKED_POLICY_ID",
@@ -54,6 +59,7 @@ __all__ = [
     "run_initial_attack_baselines",
     "run_ppo_attack_evaluation",
     "run_placement_evaluation",
+    "run_placement_baseline_evaluation",
     "select_attack_hyperparameters",
     "summarize_attack_results",
     "validate_placement_checkpoint",
