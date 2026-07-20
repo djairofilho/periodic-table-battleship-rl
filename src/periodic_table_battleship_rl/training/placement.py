@@ -175,16 +175,28 @@ def _metadata(
 def train_placement_policy(
     topology: Topology,
     config: PlacementTrainingConfig,
+    *,
+    defensive_mixture: FrozenDefensiveMixture | None = None,
 ) -> PlacementTrainingArtifact:
-    """Train and persist a masked PPO placer against the default frozen suite.
+    """Train and persist a masked PPO placer against a frozen defensive suite.
 
     The checkpoint and its ``training.json`` provenance are written below
     ``checkpoint_directory / run_id``.  This is a single-environment training
     reference, not a final performance claim: P5 must evaluate it against each
-    fixed attacker independently using held-out episode seeds.
+    fixed attacker independently using held-out episode seeds.  Omitting
+    ``defensive_mixture`` preserves the original default random/hunt-target
+    suite.  A supplied mixture is used verbatim and recorded in the metadata,
+    allowing a campaign to include a frozen PPO attacker without silently
+    changing a checkpoint's reward definition.
     """
     maskable_ppo = _require_maskable_ppo()
-    mixture = default_defensive_mixture(topology)
+    mixture = (
+        default_defensive_mixture(topology)
+        if defensive_mixture is None
+        else defensive_mixture
+    )
+    if not isinstance(mixture, FrozenDefensiveMixture):
+        raise TypeError("defensive_mixture must be a FrozenDefensiveMixture")
     environment = PlacementEnv(topology, evaluator=mixture)
     environment.reset(seed=config.seed)
     model = maskable_ppo(

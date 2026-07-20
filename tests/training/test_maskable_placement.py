@@ -10,6 +10,11 @@ import numpy as np
 import pytest
 
 from periodic_table_battleship_rl.topology import BATTLESHIP
+from periodic_table_battleship_rl.placement.defensive import (
+    FrozenDefensiveMixture,
+    HuntTargetEvaluator,
+    RandomMaskedEvaluator,
+)
 from periodic_table_battleship_rl.training import placement
 from periodic_table_battleship_rl.training.placement import (
     PLACEMENT_POLICY_ID,
@@ -94,6 +99,31 @@ def test_train_writes_checkpoint_and_mixture_metadata(
         "weights": [0.5, 0.5],
     }
     assert artifact.policy_id == PLACEMENT_POLICY_ID
+
+
+def test_train_uses_and_persists_an_explicit_defensive_mixture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(placement, "_require_maskable_ppo", lambda: _FakeModel)
+    mixture = FrozenDefensiveMixture(
+        evaluators=(RandomMaskedEvaluator(BATTLESHIP), HuntTargetEvaluator(BATTLESHIP)),
+        weights=(0.25, 0.75),
+        evaluator_id="campaign-mixture-v1",
+    )
+
+    artifact = train_placement_policy(
+        BATTLESHIP,
+        _config(tmp_path, run_id="placement-custom-mixture"),
+        defensive_mixture=mixture,
+    )
+
+    metadata = load_placement_training_metadata(artifact.metadata_path)
+    assert metadata["defensive_mixture"] == {
+        "evaluator_id": "campaign-mixture-v1",
+        "component_ids": ["random-masked-v1", "hunt-target-v1"],
+        "weights": [0.25, 0.75],
+    }
+    assert artifact.evaluator_id == "campaign-mixture-v1"
 
 
 def test_load_metadata_rejects_unknown_schema(tmp_path: Path) -> None:
