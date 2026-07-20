@@ -10,6 +10,13 @@
   Implementação planejada para o primeiro baseline de RL. A documentação pede
   que a máscara seja implementada no próprio ambiente quando houver processos
   paralelos e que a avaliação use as utilidades maskable.
+- [PettingZoo: AEC API](https://pettingzoo.farama.org/main/api/aec/).
+  Referência para a futura etapa de self-play em jogo por turnos. Ela não será
+  necessária nos dois experimentos iniciais de agente único.
+- [GitHub: sub-issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues),
+  [dependências](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/editing-an-issue) e
+  [Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects).
+  Referências para o rastreamento operacional descrito no plano de execução.
 - [uv: projetos Python](https://docs.astral.sh/uv/guides/projects/).
   Referência para `pyproject.toml`, grupos de dependência e `uv.lock`.
 

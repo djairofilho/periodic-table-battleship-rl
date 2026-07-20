@@ -19,12 +19,12 @@ projeto. O ambiente, os agentes treináveis e os resultados serão implementados
 em etapas posteriores, para que as regras e o protocolo sejam definidos antes
 de gerar métricas.
 
-## Comparação inicial
+## Cenários
 
 | Cenário | Grade | Células jogáveis | Regra comum |
 | --- | ---: | ---: | --- |
-| `classic_10x10` | 10 × 10 | 100 | Frota `2, 3, 3, 4, 5` |
-| `periodic_table_118` | 10 × 18 | 118 | Frota `2, 3, 3, 4, 5` |
+| `battleship` | 10 × 10 | 100 | Frota `2, 3, 3, 4, 5` |
+| `periodic-table-battleship` | 10 × 18 | 118 | Frota `2, 3, 3, 4, 5` |
 
 Em ambos os casos, navios são lineares e ortogonais, não se sobrepõem e podem
 encostar. No cenário periódico, uma célula corresponde a um elemento. As
@@ -36,12 +36,26 @@ de ação elimina lacunas, células fora da grade do cenário e tiros repetidos.
 Isso mantém a API compatível e impede que escolhas impossíveis contaminem o
 treinamento.
 
+## Experimentos
+
+1. **Ataque:** a frota adversária é posicionada por uma política aleatória
+   legal. O agente aprende onde atirar a partir de acertos e erros anteriores.
+2. **Posicionamento:** um agente posiciona a própria frota e tenta maximizar o
+   número de tiros necessários para que atacantes de uma suíte fixa a encontrem.
+
+Os dois experimentos são independentes na primeira rodada. O segundo começa
+contra atacantes fixos para que a recompensa seja estável. Self-play só entra
+depois, como extensão.
+
 ## Documentação
 
 - [Análise do jogo de origem](docs/01-analise-do-jogo-origem.md)
 - [Especificação do ambiente](docs/02-especificacao-do-ambiente.md)
 - [Protocolo de benchmark](docs/03-protocolo-de-benchmark.md)
 - [Roadmap](docs/04-roadmap.md)
+- [Experimentos e visualizações](docs/05-experimentos-e-visualizacoes.md)
+- [Execução, Issues e trabalho paralelo](docs/06-execucao-e-rastreamento.md)
+- [Contratos e critérios de aceite](docs/07-contratos-e-criterios-de-aceite.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento
@@ -59,10 +73,10 @@ ficará leve, baseado em `gymnasium` e `numpy`.
 
 ## Escopo inicial
 
-- Ambiente Gymnasium de agente único para a fase de tiros.
-- Dois cenários comparáveis: grade clássica e tabela periódica.
+- Dois experimentos: ataque e posicionamento de frota.
 - Baselines reproduzíveis: aleatório e hunt-target.
-- Primeiro agente de RL: MaskablePPO.
+- Q-learning e SARSA em tabuleiros reduzidos; MaskablePPO nos cenários reais.
+- Tabelas, gráficos Seaborn e GIFs determinísticos de partidas avaliadas.
 - Avaliação por sementes fixas, métricas de eficiência e relatórios versionados.
 
 O posicionamento por RL, o jogo competitivo entre dois agentes e recursos

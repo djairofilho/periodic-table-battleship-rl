@@ -1,0 +1,50 @@
+name: Tarefa de implementação ou pesquisa
+description: Crie uma entrega pequena, verificável e pronta para rastreamento.
+title: "[task] "
+labels: ["type: task"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objetivo
+      description: Qual resultado verificável esta issue entrega?
+    validations:
+      required: true
+  - type: textarea
+    id: specification
+    attributes:
+      label: Especificação relacionada
+      description: Links para docs, contrato ou issue-pai.
+    validations:
+      required: true
+  - type: textarea
+    id: ownership
+    attributes:
+      label: Escopo e ownership
+      description: Arquivos ou diretórios que esta tarefa pode alterar.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependências
+      description: Issues, contratos ou decisões que bloqueiam este trabalho.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite
+      description: Liste resultados observáveis e testes necessários.
+    validations:
+      required: true
+  - type: input
+    id: validation
+    attributes:
+      label: Comando de validação
+      placeholder: uv run pytest tests/topology
+    validations:
+      required: true
+  - type: textarea
+    id: artifact
+    attributes:
+      label: Artefato esperado
+      description: Teste, dataset, tabela, figura, GIF ou outro resultado.

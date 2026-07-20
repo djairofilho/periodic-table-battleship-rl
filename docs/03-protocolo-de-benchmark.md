@@ -1,10 +1,17 @@
 # Protocolo de benchmark
 
-## Pergunta
+## Escopo
 
-Mantidas a frota, a regra de posicionamento e o algoritmo, qual é o efeito da
-topologia da tabela periódica sobre a eficiência de busca quando comparada ao
-tabuleiro clássico?
+Mantidas a frota, a regra de posicionamento e o algoritmo, como se comporta a
+busca em `periodic-table-battleship` quando comparada a `battleship`?
+
+A comparação principal muda simultaneamente a topologia e o número de células
+válidas, de 100 para 118. Portanto, ela mede o efeito combinado dessas duas
+propriedades. Uma ablação `dense-118`, com 118 células sem lacunas internas,
+será exigida antes de atribuir uma diferença exclusivamente à geometria.
+
+Este protocolo cobre o experimento de ataque. O posicionamento tem um protocolo
+próprio em [Experimentos e visualizações](05-experimentos-e-visualizacoes.md).
 
 ## Agentes da primeira rodada
 
@@ -43,6 +50,12 @@ cenário devem ser identificados como ablação, não como resultado principal.
 
 Os resultados devem trazer média, desvio-padrão, mediana e intervalo de
 confiança por semente. Não reportar somente o melhor checkpoint.
+
+As métricas são calculadas por seed, não tratando episódios de uma mesma seed
+como amostras independentes. Além de tiros brutos, serão reportados tiros
+normalizados por `N` e excesso sobre os 17 segmentos da frota. Fórmulas,
+tratamento de truncamento e estatística estão definidos em
+[Contratos e critérios de aceite](07-contratos-e-criterios-de-aceite.md).
 
 ## Avaliação
 

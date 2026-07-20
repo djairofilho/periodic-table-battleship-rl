@@ -22,7 +22,7 @@ há cópia de código, assets ou dados desse projeto para este repositório.
 O total da frota é 17. Uma partida termina quando os 17 segmentos foram
 atingidos.
 
-## O que muda para reinforcement learning
+## Experimento de ataque
 
 O jogo de interface alterna turnos entre uma pessoa e a CPU. Para isolar a
 decisão de busca, a primeira versão do ambiente é de agente único: em cada
@@ -42,12 +42,25 @@ nos dois cenários. O protocolo deve reportar principalmente quantos tiros
 válidos foram necessários e a curva de segmentos encontrados ao longo da
 partida.
 
+## Experimento de posicionamento
+
+O posicionamento não será aprendido no mesmo ambiente do ataque nesta primeira
+etapa. Ele terá outro ambiente: o agente posiciona os cinco navios em ordem
+fixa, sempre escolhendo uma colocação legal mascarada. Depois da quinta escolha,
+uma política atacante da suíte de avaliação joga até afundar a frota.
+
+O retorno do posicionador será proporcional à sobrevivência: quanto mais tiros
+válidos o atacante precisar para afundar os 17 segmentos, maior a recompensa.
+O treino inicial ocorrerá contra uma mistura fixa de atacantes aleatório e
+hunt-target. Isso evita que a política de posicionamento persiga um oponente
+que muda a cada atualização.
+
 ## Decisões adiadas
 
 - Restrições que impeçam navios adjacentes.
 - Cartas táticas, `insight` e perguntas de química.
 - Identificação de alvos por símbolo, grupo ou número atômico.
-- Treinamento de posicionamento e self-play.
+- Self-play entre atacante e posicionador.
 
 Essas extensões alteram a distribuição de estados ou introduzem outra tarefa de
 decisão. Elas só entram depois que os dois cenários básicos tiverem testes e
