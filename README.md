@@ -14,10 +14,11 @@ tradicional. A pergunta é simples: como uma topologia irregular, com lacunas e
 
 ## Estado
 
-Nesta etapa o repositório contém a especificação e a infraestrutura mínima do
-projeto. O ambiente, os agentes treináveis e os resultados serão implementados
-em etapas posteriores, para que as regras e o protocolo sejam definidos antes
-de gerar métricas.
+O núcleo reproduzível está disponível: topologias, frotas legais, ambientes
+Gymnasium mascarados de ataque e posicionamento, baselines, persistência de
+resultados, renderização pública de episódios e o microambiente tabular de
+Q-learning/SARSA. O treinamento MaskablePPO e os relatórios visuais completos
+seguem nas próximas etapas.
 
 ## Cenários
 
@@ -46,6 +47,22 @@ treinamento.
 Os dois experimentos são independentes na primeira rodada. O segundo começa
 contra atacantes fixos para que a recompensa seja estável. Self-play só entra
 depois, como extensão.
+
+## Benchmark inicial dos baselines
+
+O primeiro benchmark reproduzível usa 20 seeds (`1001` a `1020`) e cinco
+episódios por seed em cada combinação. Os dados brutos, manifesto e resumo
+estão em [`runs/initial-baselines-v0`](runs/initial-baselines-v0).
+
+| Cenário | Política | Episódios | Média de tiros válidos |
+| --- | --- | ---: | ---: |
+| `battleship` | `random_masked-v1` | 100 | 95,57 |
+| `battleship` | `hunt_target-v1` | 100 | 59,28 |
+| `periodic-table-battleship` | `random_masked-v1` | 100 | 112,72 |
+| `periodic-table-battleship` | `hunt_target-v1` | 100 | 70,00 |
+
+Estes números são uma linha de base, não um resultado de treinamento. Cada
+manifesto registra o commit, o hash de `uv.lock`, seeds e ambiente de execução.
 
 ## Documentação
 

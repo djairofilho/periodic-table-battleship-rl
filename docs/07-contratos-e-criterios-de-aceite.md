@@ -110,21 +110,21 @@ confiança bootstrap e número de episódios por seed.
 
 ## Dados, gráficos e GIFs
 
-Cada execução usa este formato:
+Na fase atual, cada execução reproduzível usa este formato:
 
 ```text
 runs/<run-id>/
-  config.yaml
-  metadata.json
   manifest.json
-  episodes.parquet
+  episodes.jsonl
   summary.json
-  checkpoints/
-artifacts/<run-id>/
-  tables/
-  figures/
-  gifs/
 ```
+
+`manifest.json` contém a configuração, proveniência de software e hardware,
+hash de `uv.lock` e inventário ordenado dos episódios. `episodes.jsonl` é UTF-8
+canônico, um resultado público por linha, gravado atomicamente antes do
+manifesto. `summary.json` agrega primeiro por seed. Checkpoints, tabelas,
+figuras e GIFs serão adicionados ao diretório da execução quando os pipelines
+de treinamento e visualização estiverem disponíveis.
 
 Heatmaps usam `NaN` nas lacunas e registram se medem tiros, acertos ou taxa de
 acerto condicional. Comparações diretas usam a mesma escala de cor. Curvas
