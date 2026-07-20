@@ -6,14 +6,14 @@ distribuição proposta por backtracking não é declarada como posterior exato.
 
 - Seeds de validação: `[8601, 8602, 8603, 8604, 8605]`
 - Seed de demonstração: `8701`
-- Amostras por decisão: `16`
-- Revisão de origem: `c0d53f30fa58328a45be6fa3da7ba97fb5155919-dirty`
+- Amostras por decisão: `64`
+- Revisão de origem: `5588e3a3bb6c677663f9fd231ede5892211bc8d1`
 
 | Política | Tiros válidos médios | Desvio entre seeds |
 | --- | ---: | ---: |
-| `belief_probability_mc-v1` | 43.20 | 9.58 |
-| `belief_information_mc-v1` | 91.20 | 8.64 |
-| `belief_horizon2_mc-v1` | 82.60 | 14.50 |
+| `belief_probability_mc-v1` | 41.40 | 2.41 |
+| `belief_information_mc-v1` | 93.40 | 9.91 |
+| `belief_horizon2_mc-v1` | 81.60 | 24.95 |
 | `hunt_target-v1` | 73.00 | 12.00 |
 
 ![Comparação de políticas](belief-policy-comparison.png)

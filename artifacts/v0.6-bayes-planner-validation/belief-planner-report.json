@@ -9,9 +9,9 @@
     8605
   ],
   "demonstration_seed": 8701,
-  "sample_count": 16,
-  "git_commit": "c0d53f30fa58328a45be6fa3da7ba97fb5155919-dirty",
-  "working_tree_dirty": true,
+  "sample_count": 64,
+  "git_commit": "5588e3a3bb6c677663f9fd231ede5892211bc8d1",
+  "working_tree_dirty": false,
   "sampler": "constrained-backtracking-v1",
   "posterior_exact": false,
   "results": {
@@ -20,28 +20,28 @@
       "seed_count": 5,
       "per_seed": {
         "8601": {
-          "valid_shots": 37.0,
-          "valid_shots_normalized": 0.37,
-          "shots_excess": 20.0,
+          "valid_shots": 42.0,
+          "valid_shots_normalized": 0.42,
+          "shots_excess": 25.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.4594594594594595,
+          "hit_rate": 0.40476190476190477,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7941176470588235,
+          "auc_discovery": 0.8429411764705882,
           "first_hit_shot": 2.0,
-          "first_sunk_shot": 7.0
+          "first_sunk_shot": 4.0
         },
         "8602": {
-          "valid_shots": 39.0,
-          "valid_shots_normalized": 0.39,
-          "shots_excess": 22.0,
+          "valid_shots": 40.0,
+          "valid_shots_normalized": 0.4,
+          "shots_excess": 23.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.4358974358974359,
+          "hit_rate": 0.425,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.8223529411764706,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 8.0
+          "auc_discovery": 0.8170588235294117,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 13.0
         },
         "8603": {
           "valid_shots": 38.0,
@@ -51,50 +51,50 @@
           "truncation_rate": 0.0,
           "hit_rate": 0.4473684210526316,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7905882352941176,
-          "first_hit_shot": 7.0,
-          "first_sunk_shot": 10.0
+          "auc_discovery": 0.8035294117647059,
+          "first_hit_shot": 4.0,
+          "first_sunk_shot": 8.0
         },
         "8604": {
-          "valid_shots": 60.0,
-          "valid_shots_normalized": 0.6,
-          "shots_excess": 43.0,
+          "valid_shots": 44.0,
+          "valid_shots_normalized": 0.44,
+          "shots_excess": 27.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.2833333333333333,
+          "hit_rate": 0.38636363636363635,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.8029411764705883,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 7.0
+          "auc_discovery": 0.7476470588235294,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 11.0
         },
         "8605": {
-          "valid_shots": 42.0,
-          "valid_shots_normalized": 0.42,
-          "shots_excess": 25.0,
+          "valid_shots": 43.0,
+          "valid_shots_normalized": 0.43,
+          "shots_excess": 26.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.40476190476190477,
+          "hit_rate": 0.3953488372093023,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7935294117647059,
-          "first_hit_shot": 7.0,
-          "first_sunk_shot": 13.0
+          "auc_discovery": 0.7805882352941177,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 8.0
         }
       },
       "aggregate": {
         "valid_shots": {
-          "mean": 43.2,
-          "std": 9.57601169589929,
-          "median": 39.0
+          "mean": 41.4,
+          "std": 2.4083189157584592,
+          "median": 42.0
         },
         "valid_shots_normalized": {
-          "mean": 0.43200000000000005,
-          "std": 0.09576011695899289,
-          "median": 0.39
+          "mean": 0.414,
+          "std": 0.024083189157584586,
+          "median": 0.42
         },
         "shots_excess": {
-          "mean": 26.2,
-          "std": 9.57601169589929,
-          "median": 22.0
+          "mean": 24.4,
+          "std": 2.4083189157584592,
+          "median": 25.0
         },
         "win_rate": {
           "mean": 1.0,
@@ -107,9 +107,9 @@
           "median": 0.0
         },
         "hit_rate": {
-          "mean": 0.406164110900953,
-          "std": 0.07160940243487118,
-          "median": 0.4358974358974359
+          "mean": 0.41176855987749506,
+          "std": 0.024528207081636784,
+          "median": 0.40476190476190477
         },
         "invalid_attempts": {
           "mean": 0.0,
@@ -117,29 +117,29 @@
           "median": 0.0
         },
         "auc_discovery": {
-          "mean": 0.8007058823529413,
-          "std": 0.01295053137812419,
-          "median": 0.7941176470588235
+          "mean": 0.7983529411764706,
+          "std": 0.036233575207510735,
+          "median": 0.8035294117647059
         },
         "first_hit_shot": {
-          "mean": 4.0,
-          "std": 2.7386127875258306,
-          "median": 2.0
+          "mean": 3.0,
+          "std": 0.7071067811865476,
+          "median": 3.0
         },
         "first_sunk_shot": {
-          "mean": 9.0,
-          "std": 2.5495097567963922,
+          "mean": 8.8,
+          "std": 3.420526275297414,
           "median": 8.0
         }
       },
       "belief_sampler": {
         "sampler_id": "constrained-backtracking-v1",
         "posterior_exact": false,
-        "sample_count_per_decision": 16,
+        "sample_count_per_decision": 64,
         "max_restarts_per_sample": 128,
         "max_nodes_per_sample": 8192,
-        "decision_count": 216,
-        "mean_backtracks_per_decision": 16.462962962962962,
+        "decision_count": 207,
+        "mean_backtracks_per_decision": 66.65217391304348,
         "mean_restarts_per_decision": 0.0
       }
     },
@@ -155,33 +155,33 @@
           "truncation_rate": 0.0,
           "hit_rate": 0.1717171717171717,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.6229411764705882,
+          "auc_discovery": 0.64,
           "first_hit_shot": 2.0,
-          "first_sunk_shot": 6.0
+          "first_sunk_shot": 4.0
         },
         "8602": {
-          "valid_shots": 79.0,
-          "valid_shots_normalized": 0.79,
-          "shots_excess": 62.0,
+          "valid_shots": 77.0,
+          "valid_shots_normalized": 0.77,
+          "shots_excess": 60.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.21518987341772153,
+          "hit_rate": 0.22077922077922077,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7182352941176471,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 20.0
+          "auc_discovery": 0.7335294117647059,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 7.0
         },
         "8603": {
-          "valid_shots": 90.0,
-          "valid_shots_normalized": 0.9,
-          "shots_excess": 73.0,
+          "valid_shots": 91.0,
+          "valid_shots_normalized": 0.91,
+          "shots_excess": 74.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.18888888888888888,
+          "hit_rate": 0.18681318681318682,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.5352941176470588,
-          "first_hit_shot": 16.0,
-          "first_sunk_shot": 70.0
+          "auc_discovery": 0.5629411764705883,
+          "first_hit_shot": 4.0,
+          "first_sunk_shot": 9.0
         },
         "8604": {
           "valid_shots": 100.0,
@@ -191,38 +191,38 @@
           "truncation_rate": 0.0,
           "hit_rate": 0.17,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.6158823529411764,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 38.0
+          "auc_discovery": 0.6547058823529411,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 42.0
         },
         "8605": {
-          "valid_shots": 88.0,
-          "valid_shots_normalized": 0.88,
-          "shots_excess": 71.0,
+          "valid_shots": 100.0,
+          "valid_shots_normalized": 1.0,
+          "shots_excess": 83.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.19318181818181818,
+          "hit_rate": 0.17,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.6805882352941176,
-          "first_hit_shot": 7.0,
-          "first_sunk_shot": 16.0
+          "auc_discovery": 0.6452941176470588,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 8.0
         }
       },
       "aggregate": {
         "valid_shots": {
-          "mean": 91.2,
-          "std": 8.64291617453276,
-          "median": 90.0
+          "mean": 93.4,
+          "std": 9.91463564635635,
+          "median": 99.0
         },
         "valid_shots_normalized": {
-          "mean": 0.9120000000000001,
-          "std": 0.08642916174532758,
-          "median": 0.9
+          "mean": 0.9339999999999999,
+          "std": 0.09914635646356348,
+          "median": 0.99
         },
         "shots_excess": {
-          "mean": 74.2,
-          "std": 8.64291617453276,
-          "median": 73.0
+          "mean": 76.4,
+          "std": 9.91463564635635,
+          "median": 82.0
         },
         "win_rate": {
           "mean": 1.0,
@@ -235,9 +235,9 @@
           "median": 0.0
         },
         "hit_rate": {
-          "mean": 0.18779555044112006,
-          "std": 0.01841094836215243,
-          "median": 0.18888888888888888
+          "mean": 0.18386191586191586,
+          "std": 0.0218139727906911,
+          "median": 0.1717171717171717
         },
         "invalid_attempts": {
           "mean": 0.0,
@@ -245,29 +245,29 @@
           "median": 0.0
         },
         "auc_discovery": {
-          "mean": 0.6345882352941177,
-          "std": 0.0697454591048331,
-          "median": 0.6229411764705882
+          "mean": 0.6472941176470588,
+          "std": 0.060547673458570414,
+          "median": 0.6452941176470588
         },
         "first_hit_shot": {
-          "mean": 5.8,
-          "std": 6.099180272790763,
-          "median": 2.0
+          "mean": 3.0,
+          "std": 0.7071067811865476,
+          "median": 3.0
         },
         "first_sunk_shot": {
-          "mean": 30.0,
-          "std": 25.179356624028344,
-          "median": 20.0
+          "mean": 14.0,
+          "std": 15.763882770434446,
+          "median": 8.0
         }
       },
       "belief_sampler": {
         "sampler_id": "constrained-backtracking-v1",
         "posterior_exact": false,
-        "sample_count_per_decision": 16,
+        "sample_count_per_decision": 64,
         "max_restarts_per_sample": 128,
         "max_nodes_per_sample": 8192,
-        "decision_count": 456,
-        "mean_backtracks_per_decision": 18.08114035087719,
+        "decision_count": 467,
+        "mean_backtracks_per_decision": 47.46038543897216,
         "mean_restarts_per_decision": 0.0
       }
     },
@@ -276,40 +276,40 @@
       "seed_count": 5,
       "per_seed": {
         "8601": {
-          "valid_shots": 67.0,
-          "valid_shots_normalized": 0.67,
-          "shots_excess": 50.0,
+          "valid_shots": 99.0,
+          "valid_shots_normalized": 0.99,
+          "shots_excess": 82.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.2537313432835821,
+          "hit_rate": 0.1717171717171717,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7841176470588235,
-          "first_hit_shot": 3.0,
-          "first_sunk_shot": 11.0
+          "auc_discovery": 0.6958823529411765,
+          "first_hit_shot": 12.0,
+          "first_sunk_shot": 15.0
         },
         "8602": {
-          "valid_shots": 84.0,
-          "valid_shots_normalized": 0.84,
-          "shots_excess": 67.0,
+          "valid_shots": 59.0,
+          "valid_shots_normalized": 0.59,
+          "shots_excess": 42.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.20238095238095238,
+          "hit_rate": 0.288135593220339,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.6947058823529412,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 8.0
+          "auc_discovery": 0.8035294117647059,
+          "first_hit_shot": 3.0,
+          "first_sunk_shot": 13.0
         },
         "8603": {
-          "valid_shots": 69.0,
-          "valid_shots_normalized": 0.69,
-          "shots_excess": 52.0,
+          "valid_shots": 50.0,
+          "valid_shots_normalized": 0.5,
+          "shots_excess": 33.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.2463768115942029,
+          "hit_rate": 0.34,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7541176470588236,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 5.0
+          "auc_discovery": 0.7229411764705882,
+          "first_hit_shot": 14.0,
+          "first_sunk_shot": 17.0
         },
         "8604": {
           "valid_shots": 100.0,
@@ -319,38 +319,38 @@
           "truncation_rate": 0.0,
           "hit_rate": 0.17,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7535294117647059,
-          "first_hit_shot": 2.0,
-          "first_sunk_shot": 7.0
+          "auc_discovery": 0.6858823529411765,
+          "first_hit_shot": 8.0,
+          "first_sunk_shot": 14.0
         },
         "8605": {
-          "valid_shots": 93.0,
-          "valid_shots_normalized": 0.93,
-          "shots_excess": 76.0,
+          "valid_shots": 100.0,
+          "valid_shots_normalized": 1.0,
+          "shots_excess": 83.0,
           "win_rate": 1.0,
           "truncation_rate": 0.0,
-          "hit_rate": 0.1827956989247312,
+          "hit_rate": 0.17,
           "invalid_attempts": 0.0,
-          "auc_discovery": 0.7223529411764706,
-          "first_hit_shot": 7.0,
+          "auc_discovery": 0.7158823529411765,
+          "first_hit_shot": 6.0,
           "first_sunk_shot": 13.0
         }
       },
       "aggregate": {
         "valid_shots": {
-          "mean": 82.6,
-          "std": 14.501724035437993,
-          "median": 84.0
+          "mean": 81.6,
+          "std": 24.945941553687646,
+          "median": 99.0
         },
         "valid_shots_normalized": {
-          "mean": 0.826,
-          "std": 0.14501724035437993,
-          "median": 0.84
+          "mean": 0.8160000000000001,
+          "std": 0.24945941553687648,
+          "median": 0.99
         },
         "shots_excess": {
-          "mean": 65.6,
-          "std": 14.501724035437993,
-          "median": 67.0
+          "mean": 64.6,
+          "std": 24.945941553687646,
+          "median": 82.0
         },
         "win_rate": {
           "mean": 1.0,
@@ -363,9 +363,9 @@
           "median": 0.0
         },
         "hit_rate": {
-          "mean": 0.2110569612366937,
-          "std": 0.03751080129603491,
-          "median": 0.20238095238095238
+          "mean": 0.22797055298750216,
+          "std": 0.08070942013768234,
+          "median": 0.1717171717171717
         },
         "invalid_attempts": {
           "mean": 0.0,
@@ -373,29 +373,29 @@
           "median": 0.0
         },
         "auc_discovery": {
-          "mean": 0.741764705882353,
-          "std": 0.034191097406613184,
-          "median": 0.7535294117647059
+          "mean": 0.7248235294117646,
+          "std": 0.046454576541616444,
+          "median": 0.7158823529411765
         },
         "first_hit_shot": {
-          "mean": 3.2,
-          "std": 2.16794833886788,
-          "median": 2.0
+          "mean": 8.6,
+          "std": 4.449719092257398,
+          "median": 8.0
         },
         "first_sunk_shot": {
-          "mean": 8.8,
-          "std": 3.1937438845342623,
-          "median": 8.0
+          "mean": 14.4,
+          "std": 1.6733200530681511,
+          "median": 14.0
         }
       },
       "belief_sampler": {
         "sampler_id": "constrained-backtracking-v1",
         "posterior_exact": false,
-        "sample_count_per_decision": 16,
+        "sample_count_per_decision": 64,
         "max_restarts_per_sample": 128,
         "max_nodes_per_sample": 8192,
-        "decision_count": 413,
-        "mean_backtracks_per_decision": 18.80145278450363,
+        "decision_count": 408,
+        "mean_backtracks_per_decision": 43.24264705882353,
         "mean_restarts_per_decision": 0.0
       }
     },

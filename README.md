@@ -100,6 +100,44 @@ isolado. O [protocolo](docs/17-protocolo-v0.5.md) e a
 As primeiras validações rejeitaram CNN, DQN e imitação antes do teste cego;
 veja o [relatório v0.5](docs/20-relatorio-validacao-v0.5.md).
 
+## Ciclo v0.6: oráculo, crença e GPU
+
+O ciclo v0.6 separa duas perguntas: qual é o limite ótimo em uma instância
+pequena e qual política pública melhora no jogo completo. No microtabuleiro
+3 × 3 com um navio de tamanho 2, a programação dinâmica enumera as 12 frotas
+legais e calcula **4,50 tiros esperados** para a política ótima. A política
+gulosa de posterior também chega a 4,50; `hunt-target` precisa de 4,94 e a
+aleatória de 6,67. Isso torna o regret mensurável sem confundir aproximação
+com verdade de referência.
+
+No mesmo microtabuleiro, Q-learning e SARSA foram treinados por 5.000 episódios
+em quatro seeds e avaliados por enumeração exata, não por rollout. Obtiveram
+6,235 e 6,442 tiros esperados, respectivamente: aprendem acima do aleatório,
+mas mantêm regret considerável contra o oráculo. Veja a
+[comparação tabular](docs/25-q-learning-sarsa-micro-oraculo.md).
+
+Na Batalha Naval 10 × 10, o planejador de maior probabilidade por Monte Carlo
+ficou em **41,40 tiros** na validação de cinco seeds, contra **73,00** do
+`hunt-target`. O posterior é amostrado, não alegadamente exato, e a seleção
+permaneceu fechada na validação.
+
+| Experimento de validação | Resultado | Decisão |
+| --- | ---: | --- |
+| Planejador Bayesiano de probabilidade | 41,40 tiros | melhor que `hunt-target` (73,00) |
+| CNN + dois mapas públicos de crença | 97,22 tiros | rejeitada; controle CNN: 96,89 |
+| Self-play de posicionamento contra Bayes | +3,33 tiros vs. Bayes; −4,67 vs. hunt | integração, sem promoção |
+
+![Comparação das políticas de crença](artifacts/v0.6-bayes-planner-validation/belief-policy-comparison.png)
+
+![Mapas de crença públicos](artifacts/v0.6-bayes-planner-validation/belief-demo-heatmaps.png)
+
+A GTX 1650 foi habilitada em ambiente isolado. No microbenchmark pareado, a
+CUDA foi 5,94× mais rápida para CNN e 3,18× para GNN, mas 0,87× para a DQN
+MLP pequena. Como a única candidata neural desta rodada não passou na
+validação, não houve campanha ampliada nem abertura de teste cego. O
+[relatório v0.6](docs/24-relatorio-v0.6.md) reúne protocolo, evidências e
+limitações.
+
 ## Resultados da campanha v0.3
 
 A campanha controlada v0.3 está concluída. Ela usa HPO estritamente em
@@ -238,6 +276,14 @@ interpretadas como avaliação final de desempenho.
 - [Operação de agentes v0.5](docs/18-operacao-agentes-v0.5.md)
 - [Apresentação de resultados v0.5](docs/19-apresentacao-v0.5.md)
 - [Relatório de validação v0.5](docs/20-relatorio-validacao-v0.5.md)
+- [Oráculo exato do microtabuleiro](docs/21-oraculo-exato-microtabuleiro.md)
+- [Crença Bayesiana e planejamento](docs/22-crenca-bayesiana-e-planejamento.md)
+- [Ambiente CUDA isolado](docs/22-ambiente-cuda-isolado.md)
+- [Benchmark CPU/GPU e gate de escala](docs/23-benchmark-cpu-gpu-e-campanha-escalavel.md)
+- [Política neural híbrida de crença](docs/23-politica-neural-hibrida-de-crenca.md)
+- [Self-play Bayesiano](docs/23-self-play-bayesiano-v0.6.md)
+- [Relatório v0.6](docs/24-relatorio-v0.6.md)
+- [Q-learning e SARSA contra o oráculo](docs/25-q-learning-sarsa-micro-oraculo.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento
