@@ -62,6 +62,13 @@ from .belief_evaluation import (
     BELIEF_PROBABILITY_POLICY_ID,
     run_belief_planner_evaluation,
 )
+from .belief_validation import (
+    BELIEF_VALIDATION_SCHEMA_VERSION,
+    BayesianValidationProtocol,
+    CROSS_TOPOLOGY_BAYESIAN_VALIDATION,
+    VALIDATION_TOPOLOGIES,
+    paired_seed_comparison,
+)
 from .micro_rl import (
     MicroRLComparison,
     MicroRLTrial,
@@ -74,6 +81,9 @@ __all__ = [
     "BELIEF_HORIZON_POLICY_ID",
     "BELIEF_INFORMATION_POLICY_ID",
     "BELIEF_PROBABILITY_POLICY_ID",
+    "BELIEF_VALIDATION_SCHEMA_VERSION",
+    "BayesianValidationProtocol",
+    "CROSS_TOPOLOGY_BAYESIAN_VALIDATION",
     "MicroRLComparison",
     "MicroRLTrial",
     "AttackAblationArm",
@@ -103,6 +113,7 @@ __all__ = [
     "default_periodic_ablation_arms",
     "run_attack_hyperparameter_search",
     "run_belief_planner_evaluation",
+    "paired_seed_comparison",
     "run_initial_attack_baselines",
     "run_micro_rl_comparison",
     "run_cross_topology_matrix",
@@ -117,4 +128,5 @@ __all__ = [
     "validate_placement_checkpoint",
     "validate_dqn_checkpoint",
     "validate_ppo_checkpoint",
+    "VALIDATION_TOPOLOGIES",
 ]

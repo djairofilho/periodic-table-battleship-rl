@@ -1,0 +1,1600 @@
+{
+  "schema_version": "bayes-cross-topology-validation-v1",
+  "campaign": "v0.7-bayes-cross-topology-validation",
+  "split": "validation",
+  "blind_test_used": false,
+  "protocol": {
+    "seed_start": 8801,
+    "seed_count": 10,
+    "episodes_per_seed": 1,
+    "sample_count": 16,
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260720,
+    "split": "validation",
+    "seeds": [
+      8801,
+      8802,
+      8803,
+      8804,
+      8805,
+      8806,
+      8807,
+      8808,
+      8809,
+      8810
+    ]
+  },
+  "git_commit": "49ba7db905528d97e01b62df74d338a9289cc5f9-dirty",
+  "working_tree_dirty": true,
+  "candidate": "belief_probability_mc-v1",
+  "reference": "hunt_target-v1",
+  "sampler": {
+    "id": "constrained-backtracking-v1",
+    "posterior_exact": false
+  },
+  "topologies": {
+    "battleship": {
+      "valid_cells": 100,
+      "candidate_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 56.0,
+            "valid_shots_normalized": 0.56,
+            "shots_excess": 39.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.30357142857142855,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.76,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 13.0
+          },
+          "8802": {
+            "valid_shots": 41.0,
+            "valid_shots_normalized": 0.41,
+            "shots_excess": 24.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4146341463414634,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7770588235294118,
+            "first_hit_shot": 7.0,
+            "first_sunk_shot": 10.0
+          },
+          "8803": {
+            "valid_shots": 45.0,
+            "valid_shots_normalized": 0.45,
+            "shots_excess": 28.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.37777777777777777,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8152941176470588,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 3.0
+          },
+          "8804": {
+            "valid_shots": 42.0,
+            "valid_shots_normalized": 0.42,
+            "shots_excess": 25.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.40476190476190477,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7970588235294118,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 16.0
+          },
+          "8805": {
+            "valid_shots": 52.0,
+            "valid_shots_normalized": 0.52,
+            "shots_excess": 35.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3269230769230769,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.798235294117647,
+            "first_hit_shot": 4.0,
+            "first_sunk_shot": 7.0
+          },
+          "8806": {
+            "valid_shots": 45.0,
+            "valid_shots_normalized": 0.45,
+            "shots_excess": 28.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.37777777777777777,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8052941176470588,
+            "first_hit_shot": 6.0,
+            "first_sunk_shot": 15.0
+          },
+          "8807": {
+            "valid_shots": 43.0,
+            "valid_shots_normalized": 0.43,
+            "shots_excess": 26.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3953488372093023,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7858823529411765,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 5.0
+          },
+          "8808": {
+            "valid_shots": 48.0,
+            "valid_shots_normalized": 0.48,
+            "shots_excess": 31.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3541666666666667,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7076470588235294,
+            "first_hit_shot": 14.0,
+            "first_sunk_shot": 20.0
+          },
+          "8809": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.5,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7858823529411765,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 5.0
+          },
+          "8810": {
+            "valid_shots": 38.0,
+            "valid_shots_normalized": 0.38,
+            "shots_excess": 21.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4473684210526316,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8041176470588235,
+            "first_hit_shot": 4.0,
+            "first_sunk_shot": 6.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 46.0,
+            "std": 5.497474167490214,
+            "median": 45.0
+          },
+          "valid_shots_normalized": {
+            "mean": 0.45999999999999996,
+            "std": 0.054974741674902156,
+            "median": 0.45
+          },
+          "shots_excess": {
+            "mean": 29.0,
+            "std": 5.497474167490214,
+            "median": 28.0
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.374233003708203,
+            "std": 0.04370343040819145,
+            "median": 0.37777777777777777
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7836470588235295,
+            "std": 0.031038416746186615,
+            "median": 0.7914705882352941
+          },
+          "first_hit_shot": {
+            "mean": 4.9,
+            "std": 4.067486256208427,
+            "median": 4.0
+          },
+          "first_sunk_shot": {
+            "mean": 10.0,
+            "std": 5.715476066494082,
+            "median": 8.5
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 460,
+          "mean_backtracks_per_decision": 21.76304347826087,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.5,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7770588235294118,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 6.0
+          },
+          "8802": {
+            "valid_shots": 42.0,
+            "valid_shots_normalized": 0.42,
+            "shots_excess": 25.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.40476190476190477,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7952941176470588,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 5.0
+          },
+          "8803": {
+            "valid_shots": 63.0,
+            "valid_shots_normalized": 0.63,
+            "shots_excess": 46.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2698412698412698,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.73,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 9.0
+          },
+          "8804": {
+            "valid_shots": 47.0,
+            "valid_shots_normalized": 0.47,
+            "shots_excess": 30.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3617021276595745,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7611764705882353,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 7.0
+          },
+          "8805": {
+            "valid_shots": 44.0,
+            "valid_shots_normalized": 0.44,
+            "shots_excess": 27.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.38636363636363635,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7858823529411765,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 5.0
+          },
+          "8806": {
+            "valid_shots": 65.0,
+            "valid_shots_normalized": 0.65,
+            "shots_excess": 48.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.26153846153846155,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7111764705882353,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 19.0
+          },
+          "8807": {
+            "valid_shots": 65.0,
+            "valid_shots_normalized": 0.65,
+            "shots_excess": 48.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.26153846153846155,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.6758823529411765,
+            "first_hit_shot": 4.0,
+            "first_sunk_shot": 12.0
+          },
+          "8808": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.5,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7611764705882353,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 5.0
+          },
+          "8809": {
+            "valid_shots": 33.0,
+            "valid_shots_normalized": 0.33,
+            "shots_excess": 16.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.5151515151515151,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8358823529411765,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 3.0
+          },
+          "8810": {
+            "valid_shots": 52.0,
+            "valid_shots_normalized": 0.52,
+            "shots_excess": 35.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3269230769230769,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7323529411764705,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 9.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 51.1,
+            "std": 10.58772874605314,
+            "median": 50.0
+          },
+          "valid_shots_normalized": {
+            "mean": 0.511,
+            "std": 0.1058772874605314,
+            "median": 0.5
+          },
+          "shots_excess": {
+            "mean": 34.1,
+            "std": 10.58772874605314,
+            "median": 33.0
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.34678204537779006,
+            "std": 0.07777349210307072,
+            "median": 0.34
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7565882352941177,
+            "std": 0.0459165282476871,
+            "median": 0.7611764705882353
+          },
+          "first_hit_shot": {
+            "mean": 2.1,
+            "std": 0.8755950357709131,
+            "median": 2.0
+          },
+          "first_sunk_shot": {
+            "mean": 8.0,
+            "std": 4.666666666666667,
+            "median": 6.5
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": -5.1,
+        "bootstrap_95": {
+          "lower": -12.7,
+          "upper": 2.8,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 56.0,
+            "reference_mean": 50.0,
+            "candidate_minus_reference": 6.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 41.0,
+            "reference_mean": 42.0,
+            "candidate_minus_reference": -1.0
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 45.0,
+            "reference_mean": 63.0,
+            "candidate_minus_reference": -18.0
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 42.0,
+            "reference_mean": 47.0,
+            "candidate_minus_reference": -5.0
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 52.0,
+            "reference_mean": 44.0,
+            "candidate_minus_reference": 8.0
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 45.0,
+            "reference_mean": 65.0,
+            "candidate_minus_reference": -20.0
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 43.0,
+            "reference_mean": 65.0,
+            "candidate_minus_reference": -22.0
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 48.0,
+            "reference_mean": 50.0,
+            "candidate_minus_reference": -2.0
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 50.0,
+            "reference_mean": 33.0,
+            "candidate_minus_reference": 17.0
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 38.0,
+            "reference_mean": 52.0,
+            "candidate_minus_reference": -14.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": 0.027058823529411757,
+        "bootstrap_95": {
+          "lower": -0.008705882352941207,
+          "upper": 0.06253235294117641,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.76,
+            "reference_mean": 0.7770588235294118,
+            "candidate_minus_reference": -0.017058823529411793
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.7770588235294118,
+            "reference_mean": 0.7952941176470588,
+            "candidate_minus_reference": -0.018235294117647016
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 0.8152941176470588,
+            "reference_mean": 0.73,
+            "candidate_minus_reference": 0.08529411764705885
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 0.7970588235294118,
+            "reference_mean": 0.7611764705882353,
+            "candidate_minus_reference": 0.035882352941176476
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 0.798235294117647,
+            "reference_mean": 0.7858823529411765,
+            "candidate_minus_reference": 0.012352941176470567
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 0.8052941176470588,
+            "reference_mean": 0.7111764705882353,
+            "candidate_minus_reference": 0.09411764705882353
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 0.7858823529411765,
+            "reference_mean": 0.6758823529411765,
+            "candidate_minus_reference": 0.10999999999999999
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 0.7076470588235294,
+            "reference_mean": 0.7611764705882353,
+            "candidate_minus_reference": -0.053529411764705936
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 0.7858823529411765,
+            "reference_mean": 0.8358823529411765,
+            "candidate_minus_reference": -0.050000000000000044
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 0.8041176470588235,
+            "reference_mean": 0.7323529411764705,
+            "candidate_minus_reference": 0.07176470588235295
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 8.373215500003425,
+        "reference": 0.08629300000029616
+      }
+    },
+    "dense-118": {
+      "valid_cells": 118,
+      "candidate_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 49.0,
+            "valid_shots_normalized": 0.4152542372881356,
+            "shots_excess": 32.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3469387755102041,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7761714855433699,
+            "first_hit_shot": 4.0,
+            "first_sunk_shot": 7.0
+          },
+          "8802": {
+            "valid_shots": 43.0,
+            "valid_shots_normalized": 0.3644067796610169,
+            "shots_excess": 26.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3953488372093023,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8100697906281157,
+            "first_hit_shot": 5.0,
+            "first_sunk_shot": 9.0
+          },
+          "8803": {
+            "valid_shots": 60.0,
+            "valid_shots_normalized": 0.5084745762711864,
+            "shots_excess": 43.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2833333333333333,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7676969092721835,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 8.0
+          },
+          "8804": {
+            "valid_shots": 55.0,
+            "valid_shots_normalized": 0.4661016949152542,
+            "shots_excess": 38.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3090909090909091,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7253240279162513,
+            "first_hit_shot": 13.0,
+            "first_sunk_shot": 19.0
+          },
+          "8805": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.423728813559322,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7956131605184447,
+            "first_hit_shot": 7.0,
+            "first_sunk_shot": 11.0
+          },
+          "8806": {
+            "valid_shots": 56.0,
+            "valid_shots_normalized": 0.4745762711864407,
+            "shots_excess": 39.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.30357142857142855,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7831505483549352,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 13.0
+          },
+          "8807": {
+            "valid_shots": 36.0,
+            "valid_shots_normalized": 0.3050847457627119,
+            "shots_excess": 19.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4722222222222222,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.853938185443669,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 7.0
+          },
+          "8808": {
+            "valid_shots": 44.0,
+            "valid_shots_normalized": 0.3728813559322034,
+            "shots_excess": 27.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.38636363636363635,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8010967098703888,
+            "first_hit_shot": 11.0,
+            "first_sunk_shot": 13.0
+          },
+          "8809": {
+            "valid_shots": 49.0,
+            "valid_shots_normalized": 0.4152542372881356,
+            "shots_excess": 32.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3469387755102041,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7676969092721835,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 13.0
+          },
+          "8810": {
+            "valid_shots": 60.0,
+            "valid_shots_normalized": 0.5084745762711864,
+            "shots_excess": 43.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2833333333333333,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8180458624127617,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 7.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 50.2,
+            "std": 7.771743691090179,
+            "median": 49.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.42542372881355933,
+            "std": 0.06586223467025575,
+            "median": 0.4194915254237288
+          },
+          "shots_excess": {
+            "mean": 33.2,
+            "std": 7.771743691090179,
+            "median": 32.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.3467141251144573,
+            "std": 0.05873285092185105,
+            "median": 0.34346938775510205
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7898803589232303,
+            "std": 0.03471781439959326,
+            "median": 0.78938185443669
+          },
+          "first_hit_shot": {
+            "mean": 5.9,
+            "std": 4.254409477236529,
+            "median": 6.0
+          },
+          "first_sunk_shot": {
+            "mean": 10.7,
+            "std": 3.8887301554906357,
+            "median": 10.0
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 502,
+          "mean_backtracks_per_decision": 17.52191235059761,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 86.0,
+            "valid_shots_normalized": 0.7288135593220338,
+            "shots_excess": 69.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.19767441860465115,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.6640079760717846,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 18.0
+          },
+          "8802": {
+            "valid_shots": 83.0,
+            "valid_shots_normalized": 0.7033898305084746,
+            "shots_excess": 66.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.20481927710843373,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.6570289132602194,
+            "first_hit_shot": 10.0,
+            "first_sunk_shot": 16.0
+          },
+          "8803": {
+            "valid_shots": 52.0,
+            "valid_shots_normalized": 0.4406779661016949,
+            "shots_excess": 35.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3269230769230769,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7642073778664008,
+            "first_hit_shot": 11.0,
+            "first_sunk_shot": 27.0
+          },
+          "8804": {
+            "valid_shots": 74.0,
+            "valid_shots_normalized": 0.6271186440677966,
+            "shots_excess": 57.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.22972972972972974,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.730309072781655,
+            "first_hit_shot": 10.0,
+            "first_sunk_shot": 13.0
+          },
+          "8805": {
+            "valid_shots": 54.0,
+            "valid_shots_normalized": 0.4576271186440678,
+            "shots_excess": 37.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3148148148148148,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7397806580259222,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 7.0
+          },
+          "8806": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.423728813559322,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7751744765702892,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 6.0
+          },
+          "8807": {
+            "valid_shots": 41.0,
+            "valid_shots_normalized": 0.3474576271186441,
+            "shots_excess": 24.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4146341463414634,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8110667996011964,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 9.0
+          },
+          "8808": {
+            "valid_shots": 81.0,
+            "valid_shots_normalized": 0.6864406779661016,
+            "shots_excess": 64.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.20987654320987653,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7731804586241277,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 5.0
+          },
+          "8809": {
+            "valid_shots": 43.0,
+            "valid_shots_normalized": 0.3644067796610169,
+            "shots_excess": 26.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3953488372093023,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7846460618145563,
+            "first_hit_shot": 7.0,
+            "first_sunk_shot": 10.0
+          },
+          "8810": {
+            "valid_shots": 57.0,
+            "valid_shots_normalized": 0.4830508474576271,
+            "shots_excess": 40.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2982456140350877,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7741774675972084,
+            "first_hit_shot": 7.0,
+            "first_sunk_shot": 14.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 62.1,
+            "std": 17.181708620248195,
+            "median": 55.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.5262711864406779,
+            "std": 0.14560770017159486,
+            "median": 0.4703389830508474
+          },
+          "shots_excess": {
+            "mean": 45.1,
+            "std": 17.181708620248195,
+            "median": 38.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.2932066457976436,
+            "std": 0.07951823221839531,
+            "median": 0.30653021442495126
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.747357926221336,
+            "std": 0.050933076183998845,
+            "median": 0.7686939182452642
+          },
+          "first_hit_shot": {
+            "mean": 6.4,
+            "std": 3.4058772731852804,
+            "median": 7.0
+          },
+          "first_sunk_shot": {
+            "mean": 12.5,
+            "std": 6.687467549246293,
+            "median": 11.5
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": -11.9,
+        "bootstrap_95": {
+          "lower": -23.902499999999975,
+          "upper": -1.0,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": true,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 49.0,
+            "reference_mean": 86.0,
+            "candidate_minus_reference": -37.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 43.0,
+            "reference_mean": 83.0,
+            "candidate_minus_reference": -40.0
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 60.0,
+            "reference_mean": 52.0,
+            "candidate_minus_reference": 8.0
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 55.0,
+            "reference_mean": 74.0,
+            "candidate_minus_reference": -19.0
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 50.0,
+            "reference_mean": 54.0,
+            "candidate_minus_reference": -4.0
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 56.0,
+            "reference_mean": 50.0,
+            "candidate_minus_reference": 6.0
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 36.0,
+            "reference_mean": 41.0,
+            "candidate_minus_reference": -5.0
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 44.0,
+            "reference_mean": 81.0,
+            "candidate_minus_reference": -37.0
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 49.0,
+            "reference_mean": 43.0,
+            "candidate_minus_reference": 6.0
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 60.0,
+            "reference_mean": 57.0,
+            "candidate_minus_reference": 3.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": 0.04252243270189432,
+        "bootstrap_95": {
+          "lower": 0.013459621136590239,
+          "upper": 0.07497632103688931,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": true,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.7761714855433699,
+            "reference_mean": 0.6640079760717846,
+            "candidate_minus_reference": 0.11216350947158527
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.8100697906281157,
+            "reference_mean": 0.6570289132602194,
+            "candidate_minus_reference": 0.1530408773678963
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 0.7676969092721835,
+            "reference_mean": 0.7642073778664008,
+            "candidate_minus_reference": 0.0034895314057826754
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 0.7253240279162513,
+            "reference_mean": 0.730309072781655,
+            "candidate_minus_reference": -0.004985044865403743
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 0.7956131605184447,
+            "reference_mean": 0.7397806580259222,
+            "candidate_minus_reference": 0.05583250249252247
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 0.7831505483549352,
+            "reference_mean": 0.7751744765702892,
+            "candidate_minus_reference": 0.0079760717846461
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 0.853938185443669,
+            "reference_mean": 0.8110667996011964,
+            "candidate_minus_reference": 0.04287138584247252
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 0.8010967098703888,
+            "reference_mean": 0.7731804586241277,
+            "candidate_minus_reference": 0.02791625124626118
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 0.7676969092721835,
+            "reference_mean": 0.7846460618145563,
+            "candidate_minus_reference": -0.016949152542372836
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 0.8180458624127617,
+            "reference_mean": 0.7741774675972084,
+            "candidate_minus_reference": 0.04386839481555327
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 12.196940199995879,
+        "reference": 0.1366615000006277
+      }
+    },
+    "periodic-table-battleship": {
+      "valid_cells": 118,
+      "candidate_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 55.0,
+            "valid_shots_normalized": 0.4661016949152542,
+            "shots_excess": 38.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3090909090909091,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7826520438683948,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 6.0
+          },
+          "8802": {
+            "valid_shots": 78.0,
+            "valid_shots_normalized": 0.6610169491525424,
+            "shots_excess": 61.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.21794871794871795,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7497507477567298,
+            "first_hit_shot": 12.0,
+            "first_sunk_shot": 15.0
+          },
+          "8803": {
+            "valid_shots": 47.0,
+            "valid_shots_normalized": 0.3983050847457627,
+            "shots_excess": 30.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3617021276595745,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8055832502492523,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 7.0
+          },
+          "8804": {
+            "valid_shots": 72.0,
+            "valid_shots_normalized": 0.6101694915254238,
+            "shots_excess": 55.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2361111111111111,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7826520438683948,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 13.0
+          },
+          "8805": {
+            "valid_shots": 46.0,
+            "valid_shots_normalized": 0.3898305084745763,
+            "shots_excess": 29.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3695652173913043,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8519441674975075,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 7.0
+          },
+          "8806": {
+            "valid_shots": 62.0,
+            "valid_shots_normalized": 0.5254237288135594,
+            "shots_excess": 45.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.27419354838709675,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8305084745762712,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 8.0
+          },
+          "8807": {
+            "valid_shots": 66.0,
+            "valid_shots_normalized": 0.559322033898305,
+            "shots_excess": 49.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.25757575757575757,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8145563310069791,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 7.0
+          },
+          "8808": {
+            "valid_shots": 69.0,
+            "valid_shots_normalized": 0.5847457627118644,
+            "shots_excess": 52.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2463768115942029,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7911266201395812,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 5.0
+          },
+          "8809": {
+            "valid_shots": 43.0,
+            "valid_shots_normalized": 0.3644067796610169,
+            "shots_excess": 26.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3953488372093023,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8000997008973081,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 6.0
+          },
+          "8810": {
+            "valid_shots": 40.0,
+            "valid_shots_normalized": 0.3389830508474576,
+            "shots_excess": 23.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.425,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8220338983050848,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 7.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 57.8,
+            "std": 13.414751416092493,
+            "median": 58.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.4898305084745763,
+            "std": 0.11368433403468216,
+            "median": 0.4957627118644068
+          },
+          "shots_excess": {
+            "mean": 40.8,
+            "std": 13.414751416092493,
+            "median": 41.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.30929130379679765,
+            "std": 0.07358870141678503,
+            "median": 0.2916422287390029
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.8030907278165504,
+            "std": 0.028805144272781188,
+            "median": 0.8028414755732802
+          },
+          "first_hit_shot": {
+            "mean": 3.5,
+            "std": 3.6285901761795403,
+            "median": 2.0
+          },
+          "first_sunk_shot": {
+            "mean": 8.1,
+            "std": 3.2472210341220142,
+            "median": 7.0
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 578,
+          "mean_backtracks_per_decision": 22.705882352941178,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 10,
+        "seed_count": 10,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 53.0,
+            "valid_shots_normalized": 0.4491525423728814,
+            "shots_excess": 36.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.32075471698113206,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7901296111665005,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 10.0
+          },
+          "8802": {
+            "valid_shots": 35.0,
+            "valid_shots_normalized": 0.2966101694915254,
+            "shots_excess": 18.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4857142857142857,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8843469591226321,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 9.0
+          },
+          "8803": {
+            "valid_shots": 39.0,
+            "valid_shots_normalized": 0.3305084745762712,
+            "shots_excess": 22.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4358974358974359,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8215353938185443,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 16.0
+          },
+          "8804": {
+            "valid_shots": 80.0,
+            "valid_shots_normalized": 0.6779661016949152,
+            "shots_excess": 63.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.2125,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8050847457627118,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 7.0
+          },
+          "8805": {
+            "valid_shots": 64.0,
+            "valid_shots_normalized": 0.5423728813559322,
+            "shots_excess": 47.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.265625,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7751744765702892,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 5.0
+          },
+          "8806": {
+            "valid_shots": 104.0,
+            "valid_shots_normalized": 0.8813559322033898,
+            "shots_excess": 87.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.16346153846153846,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.5348953140578265,
+            "first_hit_shot": 12.0,
+            "first_sunk_shot": 23.0
+          },
+          "8807": {
+            "valid_shots": 117.0,
+            "valid_shots_normalized": 0.9915254237288136,
+            "shots_excess": 100.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.1452991452991453,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.765702891326022,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 10.0
+          },
+          "8808": {
+            "valid_shots": 49.0,
+            "valid_shots_normalized": 0.4152542372881356,
+            "shots_excess": 32.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3469387755102041,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7936191425722832,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 8.0
+          },
+          "8809": {
+            "valid_shots": 48.0,
+            "valid_shots_normalized": 0.4067796610169492,
+            "shots_excess": 31.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3541666666666667,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7911266201395812,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 3.0
+          },
+          "8810": {
+            "valid_shots": 58.0,
+            "valid_shots_normalized": 0.4915254237288136,
+            "shots_excess": 41.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.29310344827586204,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8579262213359921,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 8.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 64.7,
+            "std": 27.414716242680075,
+            "median": 55.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.5483050847457627,
+            "std": 0.23232810375152604,
+            "median": 0.4703389830508475
+          },
+          "shots_excess": {
+            "mean": 47.7,
+            "std": 27.414716242680075,
+            "median": 38.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.30234610128062706,
+            "std": 0.11051971205071974,
+            "median": 0.30692908262849705
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7819541375872383,
+            "std": 0.0942767336259035,
+            "median": 0.7923728813559322
+          },
+          "first_hit_shot": {
+            "mean": 2.7,
+            "std": 3.3681514877517675,
+            "median": 1.5
+          },
+          "first_sunk_shot": {
+            "mean": 9.9,
+            "std": 5.743595467030115,
+            "median": 8.5
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": -6.9,
+        "bootstrap_95": {
+          "lower": -23.002499999999976,
+          "upper": 9.402499999999964,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 55.0,
+            "reference_mean": 53.0,
+            "candidate_minus_reference": 2.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 78.0,
+            "reference_mean": 35.0,
+            "candidate_minus_reference": 43.0
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 47.0,
+            "reference_mean": 39.0,
+            "candidate_minus_reference": 8.0
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 72.0,
+            "reference_mean": 80.0,
+            "candidate_minus_reference": -8.0
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 46.0,
+            "reference_mean": 64.0,
+            "candidate_minus_reference": -18.0
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 62.0,
+            "reference_mean": 104.0,
+            "candidate_minus_reference": -42.0
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 66.0,
+            "reference_mean": 117.0,
+            "candidate_minus_reference": -51.0
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 69.0,
+            "reference_mean": 49.0,
+            "candidate_minus_reference": 20.0
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 43.0,
+            "reference_mean": 48.0,
+            "candidate_minus_reference": -5.0
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 40.0,
+            "reference_mean": 58.0,
+            "candidate_minus_reference": -18.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": 0.02113659022931207,
+        "bootstrap_95": {
+          "lower": -0.035694167497507465,
+          "upper": 0.09302342971086736,
+          "resamples": 10000,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.7826520438683948,
+            "reference_mean": 0.7901296111665005,
+            "candidate_minus_reference": -0.0074775672981056696
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.7497507477567298,
+            "reference_mean": 0.8843469591226321,
+            "candidate_minus_reference": -0.13459621136590227
+          },
+          {
+            "seed": 8803,
+            "candidate_mean": 0.8055832502492523,
+            "reference_mean": 0.8215353938185443,
+            "candidate_minus_reference": -0.015952143569292088
+          },
+          {
+            "seed": 8804,
+            "candidate_mean": 0.7826520438683948,
+            "reference_mean": 0.8050847457627118,
+            "candidate_minus_reference": -0.02243270189431701
+          },
+          {
+            "seed": 8805,
+            "candidate_mean": 0.8519441674975075,
+            "reference_mean": 0.7751744765702892,
+            "candidate_minus_reference": 0.0767696909272183
+          },
+          {
+            "seed": 8806,
+            "candidate_mean": 0.8305084745762712,
+            "reference_mean": 0.5348953140578265,
+            "candidate_minus_reference": 0.29561316051844466
+          },
+          {
+            "seed": 8807,
+            "candidate_mean": 0.8145563310069791,
+            "reference_mean": 0.765702891326022,
+            "candidate_minus_reference": 0.04885343968095712
+          },
+          {
+            "seed": 8808,
+            "candidate_mean": 0.7911266201395812,
+            "reference_mean": 0.7936191425722832,
+            "candidate_minus_reference": -0.002492522432701927
+          },
+          {
+            "seed": 8809,
+            "candidate_mean": 0.8000997008973081,
+            "reference_mean": 0.7911266201395812,
+            "candidate_minus_reference": 0.008973080757726848
+          },
+          {
+            "seed": 8810,
+            "candidate_mean": 0.8220338983050848,
+            "reference_mean": 0.8579262213359921,
+            "candidate_minus_reference": -0.03589232303090728
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 12.045478799991542,
+        "reference": 0.119498999993084
+      }
+    }
+  }
+}

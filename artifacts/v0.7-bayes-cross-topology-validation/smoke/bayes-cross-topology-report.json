@@ -1,0 +1,728 @@
+{
+  "schema_version": "bayes-cross-topology-validation-v1",
+  "campaign": "v0.7-bayes-cross-topology-validation",
+  "split": "validation",
+  "blind_test_used": false,
+  "protocol": {
+    "seed_start": 8801,
+    "seed_count": 2,
+    "episodes_per_seed": 1,
+    "sample_count": 16,
+    "bootstrap_resamples": 100,
+    "bootstrap_seed": 20260720,
+    "split": "validation",
+    "seeds": [
+      8801,
+      8802
+    ]
+  },
+  "git_commit": "49ba7db905528d97e01b62df74d338a9289cc5f9-dirty",
+  "working_tree_dirty": true,
+  "candidate": "belief_probability_mc-v1",
+  "reference": "hunt_target-v1",
+  "sampler": {
+    "id": "constrained-backtracking-v1",
+    "posterior_exact": false
+  },
+  "topologies": {
+    "battleship": {
+      "valid_cells": 100,
+      "candidate_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 56.0,
+            "valid_shots_normalized": 0.56,
+            "shots_excess": 39.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.30357142857142855,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.76,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 13.0
+          },
+          "8802": {
+            "valid_shots": 41.0,
+            "valid_shots_normalized": 0.41,
+            "shots_excess": 24.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4146341463414634,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7770588235294118,
+            "first_hit_shot": 7.0,
+            "first_sunk_shot": 10.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 48.5,
+            "std": 10.606601717798213,
+            "median": 48.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.485,
+            "std": 0.10606601717798218,
+            "median": 0.485
+          },
+          "shots_excess": {
+            "mean": 31.5,
+            "std": 10.606601717798213,
+            "median": 31.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.35910278745644597,
+            "std": 0.07853320087219931,
+            "median": 0.35910278745644597
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7685294117647059,
+            "std": 0.012062409796711714,
+            "median": 0.7685294117647059
+          },
+          "first_hit_shot": {
+            "mean": 4.0,
+            "std": 4.242640687119285,
+            "median": 4.0
+          },
+          "first_sunk_shot": {
+            "mean": 11.5,
+            "std": 2.1213203435596424,
+            "median": 11.5
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 97,
+          "mean_backtracks_per_decision": 27.649484536082475,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 50.0,
+            "valid_shots_normalized": 0.5,
+            "shots_excess": 33.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.34,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7770588235294118,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 6.0
+          },
+          "8802": {
+            "valid_shots": 42.0,
+            "valid_shots_normalized": 0.42,
+            "shots_excess": 25.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.40476190476190477,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7952941176470588,
+            "first_hit_shot": 2.0,
+            "first_sunk_shot": 5.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 46.0,
+            "std": 5.656854249492381,
+            "median": 46.0
+          },
+          "valid_shots_normalized": {
+            "mean": 0.45999999999999996,
+            "std": 0.05656854249492381,
+            "median": 0.45999999999999996
+          },
+          "shots_excess": {
+            "mean": 29.0,
+            "std": 5.656854249492381,
+            "median": 29.0
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.37238095238095237,
+            "std": 0.045793582019700206,
+            "median": 0.37238095238095237
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7861764705882353,
+            "std": 0.012894300127519366,
+            "median": 0.7861764705882353
+          },
+          "first_hit_shot": {
+            "mean": 2.0,
+            "std": 0.0,
+            "median": 2.0
+          },
+          "first_sunk_shot": {
+            "mean": 5.5,
+            "std": 0.7071067811865476,
+            "median": 5.5
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": 2.5,
+        "bootstrap_95": {
+          "lower": -1.0,
+          "upper": 6.0,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 56.0,
+            "reference_mean": 50.0,
+            "candidate_minus_reference": 6.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 41.0,
+            "reference_mean": 42.0,
+            "candidate_minus_reference": -1.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": -0.017647058823529405,
+        "bootstrap_95": {
+          "lower": -0.018235294117647016,
+          "upper": -0.017058823529411793,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.76,
+            "reference_mean": 0.7770588235294118,
+            "candidate_minus_reference": -0.017058823529411793
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.7770588235294118,
+            "reference_mean": 0.7952941176470588,
+            "candidate_minus_reference": -0.018235294117647016
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 1.8875421000120696,
+        "reference": 0.03767750000406522
+      }
+    },
+    "dense-118": {
+      "valid_cells": 118,
+      "candidate_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 49.0,
+            "valid_shots_normalized": 0.4152542372881356,
+            "shots_excess": 32.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3469387755102041,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7761714855433699,
+            "first_hit_shot": 4.0,
+            "first_sunk_shot": 7.0
+          },
+          "8802": {
+            "valid_shots": 43.0,
+            "valid_shots_normalized": 0.3644067796610169,
+            "shots_excess": 26.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3953488372093023,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8100697906281157,
+            "first_hit_shot": 5.0,
+            "first_sunk_shot": 9.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 46.0,
+            "std": 4.242640687119285,
+            "median": 46.0
+          },
+          "valid_shots_normalized": {
+            "mean": 0.38983050847457623,
+            "std": 0.035954582094231254,
+            "median": 0.38983050847457623
+          },
+          "shots_excess": {
+            "mean": 29.0,
+            "std": 4.242640687119285,
+            "median": 29.0
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.3711438063597532,
+            "std": 0.03423108290509152,
+            "median": 0.3711438063597532
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7931206380857427,
+            "std": 0.023969721396154168,
+            "median": 0.7931206380857427
+          },
+          "first_hit_shot": {
+            "mean": 4.5,
+            "std": 0.7071067811865476,
+            "median": 4.5
+          },
+          "first_sunk_shot": {
+            "mean": 8.0,
+            "std": 1.4142135623730951,
+            "median": 8.0
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 92,
+          "mean_backtracks_per_decision": 13.217391304347826,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 86.0,
+            "valid_shots_normalized": 0.7288135593220338,
+            "shots_excess": 69.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.19767441860465115,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.6640079760717846,
+            "first_hit_shot": 8.0,
+            "first_sunk_shot": 18.0
+          },
+          "8802": {
+            "valid_shots": 83.0,
+            "valid_shots_normalized": 0.7033898305084746,
+            "shots_excess": 66.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.20481927710843373,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.6570289132602194,
+            "first_hit_shot": 10.0,
+            "first_sunk_shot": 16.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 84.5,
+            "std": 2.1213203435596424,
+            "median": 84.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.7161016949152542,
+            "std": 0.017977291047115568,
+            "median": 0.7161016949152542
+          },
+          "shots_excess": {
+            "mean": 67.5,
+            "std": 2.1213203435596424,
+            "median": 67.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.20124684785654245,
+            "std": 0.005052177898643029,
+            "median": 0.20124684785654245
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.660518444666002,
+            "std": 0.004934942640384633,
+            "median": 0.660518444666002
+          },
+          "first_hit_shot": {
+            "mean": 9.0,
+            "std": 1.4142135623730951,
+            "median": 9.0
+          },
+          "first_sunk_shot": {
+            "mean": 17.0,
+            "std": 1.4142135623730951,
+            "median": 17.0
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": -38.5,
+        "bootstrap_95": {
+          "lower": -40.0,
+          "upper": -37.0,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": true,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 49.0,
+            "reference_mean": 86.0,
+            "candidate_minus_reference": -37.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 43.0,
+            "reference_mean": 83.0,
+            "candidate_minus_reference": -40.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": 0.13260219341974078,
+        "bootstrap_95": {
+          "lower": 0.11216350947158527,
+          "upper": 0.1530408773678963,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": true,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.7761714855433699,
+            "reference_mean": 0.6640079760717846,
+            "candidate_minus_reference": 0.11216350947158527
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.8100697906281157,
+            "reference_mean": 0.6570289132602194,
+            "candidate_minus_reference": 0.1530408773678963
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 1.884243399996194,
+        "reference": 0.044239399998332374
+      }
+    },
+    "periodic-table-battleship": {
+      "valid_cells": 118,
+      "candidate_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 55.0,
+            "valid_shots_normalized": 0.4661016949152542,
+            "shots_excess": 38.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.3090909090909091,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7826520438683948,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 6.0
+          },
+          "8802": {
+            "valid_shots": 78.0,
+            "valid_shots_normalized": 0.6610169491525424,
+            "shots_excess": 61.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.21794871794871795,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7497507477567298,
+            "first_hit_shot": 12.0,
+            "first_sunk_shot": 15.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 66.5,
+            "std": 16.263455967290593,
+            "median": 66.5
+          },
+          "valid_shots_normalized": {
+            "mean": 0.5635593220338984,
+            "std": 0.13782589802788642,
+            "median": 0.5635593220338984
+          },
+          "shots_excess": {
+            "mean": 49.5,
+            "std": 16.263455967290593,
+            "median": 49.5
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.2635198135198135,
+            "std": 0.06444726140884384,
+            "median": 0.2635198135198135
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.7662013958125623,
+            "std": 0.023264729590384933,
+            "median": 0.7662013958125623
+          },
+          "first_hit_shot": {
+            "mean": 6.5,
+            "std": 7.7781745930520225,
+            "median": 6.5
+          },
+          "first_sunk_shot": {
+            "mean": 10.5,
+            "std": 6.363961030678928,
+            "median": 10.5
+          }
+        },
+        "belief_sampler": {
+          "sampler_id": "constrained-backtracking-v1",
+          "posterior_exact": false,
+          "sample_count_per_decision": 16,
+          "max_restarts_per_sample": 128,
+          "max_nodes_per_sample": 8192,
+          "decision_count": 133,
+          "mean_backtracks_per_decision": 25.616541353383457,
+          "mean_restarts_per_decision": 0.0
+        }
+      },
+      "reference_summary": {
+        "episode_count": 2,
+        "seed_count": 2,
+        "per_seed": {
+          "8801": {
+            "valid_shots": 53.0,
+            "valid_shots_normalized": 0.4491525423728814,
+            "shots_excess": 36.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.32075471698113206,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.7901296111665005,
+            "first_hit_shot": 3.0,
+            "first_sunk_shot": 10.0
+          },
+          "8802": {
+            "valid_shots": 35.0,
+            "valid_shots_normalized": 0.2966101694915254,
+            "shots_excess": 18.0,
+            "win_rate": 1.0,
+            "truncation_rate": 0.0,
+            "hit_rate": 0.4857142857142857,
+            "invalid_attempts": 0.0,
+            "auc_discovery": 0.8843469591226321,
+            "first_hit_shot": 1.0,
+            "first_sunk_shot": 9.0
+          }
+        },
+        "aggregate": {
+          "valid_shots": {
+            "mean": 44.0,
+            "std": 12.727922061357855,
+            "median": 44.0
+          },
+          "valid_shots_normalized": {
+            "mean": 0.3728813559322034,
+            "std": 0.10786374628269371,
+            "median": 0.3728813559322034
+          },
+          "shots_excess": {
+            "mean": 27.0,
+            "std": 12.727922061357855,
+            "median": 27.0
+          },
+          "win_rate": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0
+          },
+          "truncation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "hit_rate": {
+            "mean": 0.4032345013477089,
+            "std": 0.11664402967282132,
+            "median": 0.4032345013477089
+          },
+          "invalid_attempts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0
+          },
+          "auc_discovery": {
+            "mean": 0.8372382851445663,
+            "std": 0.06662172564519314,
+            "median": 0.8372382851445663
+          },
+          "first_hit_shot": {
+            "mean": 2.0,
+            "std": 1.4142135623730951,
+            "median": 2.0
+          },
+          "first_sunk_shot": {
+            "mean": 9.5,
+            "std": 0.7071067811865476,
+            "median": 9.5
+          }
+        }
+      },
+      "paired_valid_shots": {
+        "metric": "valid_shots",
+        "direction": "lower",
+        "candidate_minus_reference_mean": 22.5,
+        "bootstrap_95": {
+          "lower": 2.0,
+          "upper": 43.0,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 55.0,
+            "reference_mean": 53.0,
+            "candidate_minus_reference": 2.0
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 78.0,
+            "reference_mean": 35.0,
+            "candidate_minus_reference": 43.0
+          }
+        ]
+      },
+      "paired_auc_discovery": {
+        "metric": "auc_discovery",
+        "direction": "higher",
+        "candidate_minus_reference_mean": -0.07103688933200397,
+        "bootstrap_95": {
+          "lower": -0.13459621136590227,
+          "upper": -0.0074775672981056696,
+          "resamples": 100,
+          "confidence_level": 0.95
+        },
+        "improves_reference_at_95": false,
+        "per_seed": [
+          {
+            "seed": 8801,
+            "candidate_mean": 0.7826520438683948,
+            "reference_mean": 0.7901296111665005,
+            "candidate_minus_reference": -0.0074775672981056696
+          },
+          {
+            "seed": 8802,
+            "candidate_mean": 0.7497507477567298,
+            "reference_mean": 0.8843469591226321,
+            "candidate_minus_reference": -0.13459621136590227
+          }
+        ]
+      },
+      "elapsed_seconds": {
+        "candidate": 2.0533843000011984,
+        "reference": 0.04374649999954272
+      }
+    }
+  }
+}
