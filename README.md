@@ -17,9 +17,9 @@ tradicional. A pergunta é simples: como uma topologia irregular, com lacunas e
 O núcleo reproduzível está disponível: topologias, frotas legais, ambientes
 Gymnasium mascarados de ataque e posicionamento, baselines, persistência de
 resultados, renderização pública de episódios e o microambiente tabular de
-Q-learning/SARSA. Os pipelines MaskablePPO, avaliações cegas, tabelas,
-gráficos e GIFs também estão disponíveis. A próxima etapa é ampliar os
-orçamentos de treino e executar o protocolo final em múltiplas seeds.
+Q-learning/SARSA. A campanha piloto controlada v0.2 também está concluída,
+com PPO mascarado, avaliação cega, tabelas, gráficos e GIFs públicos. O passo
+seguinte é ampliar o orçamento de treino, mantendo o mesmo protocolo.
 
 ## Cenários
 
@@ -27,6 +27,7 @@ orçamentos de treino e executar o protocolo final em múltiplas seeds.
 | --- | ---: | ---: | --- |
 | `battleship` | 10 × 10 | 100 | Frota `2, 3, 3, 4, 5` |
 | `periodic-table-battleship` | 10 × 18 | 118 | Frota `2, 3, 3, 4, 5` |
+| `dense-118` | 10 × 18 | 118 | Controle conectado, sem lacunas internas |
 
 Em ambos os casos, navios são lineares e ortogonais, não se sobrepõem e podem
 encostar. No cenário periódico, uma célula corresponde a um elemento. As
@@ -48,6 +49,46 @@ treinamento.
 Os dois experimentos são independentes na primeira rodada. O segundo começa
 contra atacantes fixos para que a recompensa seja estável. Self-play só entra
 depois, como extensão.
+
+## Resultados rápidos da campanha v0.2
+
+Esta é uma campanha piloto controlada, não uma alegação de desempenho final:
+três seeds de treino, 2.048 passos PPO por seed, cinco seeds de validação para
+seleção e 20 seeds cegos de teste. O protocolo completo está em
+[docs/09-protocolo-campanha-v0.2.md](docs/09-protocolo-campanha-v0.2.md) e os
+dados públicos em [runs/v0.2-controlled](runs/v0.2-controlled) e
+[artifacts/v0.2-controlled](artifacts/v0.2-controlled).
+
+No ataque, menos tiros é melhor. O PPO selecionado ainda ficou próximo da
+baseline aleatória e atrás do hunt-target em todos os cenários. A última
+coluna é PPO menos hunt-target, com IC bootstrap percentil de 95% por seed.
+
+| Cenário | PPO | Hunt-target | Diferença PPO − hunt (IC 95%) |
+| --- | ---: | ---: | ---: |
+| `battleship` | 95,60 | 62,65 | +32,95 [+27,15; +38,95] |
+| `dense-118` | 110,00 | 75,45 | +34,55 [+26,40; +42,35] |
+| `periodic-table-battleship` | 115,20 | 67,15 | +48,05 [+40,40; +55,20] |
+
+![Comparação de eficiência do ataque no teste cego](artifacts/v0.2-controlled/figures/attack-test-comparison.png)
+
+No posicionamento, mais tiros para afundar a frota é melhor. O agente foi
+treinado e testado contra uma mistura equiponderada de atacante aleatório,
+hunt-target e PPO congelado; todas as linhas abaixo têm 20 episódios cegos.
+
+| Cenário | Hunt-target | PPO congelado | Mistura de três atacantes |
+| --- | ---: | ---: | ---: |
+| `battleship` | 67,30 | 97,00 | 86,60 |
+| `periodic-table-battleship` | 64,20 | 116,00 | 97,60 |
+
+![Frequência dos segmentos posicionados na tabela periódica](artifacts/v0.2-controlled/figures/placement-periodic-table-battleship-heatmap.png)
+
+Os GIFs usam somente estado público: o primeiro mostra um ataque PPO na
+tabela periódica e o segundo, a construção sequencial da frota do agente de
+posicionamento.
+
+![Ataque PPO na tabela periódica](artifacts/v0.2-controlled/figures/periodic-ppo-attack.gif)
+
+![Posicionamento PPO na tabela periódica](artifacts/v0.2-controlled/figures/periodic-ppo-placement.gif)
 
 ## Benchmark inicial dos baselines
 
@@ -88,6 +129,8 @@ interpretadas como avaliação final de desempenho.
 - [Execução, Issues e trabalho paralelo](docs/06-execucao-e-rastreamento.md)
 - [Contratos e critérios de aceite](docs/07-contratos-e-criterios-de-aceite.md)
 - [Relatório v0.1](docs/08-relatorio-v0.1.md)
+- [Protocolo e resultados v0.2](docs/09-protocolo-campanha-v0.2.md)
+- [Relatório da campanha v0.2](docs/10-relatorio-v0.2.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento
