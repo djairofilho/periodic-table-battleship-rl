@@ -6,12 +6,17 @@ Importing this package never imports PyTorch or Stable-Baselines3.  Install the
 
 from .attack import (
     ATTACK_POLICY_ID,
+    VALIDATION_CURVE_SCHEMA_VERSION,
+    AttackCheckpointArtifact,
     AttackTrainingArtifact,
     AttackTrainingConfig,
+    AttackValidationConfig,
+    AttackValidationResult,
     MaskableAttackPolicy,
     TrainingDependencyError,
     load_attack_policy,
     load_training_metadata,
+    evaluate_attack_validation,
     train_attack_policy,
 )
 from .placement import (
@@ -28,8 +33,12 @@ from .placement import (
 
 __all__ = [
     "ATTACK_POLICY_ID",
+    "VALIDATION_CURVE_SCHEMA_VERSION",
+    "AttackCheckpointArtifact",
     "AttackTrainingArtifact",
     "AttackTrainingConfig",
+    "AttackValidationConfig",
+    "AttackValidationResult",
     "MaskableAttackPolicy",
     "MaskablePlacementPolicy",
     "PLACEMENT_POLICY_ID",
@@ -39,6 +48,7 @@ __all__ = [
     "PlacementTrainingDependencyError",
     "TrainingDependencyError",
     "load_attack_policy",
+    "evaluate_attack_validation",
     "load_placement_policy",
     "load_placement_training_metadata",
     "load_training_metadata",
