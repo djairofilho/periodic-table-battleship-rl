@@ -1,0 +1,318 @@
+{
+  "schema_version": "bayesian-public-student-pilot-v1",
+  "campaign": "v0.7-bayesian-student-pilot",
+  "split": "validation",
+  "blind_test_used": false,
+  "promotion_eligible": false,
+  "promotion_blocker": "Pilot with two held-out seeds only; promotion requires the separately pre-registered multi-seed validation gate.",
+  "teacher": "belief_probability_mc-v1",
+  "training_seeds": [
+    9601,
+    9602
+  ],
+  "validation_seeds": [
+    9651,
+    9652
+  ],
+  "sample_count": 2,
+  "epochs": 4,
+  "topologies": {
+    "battleship": {
+      "valid_cells": 100,
+      "datasets": {
+        "train": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\battleship-train\\demonstrations.npz",
+          "sha256": "00ba7df58918bab02448448eb3fa6cd2805a465635dea80f18007ec0003d1e51",
+          "decisions": 91
+        },
+        "validation": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\battleship-validation\\demonstrations.npz",
+          "sha256": "5f8ee5ba11b46099cc1615c0877fadd8dd9e31d6867f4f19a3969142fbf49fc7",
+          "decisions": 105
+        }
+      },
+      "students": {
+        "cnn": {
+          "training_action_agreement": 0.20879121124744415,
+          "validation_teacher_action_agreement": 0.11428571492433548,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-cnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 63,
+                "auc_discovery": 0.6676470588235294,
+                "first_hit_shot": 1,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 84,
+                "auc_discovery": 0.6847058823529412,
+                "first_hit_shot": 6,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 73.5,
+            "mean_auc_discovery": 0.6761764705882353
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\battleship-cnn\\student.pt",
+          "losses": [
+            3.440131425857544,
+            3.426602840423584,
+            3.422600030899048,
+            3.416758179664612
+          ]
+        },
+        "gnn": {
+          "training_action_agreement": 0.09890110045671463,
+          "validation_teacher_action_agreement": 0.06666667014360428,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-gnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 37,
+                "auc_discovery": 0.7970588235294118,
+                "first_hit_shot": 6,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 55,
+                "auc_discovery": 0.6629411764705883,
+                "first_hit_shot": 17,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 46.0,
+            "mean_auc_discovery": 0.73
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\battleship-gnn\\student.pt",
+          "losses": [
+            3.4349273443222046,
+            3.432676315307617,
+            3.440209746360779,
+            3.4404536485671997
+          ]
+        }
+      },
+      "hunt_target_validation": {
+        "policy_id": "hunt-target-v1",
+        "episodes": [
+          {
+            "seed": 9651,
+            "valid_shots": 64
+          },
+          {
+            "seed": 9652,
+            "valid_shots": 44
+          }
+        ],
+        "mean_valid_shots": 54.0
+      }
+    },
+    "dense-118": {
+      "valid_cells": 118,
+      "datasets": {
+        "train": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\dense-118-train\\demonstrations.npz",
+          "sha256": "214f68a24e594d4583b7aa5ea7c052fdf05fe8d72c626db35283cfcdcd54120e",
+          "decisions": 127
+        },
+        "validation": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\dense-118-validation\\demonstrations.npz",
+          "sha256": "66323b3c599b7aa6a37e890ad3d41db679d7bfe3ead90551f7b135a0d34e74a5",
+          "decisions": 120
+        }
+      },
+      "students": {
+        "cnn": {
+          "training_action_agreement": 0.07086614519357681,
+          "validation_teacher_action_agreement": 0.01666666753590107,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-cnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 60,
+                "auc_discovery": 0.7592223330009971,
+                "first_hit_shot": 12,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 113,
+                "auc_discovery": 0.4880358923230309,
+                "first_hit_shot": 36,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 86.5,
+            "mean_auc_discovery": 0.6236291126620139
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\dense-118-cnn\\student.pt",
+          "losses": [
+            3.5643504858016968,
+            3.5531004667282104,
+            3.543026089668274,
+            3.5329355001449585
+          ]
+        },
+        "gnn": {
+          "training_action_agreement": 0.05511811003088951,
+          "validation_teacher_action_agreement": 0.02500000037252903,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-gnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 86,
+                "auc_discovery": 0.7397806580259222,
+                "first_hit_shot": 4,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 112,
+                "auc_discovery": 0.6615154536390827,
+                "first_hit_shot": 10,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 99.0,
+            "mean_auc_discovery": 0.7006480558325024
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\dense-118-gnn\\student.pt",
+          "losses": [
+            3.565652370452881,
+            3.5637580156326294,
+            3.5621179342269897,
+            3.560384750366211
+          ]
+        }
+      },
+      "hunt_target_validation": {
+        "policy_id": "hunt-target-v1",
+        "episodes": [
+          {
+            "seed": 9651,
+            "valid_shots": 62
+          },
+          {
+            "seed": 9652,
+            "valid_shots": 35
+          }
+        ],
+        "mean_valid_shots": 48.5
+      }
+    },
+    "periodic-table-battleship": {
+      "valid_cells": 118,
+      "datasets": {
+        "train": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\periodic-table-battleship-train\\demonstrations.npz",
+          "sha256": "8aa522837f007200885d0fe307c59f7342230ff5373444bdade3d3fbe034c79a",
+          "decisions": 94
+        },
+        "validation": {
+          "path": "artifacts\\v0.7-bayesian-students\\datasets\\periodic-table-battleship-validation\\demonstrations.npz",
+          "sha256": "d4546fbba5caee9f634f24a6f7a22c335f4fccfce1be363791a7aba0e94c51d2",
+          "decisions": 133
+        }
+      },
+      "students": {
+        "cnn": {
+          "training_action_agreement": 0.06382978707551956,
+          "validation_teacher_action_agreement": 0.02255639061331749,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-cnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 88,
+                "auc_discovery": 0.6490528414755733,
+                "first_hit_shot": 9,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 85,
+                "auc_discovery": 0.6001994017946162,
+                "first_hit_shot": 15,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 86.5,
+            "mean_auc_discovery": 0.6246261216350948
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\periodic-table-battleship-cnn\\student.pt",
+          "losses": [
+            3.6015549898147583,
+            3.5872228145599365,
+            3.5993118286132812,
+            3.5742571353912354
+          ]
+        },
+        "gnn": {
+          "training_action_agreement": 0.06382978707551956,
+          "validation_teacher_action_agreement": 0.030075188726186752,
+          "validation_game": {
+            "split": "validation",
+            "blind_test_used": false,
+            "policy_id": "bayesian-gnn-student-v1",
+            "episodes": [
+              {
+                "seed": 9651,
+                "valid_shots": 63,
+                "auc_discovery": 0.660518444666002,
+                "first_hit_shot": 8,
+                "won": true
+              },
+              {
+                "seed": 9652,
+                "valid_shots": 97,
+                "auc_discovery": 0.5603190428713859,
+                "first_hit_shot": 12,
+                "won": true
+              }
+            ],
+            "mean_valid_shots": 80.0,
+            "mean_auc_discovery": 0.6104187437686939
+          },
+          "checkpoint": ".local-runs\\v0.7-bayesian-students\\periodic-table-battleship-gnn\\student.pt",
+          "losses": [
+            3.6015405654907227,
+            3.5952486991882324,
+            3.6108509302139282,
+            3.598479747772217
+          ]
+        }
+      },
+      "hunt_target_validation": {
+        "policy_id": "hunt-target-v1",
+        "episodes": [
+          {
+            "seed": 9651,
+            "valid_shots": 42
+          },
+          {
+            "seed": 9652,
+            "valid_shots": 89
+          }
+        ],
+        "mean_valid_shots": 65.5
+      }
+    }
+  }
+}
