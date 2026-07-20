@@ -33,6 +33,11 @@ from .ppo_evaluation import (
     run_ppo_attack_evaluation,
     validate_ppo_checkpoint,
 )
+from .dqn_evaluation import (
+    DqnAttackEvaluation,
+    run_dqn_attack_evaluation,
+    validate_dqn_checkpoint,
+)
 from .cross_topology import (
     CROSS_TOPOLOGY_PROTOCOL,
     CrossTopologyMatrix,
@@ -67,6 +72,7 @@ __all__ = [
     "CrossTopologyMatrix",
     "CrossTopologyPpoAttackEvaluation",
     "CrossTopologyPpoSource",
+    "DqnAttackEvaluation",
     "HUNT_TARGET_POLICY_ID",
     "PLACEMENT_ENVIRONMENT_VERSION",
     "PlacementEvaluation",
@@ -82,11 +88,13 @@ __all__ = [
     "run_initial_attack_baselines",
     "run_cross_topology_matrix",
     "run_cross_topology_ppo_attack_evaluation",
+    "run_dqn_attack_evaluation",
     "run_ppo_attack_evaluation",
     "run_placement_evaluation",
     "run_placement_baseline_evaluation",
     "select_attack_hyperparameters",
     "summarize_attack_results",
     "validate_placement_checkpoint",
+    "validate_dqn_checkpoint",
     "validate_ppo_checkpoint",
 ]

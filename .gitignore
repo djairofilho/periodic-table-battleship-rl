@@ -13,3 +13,4 @@ wheels/
 .local-runs/
 artifacts/*-smoke/
 runs/*-smoke/
+runs/*-pilot/

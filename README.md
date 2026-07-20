@@ -90,6 +90,14 @@ frota durante o episódio. O contrato para uma futura liga de self-play e a
 decisão de não escalar para GPU sem variante promissora também estão
 documentados.
 
+## Ciclo v0.5: candidatas espaciais e apresentação
+
+O ciclo v0.5 prepara PPO-CNN, DQN mascarado, imitação de `hunt-target` e um
+protótipo GNN periódico. Nenhum piloto de validação é exibido como vencedor:
+uma política só entra no placar acima após seleção multi-seed e teste cego
+isolado. O [protocolo](docs/17-protocolo-v0.5.md) e a
+[apresentação visual](docs/19-apresentacao-v0.5.md) descrevem esse gate.
+
 ## Resultados da campanha v0.3
 
 A campanha controlada v0.3 está concluída. Ela usa HPO estritamente em
@@ -220,6 +228,13 @@ interpretadas como avaliação final de desempenho.
 - [Decisão de escala CPU/GPU](docs/14-decisao-de-escala-gpu.md)
 - [Liga e snapshots para self-play](docs/15-self-play-liga-e-snapshots.md)
 - [Avaliação cross-topology](docs/16-avaliacao-cross-topology.md)
+- [Protocolo v0.5](docs/17-protocolo-v0.5.md)
+- [PPO-CNN espacial](docs/17-ppo-cnn-espacial.md)
+- [DQN mascarado](docs/17-dqn-mascarado.md)
+- [Imitação de hunt-target](docs/18-imitacao-hunt-target.md)
+- [Protótipo GNN periódico](docs/18-gnn-periodic-prototype.md)
+- [Operação de agentes v0.5](docs/18-operacao-agentes-v0.5.md)
+- [Apresentação de resultados v0.5](docs/19-apresentacao-v0.5.md)
 - [Referências](docs/referencias.md)
 
 ## Desenvolvimento

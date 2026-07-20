@@ -3,14 +3,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Literal
+from typing import Any, Callable, Literal
 
 import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 
-from periodic_table_battleship_rl.game import Fleet, sample_random_legal_fleet
+from periodic_table_battleship_rl.game import Fleet, is_legal_fleet, sample_random_legal_fleet
 from periodic_table_battleship_rl.topology import Topology
+
+
+FleetFactory = Callable[[Topology, np.random.Generator], Fleet]
+"""Create a hidden legal fleet for one attack episode.
+
+The callable is owned by the environment, never by an attack policy.  It is
+used by the coupled self-play adapter while the default remains the benchmark
+random-fleet sampler.
+"""
 
 
 @dataclass(frozen=True, slots=True)
@@ -75,6 +84,7 @@ class AttackEnv(gym.Env[np.ndarray, int]):
         topology: Topology,
         *,
         config: AttackEnvironmentConfig | None = None,
+        fleet_factory: FleetFactory | None = None,
     ) -> None:
         """Create an attack environment for a fixed 10 by 18 topology."""
         super().__init__()
@@ -83,6 +93,9 @@ class AttackEnv(gym.Env[np.ndarray, int]):
 
         self.topology = topology
         self.config = AttackEnvironmentConfig() if config is None else config
+        self._fleet_factory = (
+            sample_random_legal_fleet if fleet_factory is None else fleet_factory
+        )
         self.action_space = spaces.Discrete(topology.action_count)
         self.observation_space = spaces.Box(
             low=0,
@@ -117,7 +130,11 @@ class AttackEnv(gym.Env[np.ndarray, int]):
         super().reset(seed=seed)
         assert self.np_random is not None
 
-        self._fleet = sample_random_legal_fleet(self.topology, self.np_random)
+        self._fleet = self._fleet_factory(self.topology, self.np_random)
+        if not isinstance(self._fleet, Fleet):
+            raise TypeError("fleet_factory must return a Fleet")
+        if not is_legal_fleet(self.topology, self._fleet):
+            raise ValueError("fleet_factory must return a legal fleet for the topology")
         self._ship_id_by_cell = {
             cell: placement.ship_id
             for placement in self._fleet.placements

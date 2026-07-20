@@ -17,6 +17,16 @@ from .league import (
     SnapshotProvenance,
     persist_self_play_campaign,
 )
+from .coupled import (
+    CoupledAttackEnv,
+    CoupledSelfPlayRunner,
+    CoupledTrainingOutput,
+    FleetSampler,
+    FrozenSuiteEvaluator,
+    PlacementPolicyFleetSampler,
+    PublicActionPolicy,
+    PublicAttackPolicyEvaluator,
+)
 
 __all__ = [
     "SELF_PLAY_SCHEMA_VERSION",
@@ -28,4 +38,12 @@ __all__ = [
     "SnapshotLeague",
     "SnapshotProvenance",
     "persist_self_play_campaign",
+    "CoupledAttackEnv",
+    "CoupledSelfPlayRunner",
+    "CoupledTrainingOutput",
+    "FleetSampler",
+    "FrozenSuiteEvaluator",
+    "PlacementPolicyFleetSampler",
+    "PublicActionPolicy",
+    "PublicAttackPolicyEvaluator",
 ]
