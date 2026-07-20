@@ -13,8 +13,9 @@ Usaremos documentação e GitHub juntos, com funções diferentes:
 
 Uma issue-pai com label `type: epic` organizará o trabalho, mas não substitui
 as specs. Quando disponível, ela usará sub-issues e dependências nativas do
-GitHub. O Project terá o fluxo `Backlog`, `Ready`, `In progress`, `Review` e
-`Done`.
+GitHub. O Project usa o fluxo padrão `Todo`, `In Progress` e `Done`; o label
+`blocked` indica dependência pendente. Novas colunas só serão adicionadas quando
+o volume de trabalho justificar a separação entre pronto e revisão.
 
 ## Estrutura no GitHub
 
