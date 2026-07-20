@@ -19,7 +19,7 @@ jobs:
       - name: Instalar Python
         run: uv python install 3.11
       - name: Sincronizar dependências
-        run: uv sync --all-groups
+        run: uv sync --all-groups --extra visual
       - name: Verificar estilo
         run: uv run ruff check .
       - name: Executar testes
