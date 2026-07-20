@@ -1,0 +1,165 @@
+"""Masked single-agent environment for the Battleship attack experiment."""
+
+from __future__ import annotations
+
+from typing import Any
+
+import gymnasium as gym
+import numpy as np
+from gymnasium import spaces
+
+from periodic_table_battleship_rl.game import Fleet, sample_random_legal_fleet
+from periodic_table_battleship_rl.topology import Topology
+
+
+class AttackEnv(gym.Env[np.ndarray, int]):
+    """Learn which unknown cell to shoot against a random legal fleet.
+
+    The public observation intentionally contains only scenario geometry and
+    outcomes of prior shots.  Fleet placement remains internal state throughout
+    an episode, including after a terminal transition.
+    """
+
+    metadata = {"render_modes": []}
+
+    def __init__(self, topology: Topology) -> None:
+        """Create an attack environment for a fixed 10 by 18 topology."""
+        super().__init__()
+        if topology.action_count != 180:
+            raise ValueError("attack environments require a 10x18 action canvas")
+
+        self.topology = topology
+        self.action_space = spaces.Discrete(topology.action_count)
+        self.observation_space = spaces.Box(
+            low=0,
+            high=1,
+            shape=(4, topology.rows, topology.columns),
+            dtype=np.uint8,
+        )
+        self.max_total_attempts = 2 * topology.valid_cell_count
+
+        self._valid_cells = frozenset(topology.valid_cells)
+        self._valid_mask = np.zeros(topology.action_count, dtype=np.bool_)
+        self._valid_mask[list(self._valid_cells)] = True
+        self._called_cells: set[int] = set()
+        self._hit_cells: set[int] = set()
+        self._missed_cells: set[int] = set()
+        self._sunk_ship_ids: set[str] = set()
+        self._fleet: Fleet | None = None
+        self._ship_id_by_cell: dict[int, str] = {}
+        self._episode_id = 0
+        self._valid_shots = 0
+        self._invalid_attempts = 0
+        self._total_attempts = 0
+
+    def reset(
+        self,
+        *,
+        seed: int | None = None,
+        options: dict[str, Any] | None = None,
+    ) -> tuple[np.ndarray, dict[str, int | bool]]:
+        """Sample a hidden ``random_legal-v1`` fleet and clear shot history."""
+        del options
+        super().reset(seed=seed)
+        assert self.np_random is not None
+
+        self._fleet = sample_random_legal_fleet(self.topology, self.np_random)
+        self._ship_id_by_cell = {
+            cell: placement.ship_id
+            for placement in self._fleet.placements
+            for cell in placement.cells
+        }
+        self._called_cells.clear()
+        self._hit_cells.clear()
+        self._missed_cells.clear()
+        self._sunk_ship_ids.clear()
+        self._valid_shots = 0
+        self._invalid_attempts = 0
+        self._total_attempts = 0
+        # A supplied seed is a stable public episode identifier.  This keeps
+        # all public reset/step output deterministic for Gymnasium's seeded
+        # environment contract, while unseeded episodes still receive a new ID.
+        self._episode_id = int(seed) if seed is not None else self._episode_id + 1
+        return self._observation(), self._info(is_hit=False, sunk_ship_length=0)
+
+    def step(
+        self, action: int
+    ) -> tuple[np.ndarray, float, bool, bool, dict[str, int | bool]]:
+        """Resolve one shot, treating a masked-out action as a penalised no-op."""
+        if self._fleet is None:
+            raise RuntimeError("reset() must be called before step()")
+
+        self._total_attempts += 1
+        action_value = int(action) if self.action_space.contains(action) else -1
+        if action_value not in self._valid_cells or action_value in self._called_cells:
+            self._invalid_attempts += 1
+            truncated = self._total_attempts >= self.max_total_attempts
+            return (
+                self._observation(),
+                -1.0,
+                False,
+                truncated,
+                self._info(is_hit=False, sunk_ship_length=0),
+            )
+
+        self._called_cells.add(action_value)
+        self._valid_shots += 1
+        is_hit = action_value in self._ship_id_by_cell
+        sunk_ship_length = 0
+        reward = 1.0 if is_hit else -1.0
+        if is_hit:
+            self._hit_cells.add(action_value)
+            ship_id = self._ship_id_by_cell[action_value]
+            placement = self._fleet.placement_for(ship_id)
+            if set(placement.cells).issubset(self._hit_cells):
+                self._sunk_ship_ids.add(ship_id)
+                sunk_ship_length = placement.length
+        else:
+            self._missed_cells.add(action_value)
+
+        terminated = self._hit_cells == self._fleet.occupied_cells
+        if terminated:
+            reward += float(self._fleet.segment_count)
+        truncated = not terminated and self._total_attempts >= self.max_total_attempts
+        return (
+            self._observation(),
+            reward,
+            terminated,
+            truncated,
+            self._info(is_hit=is_hit, sunk_ship_length=sunk_ship_length),
+        )
+
+    def action_masks(self) -> np.ndarray:
+        """Return the valid, not-yet-called shots as a boolean action mask."""
+        mask = self._valid_mask.copy()
+        if self._called_cells:
+            mask[list(self._called_cells)] = False
+        return mask
+
+    def _observation(self) -> np.ndarray:
+        observation = np.zeros(self.observation_space.shape, dtype=np.uint8)
+        observation[0] = self._valid_mask.reshape(self.topology.rows, self.topology.columns)
+        if self._fleet is None:
+            return observation
+
+        sunk_cells = {
+            cell
+            for placement in self._fleet.placements
+            if placement.ship_id in self._sunk_ship_ids
+            for cell in placement.cells
+        }
+        active_hits = self._hit_cells - sunk_cells
+        for channel, cells in ((1, active_hits), (2, sunk_cells), (3, self._missed_cells)):
+            if cells:
+                rows, columns = zip(*(self.topology.coordinate_for(cell) for cell in cells))
+                observation[channel, rows, columns] = 1
+        return observation
+
+    def _info(self, *, is_hit: bool, sunk_ship_length: int) -> dict[str, int | bool]:
+        return {
+            "is_hit": is_hit,
+            "sunk_ship_length": sunk_ship_length,
+            "valid_shots": self._valid_shots,
+            "invalid_attempts": self._invalid_attempts,
+            "episode_id": self._episode_id,
+        }
