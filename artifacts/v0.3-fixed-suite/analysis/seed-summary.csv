@@ -1,0 +1,42 @@
+experiment,scenario,attacker_id,policy_id,metric,direction,seed_count,episode_count,mean,seed_standard_deviation,lower_95,upper_95,bootstrap_resamples
+attack,battleship,,Hunt-target,valid_shots,lower,100,100,61.75,15.692354826475215,58.68,64.82,10000
+attack,battleship,,MaskablePPO (multi-seed),valid_shots,lower,100,500,94.23000000000002,2.8622764126873323,93.66799999999999,94.76199999999999,10000
+attack,battleship,,Random masked,valid_shots,lower,100,100,95.37,5.3041912149209365,94.29,96.36,10000
+attack,dense-118,,Hunt-target,valid_shots,lower,100,100,71.62,15.378576203947038,68.6,74.64,10000
+attack,dense-118,,MaskablePPO (multi-seed),valid_shots,lower,100,500,111.6,2.569282413673538,111.10794999999997,112.09405000000001,10000
+attack,dense-118,,Random masked,valid_shots,lower,100,100,112.69,4.685449214689489,111.73,113.58,10000
+attack,periodic-table-battleship,,Hunt-target,valid_shots,lower,100,100,69.33,18.307725917842124,65.8,72.95,10000
+attack,periodic-table-battleship,,MaskablePPO (multi-seed),valid_shots,lower,100,500,110.77600000000001,2.4351433699729537,110.288,111.23800000000001,10000
+attack,periodic-table-battleship,,Random masked,valid_shots,lower,100,100,112.3,6.373081014404384,111.02,113.53,10000
+placement,battleship,hunt-target-v1,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,61.27199999999999,6.27159831737855,60.01195,62.5,10000
+placement,battleship,hunt-target-v1,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,66.22,12.37836170031553,63.81,68.61,10000
+placement,battleship,hunt-target-v1,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,66.79,12.638960927755624,64.35,69.31,10000
+placement,battleship,hunt-target-v1,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,64.59,13.636029962247557,62.0,67.22,10000
+placement,battleship,maskable-ppo-v1:v03-attack-classic-s3103:v0.3-fixed-suite-seed-3103-step-20000,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,100.0,0.0,100.0,100.0,10000
+placement,battleship,maskable-ppo-v1:v03-attack-classic-s3103:v0.3-fixed-suite-seed-3103-step-20000,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,97.65,2.836896155656706,97.06,98.17,10000
+placement,battleship,maskable-ppo-v1:v03-attack-classic-s3103:v0.3-fixed-suite-seed-3103-step-20000,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,89.58,3.402850854709025,88.89,90.2,10000
+placement,battleship,maskable-ppo-v1:v03-attack-classic-s3103:v0.3-fixed-suite-seed-3103-step-20000,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,93.68,5.452976205243289,92.6,94.71,10000
+placement,battleship,random-masked-v1,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,95.354,2.4789790990924825,94.86794999999998,95.83200000000001,10000
+placement,battleship,random-masked-v1,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,94.7,4.92058138964505,93.72,95.64,10000
+placement,battleship,random-masked-v1,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,95.02,4.550457852421739,94.1,95.88,10000
+placement,battleship,random-masked-v1,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,96.04,4.851158353809673,95.04,96.94,10000
+placement,battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,83.594,18.83633829607125,79.9219,87.266,10000
+placement,battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,85.68,16.92758193904346,82.24,88.89,10000
+placement,battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,84.45,14.56672214121605,81.5,87.23,10000
+placement,battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,83.99,17.62143724288829,80.48,87.34,10000
+placement,periodic-table-battleship,hunt-target-v1,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,72.992,7.497496956055442,71.5619,74.462,10000
+placement,periodic-table-battleship,hunt-target-v1,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,73.86,15.703065389479299,70.88975,77.04025,10000
+placement,periodic-table-battleship,hunt-target-v1,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,77.82,15.23445059227555,74.86,80.8,10000
+placement,periodic-table-battleship,hunt-target-v1,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,70.33,15.810145700489514,67.31,73.4,10000
+placement,periodic-table-battleship,maskable-ppo-v1:v03-attack-periodic-s3101:v0.3-fixed-suite-seed-3101-step-30000,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,118.0,0.0,118.0,118.0,10000
+placement,periodic-table-battleship,maskable-ppo-v1:v03-attack-periodic-s3101:v0.3-fixed-suite-seed-3101-step-30000,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,112.34,3.444275003978385,111.65,113.0,10000
+placement,periodic-table-battleship,maskable-ppo-v1:v03-attack-periodic-s3101:v0.3-fixed-suite-seed-3101-step-30000,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,109.82,5.135300685579486,108.73,110.76,10000
+placement,periodic-table-battleship,maskable-ppo-v1:v03-attack-periodic-s3101:v0.3-fixed-suite-seed-3101-step-30000,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,111.3,6.42674336682509,109.96,112.5,10000
+placement,periodic-table-battleship,random-masked-v1,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,111.972,3.3069281421545487,111.31800000000003,112.59399999999998,10000
+placement,periodic-table-battleship,random-masked-v1,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,112.91,4.847356876367645,111.94,113.83,10000
+placement,periodic-table-battleship,random-masked-v1,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,112.65,5.213376346408624,111.63975,113.63024999999999,10000
+placement,periodic-table-battleship,random-masked-v1,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,113.94,4.565615893266591,113.02,114.78,10000
+placement,periodic-table-battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,MaskablePPO placement (multi-seed),valid_shots_to_sink,higher,100,500,99.37,20.996245455612375,95.20589999999999,103.49605000000001,10000
+placement,periodic-table-battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,dispersion-placement-v1,valid_shots_to_sink,higher,100,100,99.23,21.36023635097929,95.03975000000001,103.25,10000
+placement,periodic-table-battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,hunt-target-resistant-placement-v1,valid_shots_to_sink,higher,100,100,99.8,18.917150574507406,95.95,103.39025,10000
+placement,periodic-table-battleship,v0.3-fixed-suite-random-hunt-frozen-ppo,random-legal-placement-v1,valid_shots_to_sink,higher,100,100,101.01,18.552407341954794,97.28,104.54,10000
