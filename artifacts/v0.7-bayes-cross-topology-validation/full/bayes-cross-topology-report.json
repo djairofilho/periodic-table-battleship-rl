@@ -24,8 +24,8 @@
       8810
     ]
   },
-  "git_commit": "aca6ee8f085c9b08e19297888fd7009e89969e6e-dirty",
-  "working_tree_dirty": true,
+  "git_commit": "aee6e263940818b7aac38ec2ffd503a06a2c092b",
+  "working_tree_dirty": false,
   "candidate": "belief_probability_mc-v1",
   "reference": "hunt_target-v1",
   "sampler": {
@@ -550,8 +550,8 @@
         ]
       },
       "elapsed_seconds": {
-        "candidate": 9.899740799999563,
-        "reference": 0.12047169999277685
+        "candidate": 8.142283299996052,
+        "reference": 0.09323429998767097
       }
     },
     "dense-118": {
@@ -1071,8 +1071,8 @@
         ]
       },
       "elapsed_seconds": {
-        "candidate": 11.502662099999725,
-        "reference": 0.13806040000054054
+        "candidate": 10.435620899996138,
+        "reference": 0.10980500000005122
       }
     },
     "periodic-table-battleship": {
@@ -1592,8 +1592,8 @@
         ]
       },
       "elapsed_seconds": {
-        "candidate": 13.066226599999936,
-        "reference": 0.11208880000049248
+        "candidate": 10.093531599995913,
+        "reference": 0.1983199000096647
       }
     }
   }
