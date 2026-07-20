@@ -9,6 +9,7 @@ Esta página executa a issue [#66](https://github.com/djairofilho/periodic-table
 | GPU física | NVIDIA GeForce GTX 1650, 4.096 MiB de VRAM |
 | Driver NVIDIA | 591.74; `nvidia-smi` anuncia compatibilidade com CUDA 13.1 |
 | Ambiente publicado | `.venv`, PyTorch `2.13.0+cpu`, CUDA indisponível |
+| Ambiente isolado validado | `.venv-cuda`, PyTorch `2.13.0+cu130`, CUDA disponível |
 | Wheel CUDA escolhido | `torch==2.13.0+cu130`, CPython 3.11, Windows x86-64 |
 | Origem do wheel | índice oficial `https://download.pytorch.org/whl/cu130` |
 | Isolamento | `.venv-cuda` é separada, não altera `pyproject.toml`, `uv.lock` nem `.venv` |
@@ -50,7 +51,13 @@ O comando falha se `torch.cuda.is_available()` for falso. Quando bem-sucedido, o
 
 ## Estado desta execução
 
-Em 20 de julho de 2026, o inventário do driver foi validado e o wheel correto foi confirmado no índice oficial. A instalação inicial não foi concluída dentro do limite operacional, pois precisa transferir 1,78 GiB; consequentemente, a evidência `cuda-readiness.json` ainda está pendente. Isso não é uma alegação de CUDA funcional: o ambiente publicado continua CPU-only até que o comando de verificação passe.
+Em 20 de julho de 2026, o wheel foi instalado exclusivamente em `.venv-cuda`
+e `scripts/verify_cuda_environment.py --require-cuda` passou. A evidência
+versionada confirma uma operação real na GTX 1650, PyTorch `2.13.0+cu130` e
+runtime CUDA 13.0 em
+[`artifacts/v0.6-cuda-readiness/cuda-readiness.json`](../artifacts/v0.6-cuda-readiness/cuda-readiness.json).
+O ambiente publicado `.venv` continua CPU-only de propósito; ele não foi
+alterado nem usado para produzir a medição CUDA.
 
 ## Prontidão para a issue #67
 

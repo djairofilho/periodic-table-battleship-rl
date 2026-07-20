@@ -1,0 +1,23 @@
+{
+  "cuda_capability": [
+    7,
+    5
+  ],
+  "cuda_device": "NVIDIA GeForce GTX 1650",
+  "cuda_device_count": 1,
+  "cuda_peak_allocated_bytes": 8704,
+  "cuda_ready": true,
+  "cuda_smoke_sum": 357389824.0,
+  "nvidia_smi": {
+    "available": true,
+    "devices": [
+      "NVIDIA GeForce GTX 1650, 591.74, 4096"
+    ]
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\Usuario\\Documents\\programacao\\chemisty-games\\periodic-table-battleship-rl\\.venv-cuda\\Scripts\\python.exe",
+  "torch_cuda_version": "13.0",
+  "torch_installed": true,
+  "torch_version": "2.13.0+cu130"
+}
