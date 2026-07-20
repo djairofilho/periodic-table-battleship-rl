@@ -28,7 +28,10 @@ import numpy as np
 from periodic_table_battleship_rl.analysis.statistics import bootstrap_mean_interval
 from periodic_table_battleship_rl.envs import AttackEnv
 from periodic_table_battleship_rl.evaluation import RunConfig
-from periodic_table_battleship_rl.evaluation.schemas import EpisodeResult, PlacementResult
+from periodic_table_battleship_rl.evaluation.schemas import (
+    EpisodeResult,
+    PlacementResult,
+)
 from periodic_table_battleship_rl.evaluation.storage import write_json_atomic
 from periodic_table_battleship_rl.experiments import (
     HUNT_TARGET_POLICY_ID,
@@ -43,7 +46,9 @@ from periodic_table_battleship_rl.experiments import (
     run_placement_evaluation,
     run_ppo_attack_evaluation,
 )
-from periodic_table_battleship_rl.experiments.attack_baselines import ENVIRONMENT_VERSION
+from periodic_table_battleship_rl.experiments.attack_baselines import (
+    ENVIRONMENT_VERSION,
+)
 from periodic_table_battleship_rl.experiments.placement_evaluation import (
     PLACEMENT_ENVIRONMENT_VERSION,
 )
@@ -98,6 +103,7 @@ from periodic_table_battleship_rl.visualization import (
 
 ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN_ID = "v0.3-fixed-suite"
+RUN_PREFIX = "v03"
 ATTACK_TOPOLOGIES = (BATTLESHIP, DENSE_118, PERIODIC_TABLE_BATTLESHIP)
 PLACEMENT_TOPOLOGIES = (BATTLESHIP, PERIODIC_TABLE_BATTLESHIP)
 
@@ -190,12 +196,14 @@ def _commit() -> str:
     ).strip()
 
 
-def _attack_candidates(schedule: CampaignSchedule) -> tuple[AttackHyperparameterCandidate, ...]:
+def _attack_candidates(
+    schedule: CampaignSchedule,
+) -> tuple[AttackHyperparameterCandidate, ...]:
     """Return the narrow, pre-declared PPO search grid used by every topology."""
 
     return (
         AttackHyperparameterCandidate(
-            candidate_id="conservative-lr",
+            candidate_id="lr-1e-4",
             total_timesteps=schedule.hpo_timesteps,
             n_steps=256,
             batch_size=64,
@@ -203,7 +211,7 @@ def _attack_candidates(schedule: CampaignSchedule) -> tuple[AttackHyperparameter
             device="cpu",
         ),
         AttackHyperparameterCandidate(
-            candidate_id="standard",
+            candidate_id="lr-3e-4",
             total_timesteps=schedule.hpo_timesteps,
             n_steps=256,
             batch_size=64,
@@ -211,7 +219,7 @@ def _attack_candidates(schedule: CampaignSchedule) -> tuple[AttackHyperparameter
             device="cpu",
         ),
         AttackHyperparameterCandidate(
-            candidate_id="fast-lr",
+            candidate_id="lr-1e-3",
             total_timesteps=schedule.hpo_timesteps,
             n_steps=256,
             batch_size=64,
@@ -219,6 +227,16 @@ def _attack_candidates(schedule: CampaignSchedule) -> tuple[AttackHyperparameter
             device="cpu",
         ),
     )
+
+
+def _topology_slug(topology: Topology) -> str:
+    """Return a compact, stable ID for Windows-safe generated paths."""
+
+    return {
+        BATTLESHIP.name: "classic",
+        DENSE_118.name: "dense",
+        PERIODIC_TABLE_BATTLESHIP.name: "periodic",
+    }[topology.name]
 
 
 def _attack_run_config(
@@ -291,7 +309,9 @@ def _mean(values: Iterable[float]) -> float:
     return float(array.mean())
 
 
-def _select_attack_checkpoint(artifact: AttackTrainingArtifact) -> AttackCheckpointArtifact:
+def _select_attack_checkpoint(
+    artifact: AttackTrainingArtifact,
+) -> AttackCheckpointArtifact:
     if not artifact.checkpoints:
         raise ValueError("final attack training must contain validation checkpoints")
     return min(
@@ -309,7 +329,7 @@ def _tune_attack(
     commit: str,
 ) -> AttackHyperparameterCandidate:
     config = AttackTuningConfig(
-        search_id=f"{CAMPAIGN_ID}-attack-hpo-{topology.name}",
+        search_id=f"{RUN_PREFIX}-hpo-{_topology_slug(topology)}",
         scenario=topology.name,
         training_seeds=schedule.hpo_train_seeds,
         validation_seeds=schedule.hpo_validation_seeds,
@@ -346,7 +366,7 @@ def _train_final_attack_models(
     )
     models: list[AttackFinalModel] = []
     for seed in schedule.final_train_seeds:
-        run_id = f"{CAMPAIGN_ID}-attack-{topology.name}-seed-{seed}"
+        run_id = f"{RUN_PREFIX}-attack-{_topology_slug(topology)}-s{seed}"
         artifact = train_attack_policy(
             topology,
             AttackTrainingConfig(
@@ -366,7 +386,9 @@ def _train_final_attack_models(
             AttackFinalModel(
                 artifact=artifact,
                 checkpoint=checkpoint,
-                policy=load_attack_policy(checkpoint.checkpoint_path, device=candidate.device),
+                policy=load_attack_policy(
+                    checkpoint.checkpoint_path, device=candidate.device
+                ),
             )
         )
     return tuple(models)
@@ -384,7 +406,7 @@ def _evaluate_attack(
     labels: dict[str, str] = {}
     selected: list[dict[str, int]] = []
     for model in models:
-        run_id = f"{CAMPAIGN_ID}-attack-{topology.name}-seed-{model.seed}-test"
+        run_id = f"{RUN_PREFIX}-attack-{_topology_slug(topology)}-s{model.seed}-test"
         evaluation = run_ppo_attack_evaluation(
             _attack_run_config(
                 run_id,
@@ -407,14 +429,16 @@ def _evaluate_attack(
         )
         results.extend(evaluation.results)
         labels[run_id] = "MaskablePPO (multi-seed)"
-        selected.append({"seed": model.seed, "checkpoint_step": model.checkpoint.training_step})
+        selected.append(
+            {"seed": model.seed, "checkpoint_step": model.checkpoint.training_step}
+        )
 
     baseline_results: dict[str, tuple[EpisodeResult, ...]] = {}
-    for policy_id, label in (
-        (RANDOM_MASKED_POLICY_ID, "Random masked"),
-        (HUNT_TARGET_POLICY_ID, "Hunt-target"),
+    for policy_id, label, suffix in (
+        (RANDOM_MASKED_POLICY_ID, "Random masked", "random"),
+        (HUNT_TARGET_POLICY_ID, "Hunt-target", "hunt"),
     ):
-        run_id = f"{CAMPAIGN_ID}-attack-{topology.name}-{policy_id}-test"
+        run_id = f"{RUN_PREFIX}-attack-{_topology_slug(topology)}-{suffix}-test"
         baseline = run_attack_baseline(
             _attack_baseline_config(run_id, topology, policy_id, schedule),
             topology,
@@ -425,13 +449,19 @@ def _evaluate_attack(
         results.extend(baseline.results)
         baseline_results[policy_id] = baseline.results
         labels[run_id] = label
-    return results, labels, {
-        "selected_checkpoints": selected,
-        "baseline_results": baseline_results,
-    }
+    return (
+        results,
+        labels,
+        {
+            "selected_checkpoints": selected,
+            "baseline_results": baseline_results,
+        },
+    )
 
 
-def _frozen_mixture(topology: Topology, models: Sequence[AttackFinalModel]) -> FrozenDefensiveMixture:
+def _frozen_mixture(
+    topology: Topology, models: Sequence[AttackFinalModel]
+) -> FrozenDefensiveMixture:
     """Freeze the best final validation checkpoint into the defensive suite."""
 
     frozen = min(
@@ -470,7 +500,7 @@ def _train_final_placement_models(
 ) -> tuple[PlacementFinalModel, ...]:
     models: list[PlacementFinalModel] = []
     for seed in schedule.final_train_seeds:
-        run_id = f"{CAMPAIGN_ID}-placement-{topology.name}-seed-{seed}"
+        run_id = f"{RUN_PREFIX}-placement-{_topology_slug(topology)}-s{seed}"
         artifact = train_placement_policy(
             topology,
             PlacementTrainingConfig(
@@ -507,7 +537,7 @@ def _evaluate_placement(
     labels: dict[str, str] = {}
     for model in models:
         validation_run_id = (
-            f"{CAMPAIGN_ID}-placement-{topology.name}-seed-{model.seed}-validation"
+            f"{RUN_PREFIX}-placement-{_topology_slug(topology)}-s{model.seed}-val"
         )
         run_placement_evaluation(
             _placement_config(
@@ -516,7 +546,10 @@ def _evaluate_placement(
                 "validation",
                 schedule.final_validation_seeds,
                 PLACEMENT_POLICY_ID,
-                parameters={"training_seed": model.seed, "selection": "validation-only"},
+                parameters={
+                    "training_seed": model.seed,
+                    "selection": "validation-only",
+                },
             ),
             topology,
             model.policy,
@@ -527,7 +560,9 @@ def _evaluate_placement(
             git_commit=commit,
             uv_lock_path=ROOT / "uv.lock",
         )
-        test_run_id = f"{CAMPAIGN_ID}-placement-{topology.name}-seed-{model.seed}-test"
+        test_run_id = (
+            f"{RUN_PREFIX}-placement-{_topology_slug(topology)}-s{model.seed}-test"
+        )
         evaluation = run_placement_evaluation(
             _placement_config(
                 test_run_id,
@@ -535,7 +570,10 @@ def _evaluate_placement(
                 "test",
                 schedule.test_seeds,
                 PLACEMENT_POLICY_ID,
-                parameters={"training_seed": model.seed, "comparison_split": "blind-test"},
+                parameters={
+                    "training_seed": model.seed,
+                    "comparison_split": "blind-test",
+                },
             ),
             topology,
             model.policy,
@@ -555,8 +593,10 @@ def _evaluate_placement(
         HuntTargetResistantPlacementPolicy(topology),
     )
     baseline_results: dict[str, tuple[PlacementResult, ...]] = {}
-    for policy in baselines:
-        run_id = f"{CAMPAIGN_ID}-placement-{topology.name}-{policy.policy_id}-test"
+    for policy, suffix in zip(
+        baselines, ("random", "dispersion", "resistant"), strict=True
+    ):
+        run_id = f"{RUN_PREFIX}-placement-{_topology_slug(topology)}-{suffix}-test"
         evaluation = run_placement_baseline_evaluation(
             _placement_config(
                 run_id,
@@ -587,7 +627,10 @@ def _by_seed_mean(
 ) -> dict[int, float]:
     grouped: dict[int, list[float]] = {}
     for result in results:
-        if attacker_id is not None and getattr(result, "attacker_id", None) != attacker_id:
+        if (
+            attacker_id is not None
+            and getattr(result, "attacker_id", None) != attacker_id
+        ):
             continue
         grouped.setdefault(result.seed, []).append(float(getattr(result, metric)))
     return {seed: _mean(values) for seed, values in sorted(grouped.items())}
@@ -627,7 +670,9 @@ def _attack_trace(topology: Topology, policy: MaskableAttackPolicy, seed: int):
     recorder = AttackTraceRecorder(topology, observation)
     terminated = truncated = False
     while not (terminated or truncated):
-        action = policy.select_action(observation, environment.action_masks(), deterministic=True)
+        action = policy.select_action(
+            observation, environment.action_masks(), deterministic=True
+        )
         observation, reward, terminated, truncated, info = environment.step(action)
         recorder.record(
             action=action,
@@ -690,7 +735,9 @@ def main() -> None:
     attack_labels: dict[str, str] = {}
     attack_statistics: dict[str, object] = {}
     for topology in ATTACK_TOPOLOGIES:
-        candidate = _tune_attack(topology, schedule, local_models=local_models, runs=runs, commit=commit)
+        candidate = _tune_attack(
+            topology, schedule, local_models=local_models, runs=runs, commit=commit
+        )
         models = _train_final_attack_models(
             topology, candidate, schedule, local_models=local_models
         )
@@ -704,7 +751,12 @@ def main() -> None:
             "hpo_selected_candidate": candidate.to_dict(),
             "selected_final_checkpoints": extra["selected_checkpoints"],
             "ppo_minus_hunt_valid_shots": _paired_bootstrap(
-                [result for result in topology_results if result.run_id in labels and labels[result.run_id] == "MaskablePPO (multi-seed)"],
+                [
+                    result
+                    for result in topology_results
+                    if result.run_id in labels
+                    and labels[result.run_id] == "MaskablePPO (multi-seed)"
+                ],
                 extra["baseline_results"][HUNT_TARGET_POLICY_ID],
                 "valid_shots",
             ),
@@ -759,7 +811,9 @@ def main() -> None:
         attack_results, tables / "attack-test-summary.md", policy_by_run=attack_labels
     )
     plot_attack_comparison(
-        attack_results, figures / "attack-test-comparison.png", policy_by_run=attack_labels
+        attack_results,
+        figures / "attack-test-comparison.png",
+        policy_by_run=attack_labels,
     )
     write_placement_results_csv(
         placement_results,
@@ -780,7 +834,8 @@ def main() -> None:
         ppo_results = [
             result
             for result in placement_evaluations[topology.name]
-            if placement_labels.get(result.run_id) == "MaskablePPO placement (multi-seed)"
+            if placement_labels.get(result.run_id)
+            == "MaskablePPO placement (multi-seed)"
         ]
         plot_placement_segment_heatmap(
             ppo_results,
@@ -794,7 +849,9 @@ def main() -> None:
         key=lambda model: (model.checkpoint.mean_valid_shots, model.seed),
     )
     write_attack_trace_gif(
-        _attack_trace(PERIODIC_TABLE_BATTLESHIP, frozen_periodic.policy, schedule.test_seeds[0]),
+        _attack_trace(
+            PERIODIC_TABLE_BATTLESHIP, frozen_periodic.policy, schedule.test_seeds[0]
+        ),
         figures / "periodic-ppo-attack.gif",
     )
     periodic_mixture_result = next(
@@ -817,7 +874,9 @@ def main() -> None:
         "git_commit": commit,
         "protocol": {
             "hpo": {
-                "candidates": [candidate.to_dict() for candidate in _attack_candidates(schedule)],
+                "candidates": [
+                    candidate.to_dict() for candidate in _attack_candidates(schedule)
+                ],
                 "training_seeds": list(schedule.hpo_train_seeds),
                 "validation_seeds": list(schedule.hpo_validation_seeds),
             },
