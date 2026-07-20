@@ -7,10 +7,12 @@ from .defensive import (
     RandomMaskedEvaluator,
     default_defensive_mixture,
 )
+from .ppo import FrozenPPOEvaluator
 
 __all__ = [
     "DEFAULT_DEFENSIVE_WEIGHTS",
     "FrozenDefensiveMixture",
+    "FrozenPPOEvaluator",
     "HuntTargetEvaluator",
     "RandomMaskedEvaluator",
     "default_defensive_mixture",

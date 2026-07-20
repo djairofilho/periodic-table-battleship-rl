@@ -14,14 +14,34 @@ from .attack import (
     load_training_metadata,
     train_attack_policy,
 )
+from .placement import (
+    PLACEMENT_POLICY_ID,
+    PLACEMENT_TRAINING_SCHEMA_VERSION,
+    MaskablePlacementPolicy,
+    PlacementTrainingArtifact,
+    PlacementTrainingConfig,
+    PlacementTrainingDependencyError,
+    load_placement_policy,
+    load_placement_training_metadata,
+    train_placement_policy,
+)
 
 __all__ = [
     "ATTACK_POLICY_ID",
     "AttackTrainingArtifact",
     "AttackTrainingConfig",
     "MaskableAttackPolicy",
+    "MaskablePlacementPolicy",
+    "PLACEMENT_POLICY_ID",
+    "PLACEMENT_TRAINING_SCHEMA_VERSION",
+    "PlacementTrainingArtifact",
+    "PlacementTrainingConfig",
+    "PlacementTrainingDependencyError",
     "TrainingDependencyError",
     "load_attack_policy",
+    "load_placement_policy",
+    "load_placement_training_metadata",
     "load_training_metadata",
     "train_attack_policy",
+    "train_placement_policy",
 ]
