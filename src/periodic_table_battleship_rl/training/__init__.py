@@ -67,6 +67,15 @@ from .imitation import (
     load_imitation_training_metadata,
     train_hunt_target_imitation,
 )
+from .hybrid_belief import (
+    HYBRID_BELIEF_PPO_POLICY_ID,
+    HYBRID_BELIEF_TRAINING_SCHEMA_VERSION,
+    HybridBeliefAttackTrainingConfig,
+    evaluate_hybrid_belief_validation,
+    load_hybrid_belief_attack_policy,
+    load_hybrid_belief_training_metadata,
+    train_hybrid_belief_attack_policy,
+)
 
 __all__ = [
     "ATTACK_POLICY_ID",
@@ -94,8 +103,11 @@ __all__ = [
     "HuntTargetDatasetConfig",
     "IMITATION_PPO_POLICY_ID",
     "IMITATION_TRAINING_SCHEMA_VERSION",
+    "HYBRID_BELIEF_PPO_POLICY_ID",
+    "HYBRID_BELIEF_TRAINING_SCHEMA_VERSION",
     "ImitationTrainingArtifact",
     "ImitationTrainingConfig",
+    "HybridBeliefAttackTrainingConfig",
     "PLACEMENT_POLICY_ID",
     "PLACEMENT_TRAINING_SCHEMA_VERSION",
     "PlacementTrainingArtifact",
@@ -115,6 +127,8 @@ __all__ = [
     "load_hunt_target_dataset",
     "load_hunt_target_imitation_policy",
     "load_imitation_training_metadata",
+    "load_hybrid_belief_attack_policy",
+    "load_hybrid_belief_training_metadata",
     "load_placement_policy",
     "load_placement_training_metadata",
     "load_training_metadata",
@@ -122,6 +136,8 @@ __all__ = [
     "spatial_features_extractor",
     "train_cnn_attack_policy",
     "train_hunt_target_imitation",
+    "train_hybrid_belief_attack_policy",
     "train_masked_dqn_attack_policy",
     "train_placement_policy",
+    "evaluate_hybrid_belief_validation",
 ]

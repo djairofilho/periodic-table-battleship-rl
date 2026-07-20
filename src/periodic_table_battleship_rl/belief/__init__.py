@@ -20,9 +20,17 @@ from .planners import (
     probability_action,
     short_horizon_action,
 )
+from .features import (
+    BELIEF_FEATURE_SCHEMA_VERSION,
+    BeliefAugmentedAttackEnv,
+    BeliefFeatureConfig,
+)
 
 __all__ = [
     "BeliefPlanner",
+    "BeliefAugmentedAttackEnv",
+    "BeliefFeatureConfig",
+    "BELIEF_FEATURE_SCHEMA_VERSION",
     "BeliefPopulation",
     "CompatibleFleetLimitError",
     "MonteCarloDiagnostics",

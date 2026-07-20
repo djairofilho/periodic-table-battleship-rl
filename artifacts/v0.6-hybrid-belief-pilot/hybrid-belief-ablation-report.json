@@ -1,0 +1,53 @@
+{
+  "schema_version": "hybrid-belief-ablation-v1",
+  "issue": 64,
+  "split": "validation",
+  "blind_test_used": false,
+  "scenario": "battleship",
+  "training_seeds": [
+    8811,
+    8812,
+    8813
+  ],
+  "validation_seeds": [
+    8801,
+    8802,
+    8803
+  ],
+  "timesteps": 1024,
+  "smoke": false,
+  "control": {
+    "policy": "maskable-ppo-cnn-v1",
+    "mean_valid_shots": 96.88888888888887,
+    "training_seed_std": 2.042752923427802,
+    "mean_valid_shots_by_training_seed": [
+      94.0,
+      98.33333333333333,
+      98.33333333333333
+    ]
+  },
+  "candidate": {
+    "policy": "maskable-ppo-cnn-public-belief-v1",
+    "mean_valid_shots": 97.22222222222223,
+    "training_seed_std": 1.6629588385661966,
+    "mean_valid_shots_by_training_seed": [
+      95.0,
+      97.66666666666667,
+      99.0
+    ],
+    "belief_features": {
+      "schema_version": "public-belief-maps-v1",
+      "sampler_id": "constrained-backtracking-v1",
+      "posterior_exact": false,
+      "sample_count": 2,
+      "max_restarts_per_sample": 128,
+      "max_nodes_per_sample": 8192,
+      "sampler_seed": 0
+    }
+  },
+  "candidate_minus_control": 0.333333333333357,
+  "git_commit": "5588e3a3bb6c677663f9fd231ede5892211bc8d1",
+  "working_tree_dirty": true,
+  "promotion_eligible": false,
+  "conclusion": "Validation-only ablation; multi-seed gate remains required for promotion."
+}
