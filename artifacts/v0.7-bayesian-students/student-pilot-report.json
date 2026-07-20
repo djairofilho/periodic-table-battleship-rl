@@ -14,27 +14,27 @@
     9651,
     9652
   ],
-  "sample_count": 2,
-  "epochs": 4,
+  "sample_count": 8,
+  "epochs": 24,
   "topologies": {
     "battleship": {
       "valid_cells": 100,
       "datasets": {
         "train": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\battleship-train\\demonstrations.npz",
-          "sha256": "00ba7df58918bab02448448eb3fa6cd2805a465635dea80f18007ec0003d1e51",
-          "decisions": 91
+          "sha256": "6c49e97ba078de0ed3d7bf9a47e74647e29c1e39a0a7b399d253c10d13c4733d",
+          "decisions": 105
         },
         "validation": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\battleship-validation\\demonstrations.npz",
-          "sha256": "5f8ee5ba11b46099cc1615c0877fadd8dd9e31d6867f4f19a3969142fbf49fc7",
-          "decisions": 105
+          "sha256": "774df431c632bef213c1842f7f03e2a4bb8b2a0f8b073af0558d6099da4044e3",
+          "decisions": 88
         }
       },
       "students": {
         "cnn": {
-          "training_action_agreement": 0.20879121124744415,
-          "validation_teacher_action_agreement": 0.11428571492433548,
+          "training_action_agreement": 0.18095238506793976,
+          "validation_teacher_action_agreement": 0.11363636702299118,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -42,33 +42,53 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 63,
-                "auc_discovery": 0.6676470588235294,
-                "first_hit_shot": 1,
+                "valid_shots": 60,
+                "auc_discovery": 0.6788235294117647,
+                "first_hit_shot": 4,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 84,
-                "auc_discovery": 0.6847058823529412,
-                "first_hit_shot": 6,
+                "valid_shots": 64,
+                "auc_discovery": 0.69,
+                "first_hit_shot": 8,
                 "won": true
               }
             ],
-            "mean_valid_shots": 73.5,
-            "mean_auc_discovery": 0.6761764705882353
+            "mean_valid_shots": 62.0,
+            "mean_auc_discovery": 0.6844117647058823
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\battleship-cnn\\student.pt",
           "losses": [
-            3.440131425857544,
-            3.426602840423584,
-            3.422600030899048,
-            3.416758179664612
+            3.1459978818893433,
+            3.1365503072738647,
+            3.1270878314971924,
+            3.1163859367370605,
+            3.1099618673324585,
+            3.094406485557556,
+            3.0809929370880127,
+            3.0703439712524414,
+            3.0538095235824585,
+            3.032215714454651,
+            3.0161458253860474,
+            2.9906833171844482,
+            2.967563271522522,
+            2.939853072166443,
+            2.9216432571411133,
+            2.8882676362991333,
+            2.8581875562667847,
+            2.8358672857284546,
+            2.7934998273849487,
+            2.764821171760559,
+            2.752519130706787,
+            2.7133442163467407,
+            2.693963885307312,
+            2.6434279680252075
           ]
         },
         "gnn": {
-          "training_action_agreement": 0.09890110045671463,
-          "validation_teacher_action_agreement": 0.06666667014360428,
+          "training_action_agreement": 0.13333334028720856,
+          "validation_teacher_action_agreement": 0.125,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -76,28 +96,48 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 37,
-                "auc_discovery": 0.7970588235294118,
-                "first_hit_shot": 6,
+                "valid_shots": 64,
+                "auc_discovery": 0.7047058823529412,
+                "first_hit_shot": 7,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 55,
-                "auc_discovery": 0.6629411764705883,
-                "first_hit_shot": 17,
+                "valid_shots": 64,
+                "auc_discovery": 0.668235294117647,
+                "first_hit_shot": 13,
                 "won": true
               }
             ],
-            "mean_valid_shots": 46.0,
-            "mean_auc_discovery": 0.73
+            "mean_valid_shots": 64.0,
+            "mean_auc_discovery": 0.6864705882352942
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\battleship-gnn\\student.pt",
           "losses": [
-            3.4349273443222046,
-            3.432676315307617,
-            3.440209746360779,
-            3.4404536485671997
+            3.136606812477112,
+            3.1393479108810425,
+            3.1388907432556152,
+            3.1341867446899414,
+            3.1348085403442383,
+            3.1287288665771484,
+            3.125946283340454,
+            3.1294113397598267,
+            3.1224182844161987,
+            3.1180416345596313,
+            3.118890881538391,
+            3.1134203672409058,
+            3.1102559566497803,
+            3.110866904258728,
+            3.1021617650985718,
+            3.100389838218689,
+            3.0904606580734253,
+            3.0844095945358276,
+            3.084710717201233,
+            3.0743759870529175,
+            3.070847988128662,
+            3.0605289936065674,
+            3.0543665885925293,
+            3.0334867238998413
           ]
         }
       },
@@ -121,19 +161,19 @@
       "datasets": {
         "train": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\dense-118-train\\demonstrations.npz",
-          "sha256": "214f68a24e594d4583b7aa5ea7c052fdf05fe8d72c626db35283cfcdcd54120e",
-          "decisions": 127
+          "sha256": "4f6b72cf2d2418ab1adf0f89c41422ff791efd5835729ebdc28711a934bede20",
+          "decisions": 113
         },
         "validation": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\dense-118-validation\\demonstrations.npz",
-          "sha256": "66323b3c599b7aa6a37e890ad3d41db679d7bfe3ead90551f7b135a0d34e74a5",
-          "decisions": 120
+          "sha256": "d26310c4a152ceb854eb1749089eaa318eeab3dae9d7bec569d7f8218daf70ff",
+          "decisions": 107
         }
       },
       "students": {
         "cnn": {
-          "training_action_agreement": 0.07086614519357681,
-          "validation_teacher_action_agreement": 0.01666666753590107,
+          "training_action_agreement": 0.18584071099758148,
+          "validation_teacher_action_agreement": 0.11214952915906906,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -141,33 +181,53 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 60,
-                "auc_discovery": 0.7592223330009971,
-                "first_hit_shot": 12,
+                "valid_shots": 63,
+                "auc_discovery": 0.7681954137587238,
+                "first_hit_shot": 6,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 113,
-                "auc_discovery": 0.4880358923230309,
-                "first_hit_shot": 36,
+                "valid_shots": 75,
+                "auc_discovery": 0.8050847457627118,
+                "first_hit_shot": 4,
                 "won": true
               }
             ],
-            "mean_valid_shots": 86.5,
-            "mean_auc_discovery": 0.6236291126620139
+            "mean_valid_shots": 69.0,
+            "mean_auc_discovery": 0.7866400797607178
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\dense-118-cnn\\student.pt",
           "losses": [
-            3.5643504858016968,
-            3.5531004667282104,
-            3.543026089668274,
-            3.5329355001449585
+            3.3749616146087646,
+            3.3678425550460815,
+            3.3650190830230713,
+            3.3546061515808105,
+            3.3463984727859497,
+            3.3348095417022705,
+            3.324486255645752,
+            3.311668634414673,
+            3.301302433013916,
+            3.2807778120040894,
+            3.267182469367981,
+            3.2478801012039185,
+            3.224642038345337,
+            3.2002272605895996,
+            3.176475405693054,
+            3.1626389026641846,
+            3.1298210620880127,
+            3.1014647483825684,
+            3.079429030418396,
+            3.05657422542572,
+            3.0222588777542114,
+            2.9965087175369263,
+            2.9642257690429688,
+            2.9344342947006226
           ]
         },
         "gnn": {
-          "training_action_agreement": 0.05511811003088951,
-          "validation_teacher_action_agreement": 0.02500000037252903,
+          "training_action_agreement": 0.1150442510843277,
+          "validation_teacher_action_agreement": 0.15887850522994995,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -175,28 +235,48 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 86,
-                "auc_discovery": 0.7397806580259222,
-                "first_hit_shot": 4,
+                "valid_shots": 58,
+                "auc_discovery": 0.7856430707876371,
+                "first_hit_shot": 7,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 112,
-                "auc_discovery": 0.6615154536390827,
-                "first_hit_shot": 10,
+                "valid_shots": 64,
+                "auc_discovery": 0.7068793619142573,
+                "first_hit_shot": 15,
                 "won": true
               }
             ],
-            "mean_valid_shots": 99.0,
-            "mean_auc_discovery": 0.7006480558325024
+            "mean_valid_shots": 61.0,
+            "mean_auc_discovery": 0.7462612163509472
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\dense-118-gnn\\student.pt",
           "losses": [
-            3.565652370452881,
-            3.5637580156326294,
-            3.5621179342269897,
-            3.560384750366211
+            3.3747063875198364,
+            3.3741716146469116,
+            3.377160668373108,
+            3.3725866079330444,
+            3.37183940410614,
+            3.3698067665100098,
+            3.3686344623565674,
+            3.3665783405303955,
+            3.3658283948898315,
+            3.361557364463806,
+            3.3642046451568604,
+            3.358443856239319,
+            3.3543256521224976,
+            3.3524879217147827,
+            3.3461151123046875,
+            3.3466410636901855,
+            3.3351426124572754,
+            3.3335301876068115,
+            3.327361583709717,
+            3.323929190635681,
+            3.3175543546676636,
+            3.3102006912231445,
+            3.3007254600524902,
+            3.2892431020736694
           ]
         }
       },
@@ -220,19 +300,19 @@
       "datasets": {
         "train": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\periodic-table-battleship-train\\demonstrations.npz",
-          "sha256": "8aa522837f007200885d0fe307c59f7342230ff5373444bdade3d3fbe034c79a",
-          "decisions": 94
+          "sha256": "11ad2b3297fdb7e81e5dcce17c7ee05dfac9343645659ba258dc1c785542c794",
+          "decisions": 106
         },
         "validation": {
           "path": "artifacts\\v0.7-bayesian-students\\datasets\\periodic-table-battleship-validation\\demonstrations.npz",
-          "sha256": "d4546fbba5caee9f634f24a6f7a22c335f4fccfce1be363791a7aba0e94c51d2",
-          "decisions": 133
+          "sha256": "2cd8b5538be9aa1d80713ca1cb37866f105ea97446018e474e2e2e0ae7493e55",
+          "decisions": 113
         }
       },
       "students": {
         "cnn": {
-          "training_action_agreement": 0.06382978707551956,
-          "validation_teacher_action_agreement": 0.02255639061331749,
+          "training_action_agreement": 0.17924527823925018,
+          "validation_teacher_action_agreement": 0.0796460211277008,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -240,33 +320,53 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 88,
-                "auc_discovery": 0.6490528414755733,
-                "first_hit_shot": 9,
+                "valid_shots": 71,
+                "auc_discovery": 0.7706879361914257,
+                "first_hit_shot": 2,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 85,
-                "auc_discovery": 0.6001994017946162,
-                "first_hit_shot": 15,
+                "valid_shots": 70,
+                "auc_discovery": 0.7966101694915254,
+                "first_hit_shot": 1,
                 "won": true
               }
             ],
-            "mean_valid_shots": 86.5,
-            "mean_auc_discovery": 0.6246261216350948
+            "mean_valid_shots": 70.5,
+            "mean_auc_discovery": 0.7836490528414756
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\periodic-table-battleship-cnn\\student.pt",
           "losses": [
-            3.6015549898147583,
-            3.5872228145599365,
-            3.5993118286132812,
-            3.5742571353912354
+            3.3425694704055786,
+            3.336600422859192,
+            3.323695182800293,
+            3.3164725303649902,
+            3.306944489479065,
+            3.294275403022766,
+            3.2858320474624634,
+            3.2735023498535156,
+            3.258902668952942,
+            3.2404521703720093,
+            3.2244096994400024,
+            3.205317258834839,
+            3.1762133836746216,
+            3.1561113595962524,
+            3.1411861181259155,
+            3.112550377845764,
+            3.0761184692382812,
+            3.0416436195373535,
+            3.022049307823181,
+            2.9905320405960083,
+            2.960012912750244,
+            2.9310507774353027,
+            2.891285538673401,
+            2.8608428239822388
           ]
         },
         "gnn": {
-          "training_action_agreement": 0.06382978707551956,
-          "validation_teacher_action_agreement": 0.030075188726186752,
+          "training_action_agreement": 0.04716981202363968,
+          "validation_teacher_action_agreement": 0.0796460211277008,
           "validation_game": {
             "split": "validation",
             "blind_test_used": false,
@@ -274,28 +374,48 @@
             "episodes": [
               {
                 "seed": 9651,
-                "valid_shots": 63,
-                "auc_discovery": 0.660518444666002,
-                "first_hit_shot": 8,
+                "valid_shots": 40,
+                "auc_discovery": 0.7816550348953141,
+                "first_hit_shot": 6,
                 "won": true
               },
               {
                 "seed": 9652,
-                "valid_shots": 97,
-                "auc_discovery": 0.5603190428713859,
-                "first_hit_shot": 12,
+                "valid_shots": 64,
+                "auc_discovery": 0.7148554336989033,
+                "first_hit_shot": 8,
                 "won": true
               }
             ],
-            "mean_valid_shots": 80.0,
-            "mean_auc_discovery": 0.6104187437686939
+            "mean_valid_shots": 52.0,
+            "mean_auc_discovery": 0.7482552342971087
           },
           "checkpoint": ".local-runs\\v0.7-bayesian-students\\periodic-table-battleship-gnn\\student.pt",
           "losses": [
-            3.6015405654907227,
-            3.5952486991882324,
-            3.6108509302139282,
-            3.598479747772217
+            3.339938998222351,
+            3.342086434364319,
+            3.336972713470459,
+            3.3366525173187256,
+            3.334619641304016,
+            3.328832745552063,
+            3.3311381340026855,
+            3.3268152475357056,
+            3.32327663898468,
+            3.325966477394104,
+            3.3226689100265503,
+            3.314943790435791,
+            3.306069493293762,
+            3.306059241294861,
+            3.3042134046554565,
+            3.297219395637512,
+            3.290648341178894,
+            3.284546971321106,
+            3.280550479888916,
+            3.2785016298294067,
+            3.2658811807632446,
+            3.255881905555725,
+            3.248542308807373,
+            3.2384928464889526
           ]
         }
       },

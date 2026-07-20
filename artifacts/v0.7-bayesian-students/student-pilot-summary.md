@@ -8,11 +8,11 @@ CNN e GNN recebem exclusivamente observações públicas e máscara legal. As se
 
 | Topologia | Estudante | Acordo com professor | Tiros | Hunt-target |
 | --- | --- | ---: | ---: | ---: |
-| `battleship` | `cnn` | 0.114 | 73.50 | 54.00 |
-| `battleship` | `gnn` | 0.067 | 46.00 | 54.00 |
-| `dense-118` | `cnn` | 0.017 | 86.50 | 48.50 |
-| `dense-118` | `gnn` | 0.025 | 99.00 | 48.50 |
-| `periodic-table-battleship` | `cnn` | 0.023 | 86.50 | 65.50 |
-| `periodic-table-battleship` | `gnn` | 0.030 | 80.00 | 65.50 |
+| `battleship` | `cnn` | 0.114 | 62.00 | 54.00 |
+| `battleship` | `gnn` | 0.125 | 64.00 | 54.00 |
+| `dense-118` | `cnn` | 0.112 | 69.00 | 48.50 |
+| `dense-118` | `gnn` | 0.159 | 61.00 | 48.50 |
+| `periodic-table-battleship` | `cnn` | 0.080 | 70.50 | 65.50 |
+| `periodic-table-battleship` | `gnn` | 0.080 | 52.00 | 65.50 |
 
 ![Comparação de tiros](student-valid-shots.png)
