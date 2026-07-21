@@ -1186,7 +1186,7 @@ wheels = [
 
 [[package]]
 name = "periodic-table-battleship-rl"
-version = "0.7.0"
+version = "0.9.0"
 source = { editable = "." }
 dependencies = [
     { name = "gymnasium" },
