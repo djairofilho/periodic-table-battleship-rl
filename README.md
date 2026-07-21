@@ -1,340 +1,54 @@
 # Periodic Table Battleship RL
 
 [![CI](https://img.shields.io/github/actions/workflow/status/djairofilho/periodic-table-battleship-rl/ci.yml?branch=main&label=CI)](https://github.com/djairofilho/periodic-table-battleship-rl/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/djairofilho/periodic-table-battleship-rl/docs.yml?branch=main&label=Docs)](https://github.com/djairofilho/periodic-table-battleship-rl/actions/workflows/docs.yml)
+[![Docs do Projeto](https://img.shields.io/badge/docs-Periodic%20Table%20Battleship%20RL-0A66C2)](https://djairofilho.github.io/periodic-table-battleship-rl/)
 [![Licença MIT](https://img.shields.io/github/license/djairofilho/periodic-table-battleship-rl)](LICENSE)
-[![Último commit](https://img.shields.io/github/last-commit/djairofilho/periodic-table-battleship-rl)](https://github.com/djairofilho/periodic-table-battleship-rl/commits/main)
 
-Ambiente [Gymnasium](https://gymnasium.farama.org/) e protocolo de benchmark
-para treinar agentes de reinforcement learning em uma Batalha Naval cuja grade
-é a tabela periódica.
+Projeto de *reinforcement learning* para Batalha Naval em duas grades:
+`battleship` (10×10) e `periodic-table-battleship` (10×18).
 
-O projeto começa por uma comparação controlada com a Batalha Naval
-tradicional. A pergunta é simples: como uma topologia irregular, com lacunas e
-118 células válidas, muda o aprendizado de uma política de busca?
+## Em 1 minuto
 
-## Estado
+- Ambiente Gymnasium com observações públicas, ação mascarada e contratos auditáveis;
+- Cenários: `battleship`, `periodic-table-battleship`, `dense-118`;
+- Testes separados por split (treino/validação/teste cego) e rastreabilidade por artefato;
+- Baselines, política Bayesiana e destilação pública já documentadas.
 
-O núcleo reproduzível está disponível: topologias, frotas legais, ambientes
-Gymnasium mascarados de ataque e posicionamento, baselines, persistência de
-resultados, renderização pública de episódios e o microambiente tabular de
-Q-learning/SARSA. As campanhas v0.2 e v0.3 e a análise v0.4 estão concluídas,
-com avaliação cega, tabelas, gráficos e GIFs públicos. O resultado atual não
-promove o PPO: a prioridade passa a ser uma mudança de representação ou
-algoritmo, escolhida por validação antes de uma nova campanha ampliada.
+## Estado atual
 
-## Cenários
+- Baseline `hunt-target-v1` segue como referência principal;
+- Planejador `belief_probability_mc-v1` melhora em parte dos cenários;
+- CNN/GNN destiladas foram testadas, mas ainda não promoveram em validação multi-seed;
+- Self-play permanece como próximo bloco condicional.
 
-| Cenário | Grade | Células jogáveis | Regra comum |
-| --- | ---: | ---: | --- |
-| `battleship` | 10 × 10 | 100 | Frota `2, 3, 3, 4, 5` |
-| `periodic-table-battleship` | 10 × 18 | 118 | Frota `2, 3, 3, 4, 5` |
-| `dense-118` | 10 × 18 | 118 | Controle conectado, sem lacunas internas |
+A decisão final do ciclo v0.7 está em:
 
-Em ambos os casos, navios são lineares e ortogonais, não se sobrepõem e podem
-encostar. No cenário periódico, uma célula corresponde a um elemento. As
-lacunas da tabela não são alvos. O agente enfrenta uma frota adversária
-amostrada de forma legal, sem acesso ao seu estado secreto.
-
-O espaço de ação será comum: uma posição em uma tela de `10 × 18`. Uma máscara
-de ação elimina lacunas, células fora da grade do cenário e tiros repetidos.
-Isso mantém a API compatível e impede que escolhas impossíveis contaminem o
-treinamento.
-
-## Experimentos
-
-1. **Ataque:** a frota adversária é posicionada por uma política aleatória
-   legal. O agente aprende onde atirar a partir de acertos e erros anteriores.
-2. **Posicionamento:** um agente posiciona a própria frota e tenta maximizar o
-   número de tiros necessários para que atacantes de uma suíte fixa a encontrem.
-
-Os dois experimentos são independentes na primeira rodada. O segundo começa
-contra atacantes fixos para que a recompensa seja estável. Self-play só entra
-depois, como extensão.
-
-## Análise e experimentos v0.4
-
-A análise por seed confirma o resultado da v0.3: o PPO de ataque permanece
-atrás de `hunt-target-v1` nos três cenários e o PPO de posicionamento não tem
-vantagem robusta contra a mistura fixa. A análise reduz as repetições dentro
-de cada seed antes do bootstrap, evitando contar episódios correlacionados
-como evidência independente. Veja o [relatório por seed](artifacts/v0.3-fixed-suite/analysis/analysis-summary.md).
-
-A ablação pré-registrada do atacante avaliou três braços no cenário periódico:
-controle v0.3, penalidade de erro mais suave e um plano público de ações ainda
-disponíveis. Cada braço usou três seeds de treino, checkpoints escolhidos em
-validação e 100 seeds cegas no teste. Nenhuma alteração foi conclusiva.
-
-| Variante | Média de tiros | Diferença vs. controle (IC 95%) |
-| --- | ---: | ---: |
-| Controle v0.3 | 111,05 | — |
-| Canal de disponibilidade | 110,91 | −0,14 [−1,02; +0,77] |
-| Recompensa de exploração | 111,67 | +0,62 [−0,28; +1,54] |
-
-![Ablação cega do ataque](artifacts/v0.4-attack-ablation/ablation-comparison.png)
-
-A matriz explícita de transferência entre as três topologias usou 100 seeds
-cegas em cada uma das nove células. A diagonal é controle, e as células fora
-dela preservam separadamente a topologia de treino, a topologia de teste e os
-hashes do checkpoint. Os resultados não indicam transferência espacial útil:
-todos ficam próximos ao PPO de origem e continuam muito distantes de
-`hunt-target-v1`. Consulte a [avaliação cross-topology](docs/16-avaliacao-cross-topology.md).
-
-| Treino \ Teste | Clássico | `dense-118` | Periódico |
-| --- | ---: | ---: | ---: |
-| Clássico | 94,80 | 111,52 | 109,88 |
-| `dense-118` | 94,77 | 111,70 | 111,29 |
-| Periódico | 94,21 | 111,87 | 111,02 |
-
-A interface local permite jogar ou revisar um replay público sem revelar a
-frota durante o episódio. O contrato para uma futura liga de self-play e a
-decisão de não escalar para GPU sem variante promissora também estão
-documentados.
-
-## Ciclo v0.5: candidatas espaciais e apresentação
-
-O ciclo v0.5 prepara PPO-CNN, DQN mascarado, imitação de `hunt-target` e um
-protótipo GNN periódico. Nenhum piloto de validação é exibido como vencedor:
-uma política só entra no placar acima após seleção multi-seed e teste cego
-isolado. O [protocolo](docs/17-protocolo-v0.5.md) e a
-[apresentação visual](docs/19-apresentacao-v0.5.md) descrevem esse gate.
-As primeiras validações rejeitaram CNN, DQN e imitação antes do teste cego;
-veja o [relatório v0.5](docs/20-relatorio-validacao-v0.5.md).
-
-## Ciclo v0.6: oráculo, crença e GPU
-
-O ciclo v0.6 separa duas perguntas: qual é o limite ótimo em uma instância
-pequena e qual política pública melhora no jogo completo. No microtabuleiro
-3 × 3 com um navio de tamanho 2, a programação dinâmica enumera as 12 frotas
-legais e calcula **4,50 tiros esperados** para a política ótima. A política
-gulosa de posterior também chega a 4,50; `hunt-target` precisa de 4,94 e a
-aleatória de 6,67. Isso torna o regret mensurável sem confundir aproximação
-com verdade de referência.
-
-No mesmo microtabuleiro, Q-learning e SARSA foram treinados por 5.000 episódios
-em quatro seeds e avaliados por enumeração exata, não por rollout. Obtiveram
-6,235 e 6,442 tiros esperados, respectivamente: aprendem acima do aleatório,
-mas mantêm regret considerável contra o oráculo. Veja a
-[comparação tabular](docs/25-q-learning-sarsa-micro-oraculo.md).
-
-Na Batalha Naval 10 × 10, o planejador de maior probabilidade por Monte Carlo
-ficou em **41,40 tiros** na validação de cinco seeds, contra **73,00** do
-`hunt-target`. O posterior é amostrado, não alegadamente exato, e a seleção
-permaneceu fechada na validação.
-
-| Experimento de validação | Resultado | Decisão |
-| --- | ---: | --- |
-| Planejador Bayesiano de probabilidade | 41,40 tiros | melhor que `hunt-target` (73,00) |
-| CNN + dois mapas públicos de crença | 97,22 tiros | rejeitada; controle CNN: 96,89 |
-| Self-play de posicionamento contra Bayes | +3,33 tiros vs. Bayes; −4,67 vs. hunt | integração, sem promoção |
-
-![Comparação das políticas de crença](artifacts/v0.6-bayes-planner-validation/belief-policy-comparison.png)
-
-![Mapas de crença públicos](artifacts/v0.6-bayes-planner-validation/belief-demo-heatmaps.png)
-
-A GTX 1650 foi habilitada em ambiente isolado. No microbenchmark pareado, a
-CUDA foi 5,94× mais rápida para CNN e 3,18× para GNN, mas 0,87× para a DQN
-MLP pequena. Como a única candidata neural desta rodada não passou na
-validação, não houve campanha ampliada nem abertura de teste cego. O
-[relatório v0.6](docs/24-relatorio-v0.6.md) reúne protocolo, evidências e
-limitações.
-
-## Ciclo v0.7: calibração e destilação pública
-
-O ciclo v0.7 testou a robustez do planejador Bayesiano e tentou destilá-lo em
-CNN e GNN públicas. A calibração no microtabuleiro cobre 100% do suporte exato
-e não produz massa ilegal, mas ainda mede pequeno viés do amostrador. Na
-validação de dez seeds, Bayes venceu `hunt-target` de forma conclusiva somente
-em `dense-118`; os intervalos dos cenários clássico e periódico cruzam zero.
-
-As estudantes CNN/GNN não generalizaram: a GNN ganhou pontualmente na tabela
-periódica, mas ambas perderam em outros cenários. Por isso nenhuma candidata
-foi promovida, o teste cego novo permaneceu fechado e o self-play condicional
-não foi aberto. O [relatório v0.7](docs/31-relatorio-v0.7.md) contém a tabela,
-gráficos, dados e a decisão completa.
-
-![Validação Bayesiana multi-topologia](artifacts/v0.7-bayes-cross-topology-validation/full/paired-valid-shots.png)
-
-![Destilação pública](artifacts/v0.7-bayesian-students/student-valid-shots.png)
-
-## Resultados da campanha v0.3
-
-A campanha controlada v0.3 está concluída. Ela usa HPO estritamente em
-treino/validação, cinco seeds finais por cenário, checkpoints selecionados
-somente na validação e 100 seeds cegos de teste. O protocolo, dados por
-episódio e relatório completo estão em
-[docs/11-protocolo-v0.3.md](docs/11-protocolo-v0.3.md),
-[docs/12-relatorio-v0.3.md](docs/12-relatorio-v0.3.md),
-[runs/v0.3-fixed-suite](runs/v0.3-fixed-suite) e
-[artifacts/v0.3-fixed-suite](artifacts/v0.3-fixed-suite).
-
-No ataque, menos tiros é melhor. O MaskablePPO ficou melhor que a política
-aleatória, mas não superou `hunt-target` em nenhum cenário. A diferença é PPO
-menos hunt-target: valores positivos favorecem hunt-target, e todos os
-intervalos bootstrap de 95% ficam acima de zero.
-
-| Cenário | PPO | Hunt-target | Diferença PPO − hunt (IC 95%) |
-| --- | ---: | ---: | ---: |
-| `battleship` | 94,23 | 61,75 | +32,48 [+29,43; +35,57] |
-| `dense-118` | 111,60 | 71,62 | +39,98 [+37,03; +43,00] |
-| `periodic-table-battleship` | 110,78 | 69,33 | +41,45 [+37,87; +44,91] |
-
-![Comparação do ataque no teste cego v0.3](artifacts/v0.3-fixed-suite/figures/attack-test-comparison.png)
-
-No posicionamento, mais tiros para afundar a frota é melhor. Contra a mistura
-fixa de aleatório, hunt-target e PPO congelado, o PPO de posicionamento não
-demonstrou vantagem estatisticamente robusta sobre nenhum baseline: todos os
-intervalos bootstrap de 95% das comparações pareadas cruzam zero. Este é um
-resultado útil, não uma falha omitida: ele motiva as ablações e o self-play da
-próxima fase.
-
-![Comparação do posicionamento no teste cego v0.3](artifacts/v0.3-fixed-suite/figures/placement-test-comparison.png)
-
-Os replays e curvas usam somente estado público e preservam a frota adversária
-oculta durante o episódio.
-
-![Curva de aprendizagem do ataque periódico](artifacts/v0.3-fixed-suite/figures/attack-periodic-table-battleship-learning-curve.gif)
-
-![Ataque PPO na tabela periódica](artifacts/v0.3-fixed-suite/figures/periodic-ppo-attack.gif)
-
-![Posicionamento PPO na tabela periódica](artifacts/v0.3-fixed-suite/figures/periodic-ppo-placement.gif)
-
-## Resultados rápidos da campanha v0.2
-
-Esta é uma campanha piloto controlada, não uma alegação de desempenho final:
-três seeds de treino, 2.048 passos PPO por seed, cinco seeds de validação para
-seleção e 20 seeds cegos de teste. O protocolo completo está em
-[docs/09-protocolo-campanha-v0.2.md](docs/09-protocolo-campanha-v0.2.md) e os
-dados públicos em [runs/v0.2-controlled](runs/v0.2-controlled) e
-[artifacts/v0.2-controlled](artifacts/v0.2-controlled).
-
-No ataque, menos tiros é melhor. O PPO selecionado ainda ficou próximo da
-baseline aleatória e atrás do hunt-target em todos os cenários. A última
-coluna é PPO menos hunt-target, com IC bootstrap percentil de 95% por seed.
-
-| Cenário | PPO | Hunt-target | Diferença PPO − hunt (IC 95%) |
-| --- | ---: | ---: | ---: |
-| `battleship` | 95,60 | 62,65 | +32,95 [+27,15; +38,95] |
-| `dense-118` | 110,00 | 75,45 | +34,55 [+26,40; +42,35] |
-| `periodic-table-battleship` | 115,20 | 67,15 | +48,05 [+40,40; +55,20] |
-
-![Comparação de eficiência do ataque no teste cego](artifacts/v0.2-controlled/figures/attack-test-comparison.png)
-
-No posicionamento, mais tiros para afundar a frota é melhor. O agente foi
-treinado e testado contra uma mistura equiponderada de atacante aleatório,
-hunt-target e PPO congelado; todas as linhas abaixo têm 20 episódios cegos.
-
-| Cenário | Hunt-target | PPO congelado | Mistura de três atacantes |
-| --- | ---: | ---: | ---: |
-| `battleship` | 67,30 | 97,00 | 86,60 |
-| `periodic-table-battleship` | 64,20 | 116,00 | 97,60 |
-
-![Frequência dos segmentos posicionados na tabela periódica](artifacts/v0.2-controlled/figures/placement-periodic-table-battleship-heatmap.png)
-
-Os GIFs usam somente estado público: o primeiro mostra um ataque PPO na
-tabela periódica e o segundo, a construção sequencial da frota do agente de
-posicionamento.
-
-![Ataque PPO na tabela periódica](artifacts/v0.2-controlled/figures/periodic-ppo-attack.gif)
-
-![Posicionamento PPO na tabela periódica](artifacts/v0.2-controlled/figures/periodic-ppo-placement.gif)
-
-## Benchmark inicial dos baselines
-
-O primeiro benchmark reproduzível usa 20 seeds (`1001` a `1020`) e cinco
-episódios por seed em cada combinação. Os dados brutos, manifesto e resumo
-estão em [`runs/initial-baselines-v0`](runs/initial-baselines-v0).
-
-| Cenário | Política | Episódios | Média de tiros válidos |
-| --- | --- | ---: | ---: |
-| `battleship` | `random_masked-v1` | 100 | 95,57 |
-| `battleship` | `hunt_target-v1` | 100 | 59,28 |
-| `periodic-table-battleship` | `random_masked-v1` | 100 | 112,72 |
-| `periodic-table-battleship` | `hunt_target-v1` | 100 | 70,00 |
-
-Estes números são uma linha de base, não um resultado de treinamento. Cada
-manifesto registra o commit, o hash de `uv.lock`, seeds e ambiente de execução.
-
-## Artefatos visuais e smoke runs PPO
-
-Os dados iniciais dos baselines já têm [CSV e tabela](artifacts/initial-baselines-v0/tables),
-[gráfico comparativo](artifacts/initial-baselines-v0/figures/mean-valid-shots.png)
-e [GIF público de ataque](artifacts/initial-baselines-v0/gifs/hunt-target-demo.gif).
-
-Também há demonstrações ponta a ponta de PPO para
-[ataque](runs/attack-ppo-smoke-v0) e
-[posicionamento](runs/placement-ppo-smoke-v0), além de
-[gráficos, heatmap e GIF](artifacts/placement-ppo-smoke-v0). Elas usam somente
-512 passos de treino e servem para verificar o pipeline. Não devem ser
-interpretadas como avaliação final de desempenho.
-
-## Documentação
-
-- [Análise do jogo de origem](docs/01-analise-do-jogo-origem.md)
-- [Especificação do ambiente](docs/02-especificacao-do-ambiente.md)
-- [Protocolo de benchmark](docs/03-protocolo-de-benchmark.md)
-- [Roadmap](docs/04-roadmap.md)
-- [Experimentos e visualizações](docs/05-experimentos-e-visualizacoes.md)
-- [Execução, Issues e trabalho paralelo](docs/06-execucao-e-rastreamento.md)
-- [Contratos e critérios de aceite](docs/07-contratos-e-criterios-de-aceite.md)
-- [Relatório v0.1](docs/08-relatorio-v0.1.md)
-- [Protocolo e resultados v0.2](docs/09-protocolo-campanha-v0.2.md)
-- [Relatório da campanha v0.2](docs/10-relatorio-v0.2.md)
-- [Protocolo da campanha v0.3](docs/11-protocolo-v0.3.md)
-- [Relatório da campanha v0.3](docs/12-relatorio-v0.3.md)
-- [Demonstração local e replays](docs/13-demonstracao-local.md)
-- [Ablação de ataque v0.4](docs/14-ablacao-ataque-v0.4.md)
-- [Decisão de escala CPU/GPU](docs/14-decisao-de-escala-gpu.md)
-- [Liga e snapshots para self-play](docs/15-self-play-liga-e-snapshots.md)
-- [Avaliação cross-topology](docs/16-avaliacao-cross-topology.md)
-- [Protocolo v0.5](docs/17-protocolo-v0.5.md)
-- [PPO-CNN espacial](docs/17-ppo-cnn-espacial.md)
-- [DQN mascarado](docs/17-dqn-mascarado.md)
-- [Imitação de hunt-target](docs/18-imitacao-hunt-target.md)
-- [Protótipo GNN periódico](docs/18-gnn-periodic-prototype.md)
-- [Operação de agentes v0.5](docs/18-operacao-agentes-v0.5.md)
-- [Apresentação de resultados v0.5](docs/19-apresentacao-v0.5.md)
-- [Relatório de validação v0.5](docs/20-relatorio-validacao-v0.5.md)
-- [Oráculo exato do microtabuleiro](docs/21-oraculo-exato-microtabuleiro.md)
-- [Crença Bayesiana e planejamento](docs/22-crenca-bayesiana-e-planejamento.md)
-- [Ambiente CUDA isolado](docs/22-ambiente-cuda-isolado.md)
-- [Benchmark CPU/GPU e gate de escala](docs/23-benchmark-cpu-gpu-e-campanha-escalavel.md)
-- [Política neural híbrida de crença](docs/23-politica-neural-hibrida-de-crenca.md)
-- [Self-play Bayesiano](docs/23-self-play-bayesiano-v0.6.md)
-- [Relatório v0.6](docs/24-relatorio-v0.6.md)
-- [Q-learning e SARSA contra o oráculo](docs/25-q-learning-sarsa-micro-oraculo.md)
-- [Protocolo v0.7](docs/26-protocolo-v0.7.md)
-- [Calibração do amostrador Bayesiano](docs/27-calibracao-amostrador-bayesiano.md)
-- [Validação Bayesiana multi-topologia](docs/28-validacao-bayesiana-multi-topologia-v0.7.md)
-- [Demonstrações Bayesianas públicas](docs/29-demonstracoes-bayesianas-publicas.md)
-- [Destilação neural Bayesiana](docs/30-destilacao-neural-bayesiana-v0.7.md)
 - [Relatório v0.7](docs/31-relatorio-v0.7.md)
-- [Referências](docs/referencias.md)
 
-## Desenvolvimento
+## Documentação científica (rápida)
 
-O projeto usa [uv](https://docs.astral.sh/uv/) e Python 3.11.
+Use o site para leitura completa: 
+
+- [Visão geral](docs/visao-geral.md)
+- [Especificação do jogo](docs/jogo.md)
+- [Métodos de ataque](docs/metodos-ataque.md)
+- [Resultados e decisões](docs/resultados.md)
+- [Reprodutibilidade](docs/reproducibilidade.md)
+- [Roadmap 0.8–0.9](docs/roadmap-0.8-0.9.md)
+- [Galeria de gráficos e gifs](docs/galeria.md)
+
+## Como executar (resumo)
 
 ```powershell
-uv sync --all-groups --extra visual
+uv sync --all-groups --extra visual --extra docs
 uv run ruff check .
 uv run pytest
+uv run python scripts/sync_site_assets.py --strict
+uv run mkdocs build
 ```
 
-Para treinar PPO, acrescente `--extra train`. As dependências de visualização e
-treino continuam opcionais; o núcleo do ambiente fica leve, baseado em
-`gymnasium` e `numpy`.
+## Repositório e licença
 
-## Escopo inicial
-
-- Dois experimentos: ataque e posicionamento de frota.
-- Baselines reproduzíveis: aleatório e hunt-target.
-- Q-learning e SARSA em tabuleiros reduzidos; MaskablePPO nos cenários reais.
-- Tabelas, gráficos Seaborn e GIFs determinísticos de partidas avaliadas.
-- Avaliação por sementes fixas, métricas de eficiência e relatórios versionados.
-
-O posicionamento por RL, o jogo competitivo entre dois agentes e recursos
-educacionais da interface original são extensões futuras.
-
-## Licença
-
-Distribuído sob a [Licença MIT](LICENSE).
+- MIT: [LICENSE](LICENSE)
+- GitHub: [https://github.com/djairofilho/periodic-table-battleship-rl](https://github.com/djairofilho/periodic-table-battleship-rl)

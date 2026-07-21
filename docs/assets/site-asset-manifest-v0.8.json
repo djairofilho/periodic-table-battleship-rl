@@ -1,0 +1,50 @@
+{
+  "generated_by": "scripts/sync_site_assets.py",
+  "files": [
+    {
+      "source": "artifacts\\v0.6-bayes-planner-validation\\belief-policy-comparison.png",
+      "destination": "docs\\assets\\belief-policy-comparison-v0.6.png",
+      "sha256": "c027ec9623906fb7f2701e4f27de3c722e64c329f6b80f8bd91ae70f9c7bb963"
+    },
+    {
+      "source": "artifacts\\v0.6-bayes-planner-validation\\belief-demo-heatmaps.png",
+      "destination": "docs\\assets\\belief-demo-heatmaps-v0.6.png",
+      "sha256": "09819ebbe3034959982352fe7eaa863e5da1ea7b214f64e972b33cf73c4505b0"
+    },
+    {
+      "source": "artifacts\\v0.7-bayes-cross-topology-validation\\full\\paired-valid-shots.png",
+      "destination": "docs\\assets\\paired-valid-shots-v0.7.png",
+      "sha256": "5c718542e6f958896308003cb50b1485c2142251909ec138ad1caad03d7a16de"
+    },
+    {
+      "source": "artifacts\\v0.7-bayesian-students\\student-valid-shots.png",
+      "destination": "docs\\assets\\student-valid-shots-v0.7.png",
+      "sha256": "c3fc06f52c949db15d0e84fa687aef7298a2c779fcc633817c3d1f4a1918748e"
+    },
+    {
+      "source": "artifacts\\v0.7-bayes-sampler-calibration\\belief-sampler-calibration.png",
+      "destination": "docs\\assets\\belief-sampler-calibration-v0.7.png",
+      "sha256": "4002f780a7dd2ee2764a9b10f54f2193f6c3a68f83300336ed69e33f6b0fd97c"
+    },
+    {
+      "source": "artifacts\\v0.3-fixed-suite\\figures\\attack-periodic-table-battleship-learning-curve.gif",
+      "destination": "docs\\assets\\attack-periodic-learning-curve-v0.3.gif",
+      "sha256": "f84cab0d6a8224d9996b8110633a9b61429ef10d77381d1ed14c8ad4b400432e"
+    },
+    {
+      "source": "artifacts\\v0.3-fixed-suite\\figures\\periodic-ppo-attack.gif",
+      "destination": "docs\\assets\\periodic-ppo-attack-v0.3.gif",
+      "sha256": "2f140a55bcc7bc205cd414ae8311be41b93ff616aa7e9aa94af308bb1036ddc8"
+    },
+    {
+      "source": "artifacts\\v0.3-fixed-suite\\figures\\periodic-ppo-placement.gif",
+      "destination": "docs\\assets\\periodic-ppo-placement-v0.3.gif",
+      "sha256": "c4b889b0fdcaba2859c0f9a08adf45a01db09651268275a1cc06c0868ab1c249"
+    },
+    {
+      "source": "artifacts\\v0.3-fixed-suite\\figures\\attack-test-comparison.png",
+      "destination": "docs\\assets\\attack-test-comparison-v0.3.png",
+      "sha256": "12bb569300c3903dcd084618a77918f8924bc07aaea0340720e7316502587b7c"
+    }
+  ]
+}
