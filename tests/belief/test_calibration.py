@@ -55,6 +55,19 @@ def test_uniform_single_ship_prior_matches_oracle_fleet_count() -> None:
     assert case["mean_metrics"]["ideal_iid_fleet_distribution_total_variation"] >= 0.0
 
 
+def test_calibration_records_sampler_id_and_sampler_arguments() -> None:
+    result = calibrate_constrained_sampler(
+        sample_count=16,
+        repetitions=2,
+        seed=12,
+        sampler_id="constrained-backtracking-short-v1",
+    )
+
+    payload = result.to_dict()
+    assert payload["sampler_id"] == "constrained-backtracking-short-v1"
+    assert payload["cases"]
+
+
 @pytest.mark.parametrize("rows, columns", [(0, 3), (3, 0)])
 def test_micro_topology_rejects_non_positive_dimensions(rows: int, columns: int) -> None:
     with pytest.raises(ValueError, match="positive"):
