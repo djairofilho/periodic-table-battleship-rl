@@ -1,39 +1,32 @@
-# Visão geral
+# Visao geral
 
 ## O que fazemos
 
 Comparar estratégias de decisão em duas frentes:
 
-- **Ataque:** escolher tiros ótimos em um tabuleiro parcialmente oculto.
-- **Posicionamento:** escolher uma frota inicial mais difícil de ser descoberta.
+- **Ataque:** escolher tiros otimos em um tabuleiro parcialmente oculto.
+- **Posicionamento:** escolher uma frota inicial mais dificil de ser descoberta.
 
-O ponto central é a *comparação controlada*: mesma API, mesmas sementes por
-classe de experimento, mesmas regras de treino e um protocolo de promoção explícito.
+O ponto central é a comparação controlada: mesma API, mesmas sementes por
+classe de experimento, mesmas regras de treino e um protocolo de promocao explicito.
 
-## Cenários
+## Cenarios
 
-| Cenário | Grade | Células válidas | Frota |
+| Cenario | Grade | Celulas validas | Frota |
 | --- | ---: | ---: | --- |
 | `battleship` | 10×10 | 100 | 2, 3, 3, 4, 5 |
 | `periodic-table-battleship` | 10×18 | 118 | 2, 3, 3, 4, 5 |
 | `dense-118` | 10×18 | 118 | 2, 3, 3, 4, 5 |
 
-## Modelo de validação
+## Modelo de validacao
 
-1. Protocolo e contratos versionados em docs e códigos (`docs/26-protocolo-v0.7.md`,
-   `src/periodic_table_battleship_rl/evaluation`).
-2. Execução em sementes pré-registradas.
-3. Métricas de tiro em validação e testes cegos apenas quando a promoção foi
-   tecnicamente desbloqueada.
-4. Evidência auditável para cada release (JSON, CSV, figuras, manifests).
+1. Protocolo e contratos versionados em docs e codigo (`docs/26-protocolo-v0.7.md`).
+2. Execução por sementes pre-registradas.
+3. Métricas de tiro em validacao e testes cegos apenas quando o gate é aprovado.
+4. Evidência auditavel para cada release (JSON, CSV, figuras, manifests).
 
-## Decisão atual
+## Decisao atual
 
-O projeto fecha ciclos de entrega em modo incremental:
-
-- `<=` Se uma política não melhora em **pelo menos dois cenários** com margem de
-  confiança definida, ela não avança para teste cego.
-- `<=` Resultados negativos são documentados com a mesma prioridade dos positivos.
-- `<=` O próximo ciclo nasce com hipótese nova e protocolo novo, não com "ajuste
-  de hiperparâmetro isolado".
-
+- Se uma politica nao melhora em pelo menos dois cenarios com margem estatistica definida, nao avanca para teste cego.
+- Resultados negativos sao documentados com a mesma prioridade dos positivos.
+- O proximo ciclo nasce com hipotese nova e protocolo novo, nao com ajuste de hiperparametro isolado.

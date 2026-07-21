@@ -27,6 +27,26 @@
       "sha256": "4002f780a7dd2ee2764a9b10f54f2193f6c3a68f83300336ed69e33f6b0fd97c"
     },
     {
+      "source": "artifacts\\v0.9-bayes-sampler-calibration\\belief-sampler-calibration-v0.9.png",
+      "destination": "docs\\assets\\belief-sampler-calibration-v0.9.png",
+      "sha256": "8d4833744cdeb9dc139957dd391abb7986fe080f7f60749f752ee3dd16732200"
+    },
+    {
+      "source": "artifacts\\v0.9-bayes-sampler-ablation\\belief-sampler-ablation-v0.9.png",
+      "destination": "docs\\assets\\belief-sampler-ablation-v0.9.png",
+      "sha256": "366580677d0c992412641a6fbe86140c42975b114b607a148a2cffa0f255a884"
+    },
+    {
+      "source": "artifacts\\v0.9-bayes-cross-topology-validation\\smoke\\paired-valid-shots-v0.9.png",
+      "destination": "docs\\assets\\paired-valid-shots-v0.9.png",
+      "sha256": "ce7e0e2b4c44a954a63e8fbdcad21ff94ecc878b3736a882410acf9d19acdef8"
+    },
+    {
+      "source": "artifacts\\v0.9-bayesian-students\\bayesian-student-v0.9-valid-shots.png",
+      "destination": "docs\\assets\\bayesian-student-v0.9-valid-shots.png",
+      "sha256": "df3a0c28c104ead9e13ce7efeecfef2cfbdb34e3e3590310154fd9cbbfb2a892"
+    },
+    {
       "source": "artifacts\\v0.3-fixed-suite\\figures\\attack-periodic-table-battleship-learning-curve.gif",
       "destination": "docs\\assets\\attack-periodic-learning-curve-v0.3.gif",
       "sha256": "f84cab0d6a8224d9996b8110633a9b61429ef10d77381d1ed14c8ad4b400432e"

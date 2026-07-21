@@ -1,21 +1,32 @@
 # Roadmap 0.8–0.9
 
-## 0.8 — Comunicação e site científico (concluído no fluxo atual)
+## Status atual
 
-1. Site público com `mkdocs`.
-2. Página de resultados com decisão de promoção e exceções.
-3. Sincronização de ativos gráficos de forma reprodutível.
-4. README curto com trilha para documentação detalhada.
+- `0.8` concluída: base de documentação pública, site com assets rastreáveis, badges no README e primeira trilha de release.
+- `0.9` concluída: foco em validação científica e decisão de promoção da campanha.
 
-## 0.9 — Continuidade científica
+### Fechamento explícito da v0.9
 
-1. Melhorar calibração do amostrador Bayesiano com mais estados/métricas.
-2. Testar variantes de amostragem (ex.: cadeia curta + resampling).
-3. Treinamento multi-seed de estudantes CNN/GNN com dataset ampliado e relatório.
-4. Publicar relatório de validação robusta e decisão de gate para novo ciclo.
+1. Microcalibração Bayesiana (`v0.9-bayes-sampler-calibration`) com `case_set=extended`.
+2. Ablação de amostradores (`v0.9-bayes-sampler-ablation`) com custo/qualidade.
+3. Validação multi-topologia em `smoke` (`v0.9-bayes-cross-topology-validation/smoke`).
+4. Ampliação de demonstrações públicas (`v0.9-demonstrations`).
+5. Treino/ablação CNN+GNN com 4 seeds de treino e 4 seeds de validação (`v0.9-bayesian-students`).
+6. Relatório de fechamento (`docs/32-relatorio-v0.9.md`) e sincronização de assets.
 
-## Estado operacional
+## Roteiro técnico para 0.10 (condicional)
 
-- Self-play permanece no plano seguinte por decisão técnica.
-- A campanha principal atual é de validação e comunicação.
+1. Definir nova campanha de ataque com 3 cenários e 5–10 seeds de validação por candidato.
+2. Gate de promoção reforçado:
+   - ganho em pelo menos 2 cenários com IC95% de melhora,
+   - ausência de sinais de vazamento e queda de risco de truncação,
+   - custo de treino avaliado com CPU/GPU.
+3. Executar teste cego apenas quando o gate for aprovado.
+4. Abrir self-play após candidato vencedor aprovado:
+   - liga atacante-vs-atacante e atacante-vs-posicionador em suíte fixa.
+5. Publicar versão 0.10 com novos gráficos, manifests e manifestos de dataset.
 
+## Observações
+
+- Self-play permanece adiado até haver candidato robusto.
+- Todos os resultados negativos relevantes continuam rastreados no mesmo padrão de artefatos (`artifacts/` JSON/CSV/PNG/MD).

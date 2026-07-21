@@ -1,42 +1,39 @@
-# Resultados e decisões
+# Resultados e decisoes
 
-Esta página é o resumo de leitura rápida para `README` e release.
+## Resumo de desempenho (v0.9)
 
-## Ranking de destaque (v0.7)
-
-| Política | Melhor métrica reportada | Contexto | Status |
+| Politica | Melhor metric reportada | Contexto | Status |
 | --- | ---: | --- | --- |
-| `belief_probability_mc-v1` (Bayesiano) | 41,40 tiros | ataque | forte, mas sem requisito de generalização completo |
-| `hunt-target-v1` | 73,00 tiros | ataque | baseline de referência estável |
-| `bayesian-cnn-student-v1` | 62,00 a 70,50 | ataque | não promovida |
-| `bayesian-gnn-student-v1` | 52,00 a 64,00 | ataque | não promovida |
+| `belief_probability_mc-v1` | 35.0–44.5 tiros por topologia | comparação smoke 3 cenarios | ganho em validação reduzida, sem aprovacao de gate |
+| `hunt-target-v1` | 51.0, 61.0, 64.0 tiros | baseline em 3 cenarios | referencia principal |
+| `bayesian-cnn-student-v1` | 79.0 tiros (`dense-118`) | campanha multi-seed | nao promoveu |
+| `bayesian-gnn-student-v1` | 66.25 tiros (`battleship`) | campanha multi-seed | nao promoveu |
 
-## Decisão de promoção (v0.7)
+## Decisao de promocao (v0.9)
 
-- Bayesiano melhora em relação ao `hunt-target` em cenários específicos.
-- Os intervalos de confiança não foram favoráveis em `battleship` e tabela periódica
-  com consistência de gate.
-- As estudantes CNN/GNN não alcançaram ganho robusto em múltiplos cenários com as sementes
-  exigidas pelo protocolo.
+- Na validação por smoke, `belief_probability_mc-v1` superou `hunt-target-v1`.
+- A evidência foi considerada insuficiente para troca de baseline por:
+  - cobertura de validação limitada (2 seeds),
+  - ausência de janela robusta para todos os cenarios no mesmo protocolo final,
+  - sem margem de generalizacao multi-seed para os estudantes CNN/GNN.
+- Mantemos `hunt-target-v1` como baseline principal nesta release.
 
-## Evidências negativas (importantes)
+## Evidencias principais
 
-- Em alguns cenários pontuais houve melhora de `valid_shots`, porém sem
-  robustez pareada e sem repetição de seed suficiente para promoção.
-- A amostragem Bayesiana ainda conserva viés pequeno, controlável por
-  validação micro e por análise de cobertura.
-- Self-play ficou reservado para a próxima etapa por decisão explícita no plano.
+- [Calibracao do amostrador v0.9](https://github.com/djairofilho/periodic-table-battleship-rl/blob/main/artifacts/v0.9-bayes-sampler-calibration/belief-sampler-calibration-v0.9.md)
+- [Ablacao dos samplers v0.9](https://github.com/djairofilho/periodic-table-battleship-rl/blob/main/artifacts/v0.9-bayes-sampler-ablation/belief-sampler-ablation-v0.9.md)
+- [Validacao multi-topologia v0.9 (smoke)](https://github.com/djairofilho/periodic-table-battleship-rl/blob/main/artifacts/v0.9-bayes-cross-topology-validation/smoke/bayes-cross-topology-v0.9.json)
+- [Manifesto de demonstrations v0.9](https://github.com/djairofilho/periodic-table-battleship-rl/blob/main/artifacts/v0.9-demonstrations/dataset-manifest-v0.9.json)
+- [Resumo dos estudantes v0.9](https://github.com/djairofilho/periodic-table-battleship-rl/blob/main/artifacts/v0.9-bayesian-students/bayesian-student-v0.9-summary.md)
 
-## Gráficos principais
+## Graficos
 
-![Comparação Bayesiano x Hunt por topologia](assets/paired-valid-shots-v0.7.png)
+![Calibracao do amostrador Bayesiano](assets/belief-sampler-calibration-v0.9.png)
 
-![Comparação estudantes públicos](assets/student-valid-shots-v0.7.png)
+![Comparacao Bayes vs Hunt (v0.9)](assets/paired-valid-shots-v0.9.png)
 
-![Desvio do amostrador no microtabuleiro](assets/belief-sampler-calibration-v0.7.png)
+![Ablação de samplers](assets/belief-sampler-ablation-v0.9.png)
 
-## O que não avançou
+![Validacao dos estudantes](assets/bayesian-student-v0.9-valid-shots.png)
 
-Sem `2/3` dos cenários consistentes e sem margem de gate, a campanha v0.7 foi concluída como
-**validação, não promoção**.
-
+![Visao historica do projeto](assets/attack-test-comparison-v0.3.png)

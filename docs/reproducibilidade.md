@@ -1,6 +1,6 @@
 # Reprodutibilidade
 
-## Ambiente de execuÃ§Ã£o
+## Ambiente de execução
 
 ```powershell
 uv sync --all-groups --extra visual --extra docs
@@ -8,29 +8,27 @@ uv run ruff check .
 uv run pytest
 ```
 
-## Campanhas em validaÃ§Ã£o
+## Campanhas da v0.9
 
 Cada campanha possui:
 
-- parÃ¢metros explÃ­citos (`seed`, `episodes_per_seed`, `sample_count`),
-- JSON de protocolo,
-- saÃ­da em `runs/` e artefatos em `artifacts/`,
-- resumo em Markdown.
+- parâmetros explícitos (`seed`, `episodes_per_seed`, `sample_count`);
+- JSON de protocolo;
+- saída em `runs/` e artefatos em `artifacts/`;
+- relatório humano em Markdown.
 
-## Comando de sincronizaÃ§Ã£o de ativos do site
+## Comando de sincronização do site
 
 ```powershell
 uv run python scripts/sync_site_assets.py --strict
 ```
 
-O comando copia ativos grÃ¡ficos estÃ¡veis para `docs/assets` e escreve
-`docs/assets/site-asset-manifest-v0.8.json` com checksums.
+O comando copia ativos gráficos estáveis para `docs/assets` e escreve
+`docs/assets/site-asset-manifest-v0.8.json` com checksums (inclui entradas v0.9).
 
 ## Checklist antes de publicar
 
 1. `mkdocs build` sem erros.
-2. `git status` limpo para as evidÃªncias da release em questÃ£o.
-3. `docs/assets/site-asset-manifest-v0.8.json` com hashes atualizados.
-4. PÃ¡gina de resultados atualizada com decisÃ£o explÃ­cita.
-
-
+2. `git status` limpo para as evidências da release em questão.
+3. `docs/assets/site-asset-manifest-v0.8.json` atualizado.
+4. Página de resultados com decisão explícita e links de evidência.
