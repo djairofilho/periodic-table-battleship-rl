@@ -1,0 +1,49 @@
+site_name: Periodic Table Battleship RL
+site_description: Aprendizado de reforço para Batalha Naval na tabela periódica
+site_url: https://djairofilho.github.io/periodic-table-battleship-rl
+
+repo_name: djairofilho/periodic-table-battleship-rl
+repo_url: https://github.com/djairofilho/periodic-table-battleship-rl
+
+theme:
+  name: material
+  language: pt-BR
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.tabs
+    - content.code.copy
+
+nav:
+  - Início:
+      - Visão geral: index.md
+      - Sobre o projeto: visao-geral.md
+  - Jogo:
+      - Especificação: jogo.md
+      - Cenários: 01-analise-do-jogo-origem.md
+  - Métodos:
+      - Estratégia de ataque: metodos-ataque.md
+      - Estratégia de posicionamento: metodos-posicionamento.md
+      - Baselines e validação: metodos-baselines.md
+  - Resultados:
+      - Sumário executivo: resultados.md
+      - Relatório v0.7: 31-relatorio-v0.7.md
+  - Reprodutibilidade:
+      - Protocolos e ativos: reproducibilidade.md
+      - Galeria de resultados: galeria.md
+  - Roteiro:
+      - Roadmap: 04-roadmap.md
+      - Próximos passos: roadmap-0.8-0.9.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed

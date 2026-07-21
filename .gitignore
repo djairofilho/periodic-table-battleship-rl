@@ -8,9 +8,17 @@ wheels/
 
 # Virtual environments
 .venv
+.venv-cuda
 
 # Local checkpoints and smoke-training intermediates
 .local-runs/
 artifacts/*-smoke/
 runs/*-smoke/
 runs/*-pilot/
+artifacts/site-asset-manifest-v0.8.json
+
+# Generated documentation build
+site/
+
+# Planning scratch files used to stage issue/PR content
+.tmp_issue_bodies/
