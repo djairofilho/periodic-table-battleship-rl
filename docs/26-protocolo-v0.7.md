@@ -1,75 +1,62 @@
-# Protocolo v0.7: Bayes calibrado e destilação pública
+# Protocolo v0.9: controle, rastreabilidade e decisao de promoção
+
+Este documento substitui e complementa as regras da v0.7 para fechar o ciclo v0.9.
+Faz parte do fluxo de decisão para promoção de politica.
 
 ## Objetivo
 
-A v0.7 verifica se um planejador Bayesiano baseado somente no histórico
-público é uma referência confiável nos três cenários e se uma política neural
-mais barata pode imitá-lo sem perder a vantagem sobre `hunt-target`.
+Validar se uma politica melhora `hunt-target-v1` sob:
 
-Este documento separa desenvolvimento, validação, teste cego e self-play.
-Nenhum resultado de um estágio pode ser usado retroativamente para escolher
-configurações de um estágio anterior.
+- split de treino/validacao sem vazamento;
+- contrato de observacao publica;
+- amostragem e métricas auditáveis;
+- critério de gate para qualquer teste cego ou self-play.
 
-## Candidatas e controles
+## Candidatos no ciclo v0.9
 
-| Papel | Identidade | Uso |
+| Papel | Id | Uso |
 | --- | --- | --- |
-| Controle forte | `hunt-target-v1` | Todos os cenários e splits |
-| Professor | `belief_probability_mc-v1` | Amostragem pública calibrada |
-| Estudante CNN | a definir pela issue #76 | Destilação com máscara |
-| Estudante GNN | a definir pela issue #76 | Destilação com máscara |
+| Controle | `hunt-target-v1` | Baseline em todos os cenarios |
+| Professor | `belief_probability_mc-v1` | Planejamento Bayesiano com sampler calibrado |
+| Estudantes | `bayesian-cnn-student-v1`, `bayesian-gnn-student-v1` | Destilação com demonstracoes do professor |
 
-O professor não acessa a frota privada. Ele recebe apenas observação pública,
-máscara de ações e especificação conhecida da frota.
+## Criterio de dados e sementes
 
-## Estágios e dependências
+- Cenario: `battleship`, `dense-118`, `periodic-table-battleship`.
+- Treino e validacao com seeds registradas em cada artefato.
+- Proibido usar dados da validacao para ajuste de hiperparametro.
+- Todos os arquivos devem ter commit SHA, `git status`, parâmetros e manifest.
 
-```text
-#72 calibração MC ─┐
-                  ├─> #73 validação Bayesiana ─┐
-#74 contrato       │                             ├─> #77 gate/teste
-                  └─> #75 dataset ─> #76 distilação ┘
-                                                      └─> #78 self-play
-                                                           └─> #79 release
-```
+## Gate de promocao
 
-## Split e seeds
+Uma politica só pode ir para teste cego/teste aberto quando:
 
-As seeds de desenvolvimento podem ser usadas para smoke tests e para a
-calibração exata do microtabuleiro. A seleção de configuração usa somente as
-seeds de validação registradas pelo runner v0.7. O inventário de teste é novo,
-gerado uma vez após congelar a candidata, e não pode aparecer em código de
-treino, logs de busca de hiperparâmetros ou artefatos de validação.
+1. Melhorar em **pelo menos 2 cenarios**.
+2. Diferença pareada `candidate - hunt-target` com intervalo de 95% todo abaixo de 0
+   (meta de tiro valido, menor é melhor).
+3. Sem truncamento e sem acordo inválido de ação em execução normal.
+4. Criterios de custo e risco documentados em `docs/32-relatorio-v0.9.md`.
 
-## Gate de promoção
+Se estes critérios não passarem, o ciclo é encerrado com decisão negativa documentada.
 
-Uma única estudante pode ser promovida ao teste cego somente se todos forem
-verdadeiros:
+## Campanhas de fechamento v0.9
 
-1. a calibração Monte Carlo reporta seu erro contra o posterior exato do
-   microtabuleiro e não omite falhas de amostragem;
-2. a política completa vence `hunt-target-v1` em tiros válidos médios em pelo
-   menos dois dos três cenários de validação;
-3. a diferença pareada estudante menos `hunt-target` tem intervalo bootstrap
-   de 95% inteiramente abaixo de zero nos cenários em que se alega ganho;
-4. taxa de vitória é 1,0, tentativas inválidas são zero e não há truncamento;
-5. arquitetura, checkpoint, orçamento, dataset, seeds, dispositivo e regra de
-   desempate foram congelados antes de criar as seeds cegas.
+1. `v0.9-bayes-sampler-calibration`
+2. `v0.9-bayes-sampler-ablation`
+3. `v0.9-bayes-cross-topology-validation/smoke`
+4. `v0.9-bayesian-students`
+5. `v0.9-demonstrations`
 
-Se nenhuma candidata passar, a issue #77 será fechada como `not planned` para
-esta release. Isso é resultado válido e não autoriza abrir o teste cego.
+## Evidência de referencia
 
-## Teste cego e self-play
+- Relatorio de fechamento: `docs/32-relatorio-v0.9.md`
+- Artefatos: `artifacts/v0.9-*`
+- Manifesto de campanha: `artifacts/v0.9-demonstrations/dataset-manifest-v0.9.json`
 
-O teste cego executa uma vez a candidata promovida e os controles nos três
-cenários. Não há retreinamento, ajuste de amostras ou troca de checkpoint após
-ver seus resultados. Self-play só começa depois do teste e somente contra o
-atacante promovido, mantendo uma suíte congelada com Bayesiano e `hunt-target`.
+## Entrega
 
-## Medidas e publicação
+Resultado final do ciclo:
 
-O placar principal usa tiros válidos até vencer, onde menos é melhor. Serão
-publicados também taxa de vitória, AUC de descoberta, primeiro acerto,
-primeiro navio afundado, latência por decisão, memória e custo de treino.
-Cada execução preserva commit Git, hash de `uv.lock`, configuração, seeds,
-split e artefatos públicos. Gráficos não substituem as tabelas e JSONs.
+- `hunt-target-v1` permanece baseline.
+- `belief_probability_mc-v1` melhora em smoke, mas sem aprovação para promoção.
+- Self-play permanece para ciclo seguinte (v0.10) após nova candidata aprovada no gate.

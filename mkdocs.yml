@@ -29,6 +29,7 @@ nav:
   - Resultados:
       - Sumário executivo: resultados.md
       - Relatório v0.7: 31-relatorio-v0.7.md
+      - Relatório v0.9: 32-relatorio-v0.9.md
   - Reprodutibilidade:
       - Protocolos e ativos: reproducibilidade.md
       - Galeria de resultados: galeria.md

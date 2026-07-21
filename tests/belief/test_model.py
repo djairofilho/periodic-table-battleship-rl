@@ -138,3 +138,51 @@ def test_constrained_sampler_handles_sunk_and_active_hits_on_full_board() -> Non
 
     assert belief.size == 2
     assert diagnostics.completion_rate == 1.0
+
+
+@pytest.mark.parametrize(
+    "sampler_id, kwargs",
+    (
+        ("constrained-backtracking-v1", {}),
+        ("constrained-backtracking-short-v1", {}),
+        ("importance-v1", {"importance_resamples": 3}),
+        ("mcmc-v1", {"mcmc_steps": 16}),
+    ),
+)
+def test_sampler_variants_preserve_public_compatibility_constraints(
+    sampler_id: str, kwargs: dict[str, int | float]
+) -> None:
+    """Different samplers should all return compatible finite populations."""
+    state = PublicAttackState(
+        BATTLESHIP,
+        frozenset({54, 55, 56, 57, 58, 59, 60, 98, 116, 134, 152, 163, 164, 165}),
+        frozenset(
+            {2, 7, 21, 25, 40, 45, 75, 78, 80, 94, 95, 97, 110, 112, 115, 117,
+             126, 127, 131, 147, 150, 169}
+        ),
+        frozenset({54, 55, 56, 57, 58, 59, 60, 163, 164, 165}),
+    )
+
+    belief, diagnostics = sample_compatible_fleets(
+        state,
+        sample_count=3,
+        rng=np.random.default_rng(123),
+        sampler_id=sampler_id,
+        max_restarts_per_sample=64,
+        max_nodes_per_sample=4_096,
+        **kwargs,
+    )
+
+    assert not diagnostics.posterior_exact
+    assert belief.sampler_id == sampler_id
+    assert belief.size == 3
+
+
+def test_sampler_rejects_invalid_sampler_id() -> None:
+    with pytest.raises(ValueError, match="unsupported sampler_id"):
+        sample_compatible_fleets(
+            PublicAttackState(_small_topology(), frozenset(), frozenset()),
+            sample_count=2,
+            rng=np.random.default_rng(1),
+            sampler_id="unsupported-v1",
+        )

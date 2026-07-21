@@ -8,6 +8,7 @@ exact posterior.  Its diagnostics make that approximation explicit.
 
 from __future__ import annotations
 
+from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
 
@@ -255,13 +256,19 @@ def sample_compatible_fleets(
     rng: np.random.Generator,
     max_restarts_per_sample: int = 128,
     max_nodes_per_sample: int = 8_192,
+    sampler_id: str = "constrained-backtracking-v1",
+    importance_resamples: int = 4,
+    mcmc_steps: int = 64,
 ) -> tuple[BeliefPopulation, MonteCarloDiagnostics]:
-    """Generate compatible fleets by randomized constrained backtracking.
+    """Generate compatible fleets by a selected constrained proposal sampler.
 
-    It never inspects the opponent fleet and never emits an incompatible
-    sample.  Candidate order and backtracking induce a proposal distribution,
-    therefore callers must not label it an exact posterior; the returned
-    diagnostics make this explicit in persisted reports.
+    Supported strategies are:
+    - ``constrained-backtracking-v1``: baseline constrained backtracking
+    - ``constrained-backtracking-short-v1``: shorter search limits
+    - ``importance-v1``: weighted resampling over repeated backtracking proposals
+    - ``mcmc-v1``: constrained Markov chain transitions over compatible fleets
+
+    All strategies are approximations and must keep ``posterior_exact=False``.
     """
     if sample_count <= 0:
         raise ValueError("sample_count must be positive")
@@ -269,6 +276,66 @@ def sample_compatible_fleets(
         raise ValueError("max_restarts_per_sample must be positive")
     if max_nodes_per_sample <= 0:
         raise ValueError("max_nodes_per_sample must be positive")
+    if importance_resamples <= 0:
+        raise ValueError("importance_resamples must be positive")
+    if mcmc_steps < 0:
+        raise ValueError("mcmc_steps must be non-negative")
+
+    if sampler_id == "constrained-backtracking-v1":
+        return _sample_compatible_fleets_backtracking(
+            state,
+            specs,
+            sample_count=sample_count,
+            rng=rng,
+            max_restarts_per_sample=max_restarts_per_sample,
+            max_nodes_per_sample=max_nodes_per_sample,
+            sampler_id=sampler_id,
+        )
+    if sampler_id == "constrained-backtracking-short-v1":
+        return _sample_compatible_fleets_backtracking(
+            state,
+            specs,
+            sample_count=sample_count,
+            rng=rng,
+            max_restarts_per_sample=max(1, max_restarts_per_sample // 2),
+            max_nodes_per_sample=max(64, max_nodes_per_sample // 2),
+            sampler_id=sampler_id,
+        )
+    if sampler_id == "importance-v1":
+        return _sample_compatible_fleets_importance(
+            state,
+            specs,
+            sample_count=sample_count,
+            rng=rng,
+            max_restarts_per_sample=max_restarts_per_sample,
+            max_nodes_per_sample=max_nodes_per_sample,
+            importance_resamples=importance_resamples,
+        )
+    if sampler_id == "mcmc-v1":
+        if mcmc_steps <= 0:
+            raise ValueError("mcmc_steps must be positive for mcmc-v1")
+        return _sample_compatible_fleets_mcmc(
+            state,
+            specs,
+            sample_count=sample_count,
+            rng=rng,
+            max_restarts_per_sample=max_restarts_per_sample,
+            max_nodes_per_sample=max_nodes_per_sample,
+            mcmc_steps=mcmc_steps,
+        )
+    raise ValueError(f"unsupported sampler_id: {sampler_id!r}")
+
+
+def _sample_compatible_fleets_backtracking(
+    state: PublicAttackState,
+    specs: Sequence[ShipSpec],
+    *,
+    sample_count: int,
+    rng: np.random.Generator,
+    max_restarts_per_sample: int,
+    max_nodes_per_sample: int,
+    sampler_id: str,
+) -> tuple[BeliefPopulation, MonteCarloDiagnostics]:
     candidates = _state_candidates(state, specs)
     samples: list[Fleet] = []
     restart_count = 0
@@ -297,15 +364,167 @@ def sample_compatible_fleets(
         backtrack_count=backtrack_count,
         max_restarts_per_sample=max_restarts_per_sample,
         max_nodes_per_sample=max_nodes_per_sample,
+        sampler_id=sampler_id,
     )
     return (
         BeliefPopulation(
             state=state,
             fleets=tuple(samples),
-            sampler_id=diagnostics.sampler_id,
+            sampler_id=sampler_id,
             exact=False,
         ),
         diagnostics,
+    )
+
+
+def _sample_compatible_fleets_importance(
+    state: PublicAttackState,
+    specs: Sequence[ShipSpec],
+    *,
+    sample_count: int,
+    rng: np.random.Generator,
+    max_restarts_per_sample: int,
+    max_nodes_per_sample: int,
+    importance_resamples: int,
+) -> tuple[BeliefPopulation, MonteCarloDiagnostics]:
+    raw_count = max(1, sample_count * importance_resamples)
+    proposal_population, proposal_diagnostics = _sample_compatible_fleets_backtracking(
+        state,
+        specs,
+        sample_count=raw_count,
+        rng=rng,
+        max_restarts_per_sample=max_restarts_per_sample,
+        max_nodes_per_sample=max_nodes_per_sample,
+        sampler_id="importance-v1-proposal",
+    )
+    raw_keys = tuple(_fleet_key(fleet) for fleet in proposal_population.fleets)
+    frequency = Counter(raw_keys)
+    weights = np.array(
+        [1.0 / frequency[key] for key in raw_keys], dtype=np.float64
+    )
+    weights /= float(weights.sum())
+    selected_indices = rng.choice(
+        len(proposal_population.fleets),
+        size=sample_count,
+        replace=True,
+        p=weights,
+    )
+    diagnostics = MonteCarloDiagnostics(
+        requested_samples=raw_count,
+        accepted_samples=sample_count,
+        restart_count=proposal_diagnostics.restart_count,
+        backtrack_count=proposal_diagnostics.backtrack_count,
+        max_restarts_per_sample=proposal_diagnostics.max_restarts_per_sample,
+        max_nodes_per_sample=proposal_diagnostics.max_nodes_per_sample,
+        sampler_id="importance-v1",
+    )
+    selected = tuple(proposal_population.fleets[index] for index in selected_indices)
+    return (
+        BeliefPopulation(
+            state=state,
+            fleets=selected,
+            sampler_id="importance-v1",
+            exact=False,
+        ),
+        diagnostics,
+    )
+
+
+def _sample_compatible_fleets_mcmc(
+    state: PublicAttackState,
+    specs: Sequence[ShipSpec],
+    *,
+    sample_count: int,
+    rng: np.random.Generator,
+    max_restarts_per_sample: int,
+    max_nodes_per_sample: int,
+    mcmc_steps: int,
+) -> tuple[BeliefPopulation, MonteCarloDiagnostics]:
+    initial_population, _ = _sample_compatible_fleets_backtracking(
+        state,
+        specs,
+        sample_count=1,
+        rng=rng,
+        max_restarts_per_sample=max_restarts_per_sample,
+        max_nodes_per_sample=max_nodes_per_sample,
+        sampler_id="mcmc-init-v1",
+    )
+    candidates = _state_candidates(state, specs)
+    if not initial_population.fleets:
+        raise RuntimeError("mcmc sampler failed to initialize compatible fleet")
+
+    current = initial_population.fleets[0]
+    samples: list[Fleet] = []
+    reject_count = 0
+    for _ in range(sample_count):
+        for _ in range(mcmc_steps):
+            proposed = _mcmc_propose(current, specs, candidates, rng, state)
+            if proposed is None:
+                reject_count += 1
+                continue
+            current = proposed
+        samples.append(current)
+
+    diagnostics = MonteCarloDiagnostics(
+        requested_samples=sample_count,
+        accepted_samples=len(samples),
+        restart_count=0,
+        backtrack_count=reject_count,
+        max_restarts_per_sample=max_restarts_per_sample,
+        max_nodes_per_sample=max_nodes_per_sample,
+        sampler_id="mcmc-v1",
+    )
+    return (
+        BeliefPopulation(
+            state=state,
+            fleets=tuple(samples),
+            sampler_id="mcmc-v1",
+            exact=False,
+        ),
+        diagnostics,
+    )
+
+
+def _mcmc_propose(
+    fleet: Fleet,
+    specs: Sequence[ShipSpec],
+    candidates: tuple[tuple, ...],
+    rng: np.random.Generator,
+    state: PublicAttackState,
+) -> Fleet | None:
+    if not specs:
+        return None
+    if not candidates:
+        return None
+    ship_index = int(rng.integers(0, len(specs)))
+    allowed = candidates[ship_index]
+    if not allowed:
+        return None
+    chosen = allowed[int(rng.integers(0, len(allowed)))]
+    candidate_placements = list(fleet.placements)
+    candidate_placements[ship_index] = ShipPlacement(
+        ship_id=specs[ship_index].ship_id,
+        length=specs[ship_index].length,
+        anchor=chosen.anchor,
+        orientation=chosen.orientation,
+        cells=chosen.cells,
+    )
+    proposed = Fleet(tuple(candidate_placements))
+    if _fleet_is_compatible(proposed, state):
+        return proposed
+    return None
+
+
+def _fleet_key(fleet: Fleet) -> tuple[tuple[str, int, int, str, tuple[int, ...]], ...]:
+    return tuple(
+        (
+            placement.ship_id,
+            placement.length,
+            placement.anchor,
+            placement.orientation,
+            tuple(placement.cells),
+        )
+        for placement in fleet.placements
     )
 
 

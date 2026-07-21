@@ -99,6 +99,7 @@ class SamplerCalibration:
     sample_count: int
     repetitions: int
     seed: int
+    sampler_id: str = "constrained-backtracking-v1"
 
     def to_dict(self) -> dict[str, object]:
         """Serialize an auditable protocol result for reports and artifacts."""
@@ -127,7 +128,7 @@ class SamplerCalibration:
         return {
             "schema_version": CALIBRATION_SCHEMA_VERSION,
             "purpose": "calibrate-constrained-backtracking-against-exact-micro-belief",
-            "sampler_id": "constrained-backtracking-v1",
+            "sampler_id": self.sampler_id,
             "posterior_exact": False,
             "blind_test_used": False,
             "sample_count": self.sample_count,
@@ -225,12 +226,66 @@ def default_micro_calibration_cases() -> tuple[CalibrationCase, ...]:
     )
 
 
+def extended_micro_calibration_cases() -> tuple[CalibrationCase, ...]:
+    """Extended fixed microstates for larger calibration sweeps.
+
+    All returned cases have at least one compatible fleet so the calibration can
+    compute exact coverage and discrepancy statistics without soft failures.
+    """
+    topology = rectangular_micro_topology()
+    one_ship_specs = (ShipSpec("micro-ship-2", 2),)
+    two_ship_specs = (ShipSpec("micro-alpha-2", 2), ShipSpec("micro-beta-2", 2))
+
+    candidate_cases = (
+        CalibrationCase(
+            "one-ship-edge-hit-top",
+            PublicAttackState(topology, frozenset({1}), frozenset()),
+            one_ship_specs,
+        ),
+        CalibrationCase(
+            "one-ship-edge-miss-top",
+            PublicAttackState(topology, frozenset(), frozenset({1})),
+            one_ship_specs,
+        ),
+        CalibrationCase(
+            "one-ship-corner-hit-opposite-miss",
+            PublicAttackState(topology, frozenset({0}), frozenset({8})),
+            one_ship_specs,
+        ),
+        CalibrationCase(
+            "one-ship-center-hit-corner-miss",
+            PublicAttackState(topology, frozenset({4}), frozenset({0, 2})),
+            one_ship_specs,
+        ),
+        CalibrationCase(
+            "two-ship-corner-miss",
+            PublicAttackState(topology, frozenset(), frozenset({0, 8})),
+            two_ship_specs,
+        ),
+        CalibrationCase(
+            "two-ship-edge-miss",
+            PublicAttackState(topology, frozenset(), frozenset({1, 3})),
+            two_ship_specs,
+        ),
+    )
+
+    validated: list[CalibrationCase] = []
+    for case in candidate_cases:
+        exact = exact_belief(case.state, case.specs, max_fleets=100_000)
+        if exact.size > 0:
+            validated.append(case)
+    return default_micro_calibration_cases() + tuple(validated)
+
+
 def calibrate_constrained_sampler(
     cases: Sequence[CalibrationCase] | None = None,
     *,
     sample_count: int = 1_024,
     repetitions: int = 32,
     seed: int = 7_201,
+    sampler_id: str = "constrained-backtracking-v1",
+    importance_resamples: int = 4,
+    mcmc_steps: int = 64,
 ) -> SamplerCalibration:
     """Measure Monte Carlo occupancy and fleet-distribution error exactly.
 
@@ -262,6 +317,9 @@ def calibrate_constrained_sampler(
                 case.specs,
                 sample_count=sample_count,
                 rng=rng,
+                sampler_id=sampler_id,
+                importance_resamples=importance_resamples,
+                mcmc_steps=mcmc_steps,
             )
             sampled_distribution = _fleet_distribution(sampled.fleets)
             ideal_iid_distribution = _fleet_distribution(
@@ -317,7 +375,7 @@ def calibrate_constrained_sampler(
                 metrics=tuple(metrics),
             )
         )
-    return SamplerCalibration(tuple(results), sample_count, repetitions, seed)
+    return SamplerCalibration(tuple(results), sample_count, repetitions, seed, sampler_id)
 
 
 FleetKey = tuple[tuple[str, int, int, str, tuple[int, ...]], ...]

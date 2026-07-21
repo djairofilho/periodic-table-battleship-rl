@@ -1,0 +1,929 @@
+{
+  "schema_version": "belief-sampler-calibration-v1",
+  "purpose": "calibrate-constrained-backtracking-against-exact-micro-belief",
+  "sampler_id": "constrained-backtracking-v1",
+  "posterior_exact": false,
+  "blind_test_used": false,
+  "sample_count": 64,
+  "repetitions": 4,
+  "seed": 7201,
+  "aggregate_mean_metrics": {
+    "occupancy_mean_absolute_error": 0.02666382614299281,
+    "occupancy_root_mean_squared_error": 0.03938935883594716,
+    "occupancy_max_absolute_error": 0.08048592032967034,
+    "fleet_distribution_total_variation": 0.16121942293817293,
+    "ideal_iid_fleet_distribution_total_variation": 0.17141755813630816,
+    "fleet_distribution_tv_excess_vs_iid": -0.010198135198135193,
+    "exact_support_coverage": 0.9343859265734266,
+    "unexpected_sample_mass": 0.0,
+    "restart_count": 0.0,
+    "backtrack_count": 0.0
+  },
+  "cases": [
+    {
+      "name": "prior",
+      "exact_fleet_count": 12,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.035590277777777776,
+        "occupancy_root_mean_squared_error": 0.044453347721213565,
+        "occupancy_max_absolute_error": 0.0859375,
+        "fleet_distribution_total_variation": 0.171875,
+        "ideal_iid_fleet_distribution_total_variation": 0.15104166666666666,
+        "fleet_distribution_tv_excess_vs_iid": 0.02083333333333333,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.02893518518518519,
+          "occupancy_root_mean_squared_error": 0.036167824055554965,
+          "occupancy_max_absolute_error": 0.078125,
+          "fleet_distribution_total_variation": 0.16145833333333331,
+          "ideal_iid_fleet_distribution_total_variation": 0.10416666666666669,
+          "fleet_distribution_tv_excess_vs_iid": 0.05729166666666663,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.03009259259259259,
+          "occupancy_root_mean_squared_error": 0.03489540146222531,
+          "occupancy_max_absolute_error": 0.05729166666666666,
+          "fleet_distribution_total_variation": 0.13541666666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.15104166666666663,
+          "fleet_distribution_tv_excess_vs_iid": -0.015624999999999972,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.04861111111111111,
+          "occupancy_root_mean_squared_error": 0.06269260446273539,
+          "occupancy_max_absolute_error": 0.125,
+          "fleet_distribution_total_variation": 0.234375,
+          "ideal_iid_fleet_distribution_total_variation": 0.19270833333333331,
+          "fleet_distribution_tv_excess_vs_iid": 0.041666666666666685,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.034722222222222224,
+          "occupancy_root_mean_squared_error": 0.04405756090433861,
+          "occupancy_max_absolute_error": 0.08333333333333334,
+          "fleet_distribution_total_variation": 0.15624999999999997,
+          "ideal_iid_fleet_distribution_total_variation": 0.15625,
+          "fleet_distribution_tv_excess_vs_iid": -2.7755575615628914e-17,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "active-hit-center",
+      "exact_fleet_count": 4,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.01736111111111111,
+        "occupancy_root_mean_squared_error": 0.02897142453588475,
+        "occupancy_max_absolute_error": 0.0625,
+        "fleet_distribution_total_variation": 0.078125,
+        "ideal_iid_fleet_distribution_total_variation": 0.12109375,
+        "fleet_distribution_tv_excess_vs_iid": -0.04296875,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.010416666666666666,
+          "occupancy_root_mean_squared_error": 0.01948779888944761,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.046875,
+          "ideal_iid_fleet_distribution_total_variation": 0.109375,
+          "fleet_distribution_tv_excess_vs_iid": -0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.027777777777777776,
+          "occupancy_root_mean_squared_error": 0.04480377743251368,
+          "occupancy_max_absolute_error": 0.09375,
+          "fleet_distribution_total_variation": 0.125,
+          "ideal_iid_fleet_distribution_total_variation": 0.109375,
+          "fleet_distribution_tv_excess_vs_iid": 0.015625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.010416666666666666,
+          "occupancy_root_mean_squared_error": 0.01948779888944761,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.046875,
+          "ideal_iid_fleet_distribution_total_variation": 0.109375,
+          "fleet_distribution_tv_excess_vs_iid": -0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.020833333333333332,
+          "occupancy_root_mean_squared_error": 0.03210632293213009,
+          "occupancy_max_absolute_error": 0.0625,
+          "fleet_distribution_total_variation": 0.09375,
+          "ideal_iid_fleet_distribution_total_variation": 0.15625,
+          "fleet_distribution_tv_excess_vs_iid": -0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "miss-center",
+      "exact_fleet_count": 8,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.0234375,
+        "occupancy_root_mean_squared_error": 0.029226718564464467,
+        "occupancy_max_absolute_error": 0.0546875,
+        "fleet_distribution_total_variation": 0.078125,
+        "ideal_iid_fleet_distribution_total_variation": 0.1484375,
+        "fleet_distribution_tv_excess_vs_iid": -0.0703125,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.017361111111111112,
+          "occupancy_root_mean_squared_error": 0.024429248749080364,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.046875,
+          "ideal_iid_fleet_distribution_total_variation": 0.125,
+          "fleet_distribution_tv_excess_vs_iid": -0.078125,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.020833333333333332,
+          "occupancy_root_mean_squared_error": 0.027559909490256152,
+          "occupancy_max_absolute_error": 0.0625,
+          "fleet_distribution_total_variation": 0.109375,
+          "ideal_iid_fleet_distribution_total_variation": 0.15625,
+          "fleet_distribution_tv_excess_vs_iid": -0.046875,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.03125,
+          "occupancy_root_mean_squared_error": 0.03454817489953542,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.078125,
+          "ideal_iid_fleet_distribution_total_variation": 0.171875,
+          "fleet_distribution_tv_excess_vs_iid": -0.09375,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.024305555555555556,
+          "occupancy_root_mean_squared_error": 0.03036954111898594,
+          "occupancy_max_absolute_error": 0.0625,
+          "fleet_distribution_total_variation": 0.078125,
+          "ideal_iid_fleet_distribution_total_variation": 0.140625,
+          "fleet_distribution_tv_excess_vs_iid": -0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "hit-corner-miss-center",
+      "exact_fleet_count": 2,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.016493055555555556,
+        "occupancy_root_mean_squared_error": 0.03498705427745938,
+        "occupancy_max_absolute_error": 0.07421875,
+        "fleet_distribution_total_variation": 0.07421875,
+        "ideal_iid_fleet_distribution_total_variation": 0.1328125,
+        "fleet_distribution_tv_excess_vs_iid": -0.05859375,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.020833333333333332,
+          "occupancy_root_mean_squared_error": 0.04419417382415922,
+          "occupancy_max_absolute_error": 0.09375,
+          "fleet_distribution_total_variation": 0.09375,
+          "ideal_iid_fleet_distribution_total_variation": 0.109375,
+          "fleet_distribution_tv_excess_vs_iid": -0.015625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.024305555555555556,
+          "occupancy_root_mean_squared_error": 0.05155986946151909,
+          "occupancy_max_absolute_error": 0.109375,
+          "fleet_distribution_total_variation": 0.109375,
+          "ideal_iid_fleet_distribution_total_variation": 0.21875,
+          "fleet_distribution_tv_excess_vs_iid": -0.109375,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.013888888888888888,
+          "occupancy_root_mean_squared_error": 0.02946278254943948,
+          "occupancy_max_absolute_error": 0.0625,
+          "fleet_distribution_total_variation": 0.0625,
+          "ideal_iid_fleet_distribution_total_variation": 0.125,
+          "fleet_distribution_tv_excess_vs_iid": -0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.006944444444444444,
+          "occupancy_root_mean_squared_error": 0.01473139127471974,
+          "occupancy_max_absolute_error": 0.03125,
+          "fleet_distribution_total_variation": 0.03125,
+          "ideal_iid_fleet_distribution_total_variation": 0.078125,
+          "fleet_distribution_tv_excess_vs_iid": -0.046875,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "sunk-top-edge",
+      "exact_fleet_count": 1,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.0,
+        "occupancy_root_mean_squared_error": 0.0,
+        "occupancy_max_absolute_error": 0.0,
+        "fleet_distribution_total_variation": 0.0,
+        "ideal_iid_fleet_distribution_total_variation": 0.0,
+        "fleet_distribution_tv_excess_vs_iid": 0.0,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.0,
+          "occupancy_root_mean_squared_error": 0.0,
+          "occupancy_max_absolute_error": 0.0,
+          "fleet_distribution_total_variation": 0.0,
+          "ideal_iid_fleet_distribution_total_variation": 0.0,
+          "fleet_distribution_tv_excess_vs_iid": 0.0,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.0,
+          "occupancy_root_mean_squared_error": 0.0,
+          "occupancy_max_absolute_error": 0.0,
+          "fleet_distribution_total_variation": 0.0,
+          "ideal_iid_fleet_distribution_total_variation": 0.0,
+          "fleet_distribution_tv_excess_vs_iid": 0.0,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.0,
+          "occupancy_root_mean_squared_error": 0.0,
+          "occupancy_max_absolute_error": 0.0,
+          "fleet_distribution_total_variation": 0.0,
+          "ideal_iid_fleet_distribution_total_variation": 0.0,
+          "fleet_distribution_tv_excess_vs_iid": 0.0,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.0,
+          "occupancy_root_mean_squared_error": 0.0,
+          "occupancy_max_absolute_error": 0.0,
+          "fleet_distribution_total_variation": 0.0,
+          "ideal_iid_fleet_distribution_total_variation": 0.0,
+          "fleet_distribution_tv_excess_vs_iid": 0.0,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "two-ship-prior",
+      "exact_fleet_count": 88,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.050347222222222224,
+        "occupancy_root_mean_squared_error": 0.06284083047401107,
+        "occupancy_max_absolute_error": 0.11328125,
+        "fleet_distribution_total_variation": 0.45454545454545453,
+        "ideal_iid_fleet_distribution_total_variation": 0.4829545454545454,
+        "fleet_distribution_tv_excess_vs_iid": -0.028409090909090856,
+        "exact_support_coverage": 0.5454545454545454,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.05050505050505051,
+          "occupancy_root_mean_squared_error": 0.05926698950120777,
+          "occupancy_max_absolute_error": 0.09801136363636365,
+          "fleet_distribution_total_variation": 0.47727272727272724,
+          "ideal_iid_fleet_distribution_total_variation": 0.5113636363636362,
+          "fleet_distribution_tv_excess_vs_iid": -0.034090909090909005,
+          "exact_support_coverage": 0.5227272727272727,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.04008838383838384,
+          "occupancy_root_mean_squared_error": 0.04906911518193794,
+          "occupancy_max_absolute_error": 0.078125,
+          "fleet_distribution_total_variation": 0.4659090909090909,
+          "ideal_iid_fleet_distribution_total_variation": 0.4772727272727273,
+          "fleet_distribution_tv_excess_vs_iid": -0.011363636363636409,
+          "exact_support_coverage": 0.5340909090909091,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.0606060606060606,
+          "occupancy_root_mean_squared_error": 0.0777034656227687,
+          "occupancy_max_absolute_error": 0.13636363636363635,
+          "fleet_distribution_total_variation": 0.44318181818181823,
+          "ideal_iid_fleet_distribution_total_variation": 0.48863636363636365,
+          "fleet_distribution_tv_excess_vs_iid": -0.045454545454545414,
+          "exact_support_coverage": 0.5568181818181818,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.050189393939393936,
+          "occupancy_root_mean_squared_error": 0.0653237515901299,
+          "occupancy_max_absolute_error": 0.140625,
+          "fleet_distribution_total_variation": 0.43181818181818193,
+          "ideal_iid_fleet_distribution_total_variation": 0.45454545454545453,
+          "fleet_distribution_tv_excess_vs_iid": -0.022727272727272596,
+          "exact_support_coverage": 0.5681818181818182,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "two-ship-active-hit-center",
+      "exact_fleet_count": 48,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.04513888888888889,
+        "occupancy_root_mean_squared_error": 0.06063596387358119,
+        "occupancy_max_absolute_error": 0.12109375,
+        "fleet_distribution_total_variation": 0.35546875000000006,
+        "ideal_iid_fleet_distribution_total_variation": 0.3671875,
+        "fleet_distribution_tv_excess_vs_iid": -0.011718749999999958,
+        "exact_support_coverage": 0.734375,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.052083333333333336,
+          "occupancy_root_mean_squared_error": 0.0625,
+          "occupancy_max_absolute_error": 0.109375,
+          "fleet_distribution_total_variation": 0.36979166666666663,
+          "ideal_iid_fleet_distribution_total_variation": 0.3854166666666667,
+          "fleet_distribution_tv_excess_vs_iid": -0.015625000000000056,
+          "exact_support_coverage": 0.6875,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.027777777777777776,
+          "occupancy_root_mean_squared_error": 0.040343576522993925,
+          "occupancy_max_absolute_error": 0.078125,
+          "fleet_distribution_total_variation": 0.3177083333333334,
+          "ideal_iid_fleet_distribution_total_variation": 0.30208333333333337,
+          "fleet_distribution_tv_excess_vs_iid": 0.015625000000000056,
+          "exact_support_coverage": 0.7916666666666666,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.052083333333333336,
+          "occupancy_root_mean_squared_error": 0.07179192058380324,
+          "occupancy_max_absolute_error": 0.15625,
+          "fleet_distribution_total_variation": 0.375,
+          "ideal_iid_fleet_distribution_total_variation": 0.39583333333333326,
+          "fleet_distribution_tv_excess_vs_iid": -0.02083333333333326,
+          "exact_support_coverage": 0.7083333333333334,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.04861111111111111,
+          "occupancy_root_mean_squared_error": 0.0679083583875276,
+          "occupancy_max_absolute_error": 0.140625,
+          "fleet_distribution_total_variation": 0.3593750000000002,
+          "ideal_iid_fleet_distribution_total_variation": 0.3854166666666668,
+          "fleet_distribution_tv_excess_vs_iid": -0.026041666666666574,
+          "exact_support_coverage": 0.75,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "one-ship-edge-hit-top",
+      "exact_fleet_count": 3,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.02025462962962963,
+        "occupancy_root_mean_squared_error": 0.03866068789699679,
+        "occupancy_max_absolute_error": 0.09114583333333334,
+        "fleet_distribution_total_variation": 0.09114583333333331,
+        "ideal_iid_fleet_distribution_total_variation": 0.06380208333333333,
+        "fleet_distribution_tv_excess_vs_iid": 0.02734375,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.023148148148148147,
+          "occupancy_root_mean_squared_error": 0.043159037828666855,
+          "occupancy_max_absolute_error": 0.10416666666666669,
+          "fleet_distribution_total_variation": 0.10416666666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.09895833333333334,
+          "fleet_distribution_tv_excess_vs_iid": 0.005208333333333315,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.011574074074074077,
+          "occupancy_root_mean_squared_error": 0.021262931794992865,
+          "occupancy_max_absolute_error": 0.052083333333333315,
+          "fleet_distribution_total_variation": 0.05208333333333334,
+          "ideal_iid_fleet_distribution_total_variation": 0.07291666666666666,
+          "fleet_distribution_tv_excess_vs_iid": -0.020833333333333315,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.03356481481481481,
+          "occupancy_root_mean_squared_error": 0.06435330900295361,
+          "occupancy_max_absolute_error": 0.15104166666666669,
+          "fleet_distribution_total_variation": 0.15104166666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.04166666666666666,
+          "fleet_distribution_tv_excess_vs_iid": 0.109375,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.012731481481481479,
+          "occupancy_root_mean_squared_error": 0.025867472961373855,
+          "occupancy_max_absolute_error": 0.057291666666666685,
+          "fleet_distribution_total_variation": 0.05729166666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.04166666666666666,
+          "fleet_distribution_tv_excess_vs_iid": 0.015625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "one-ship-edge-miss-top",
+      "exact_fleet_count": 9,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.04996141975308642,
+        "occupancy_root_mean_squared_error": 0.06250578973030739,
+        "occupancy_max_absolute_error": 0.11588541666666666,
+        "fleet_distribution_total_variation": 0.1896701388888889,
+        "ideal_iid_fleet_distribution_total_variation": 0.13888888888888887,
+        "fleet_distribution_tv_excess_vs_iid": 0.05078124999999999,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.024691358024691357,
+          "occupancy_root_mean_squared_error": 0.028691100130186435,
+          "occupancy_max_absolute_error": 0.052083333333333315,
+          "fleet_distribution_total_variation": 0.08854166666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.14756944444444445,
+          "fleet_distribution_tv_excess_vs_iid": -0.05902777777777779,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.053240740740740734,
+          "occupancy_root_mean_squared_error": 0.07244205473743562,
+          "occupancy_max_absolute_error": 0.13541666666666669,
+          "fleet_distribution_total_variation": 0.18229166666666666,
+          "ideal_iid_fleet_distribution_total_variation": 0.11979166666666666,
+          "fleet_distribution_tv_excess_vs_iid": 0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.07021604938271604,
+          "occupancy_root_mean_squared_error": 0.0874819327810042,
+          "occupancy_max_absolute_error": 0.17708333333333331,
+          "fleet_distribution_total_variation": 0.26041666666666663,
+          "ideal_iid_fleet_distribution_total_variation": 0.10590277777777776,
+          "fleet_distribution_tv_excess_vs_iid": 0.15451388888888887,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.05169753086419753,
+          "occupancy_root_mean_squared_error": 0.06140807127260329,
+          "occupancy_max_absolute_error": 0.09895833333333331,
+          "fleet_distribution_total_variation": 0.22743055555555555,
+          "ideal_iid_fleet_distribution_total_variation": 0.18229166666666666,
+          "fleet_distribution_tv_excess_vs_iid": 0.045138888888888895,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "one-ship-corner-hit-opposite-miss",
+      "exact_fleet_count": 2,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.01388888888888889,
+        "occupancy_root_mean_squared_error": 0.02946278254943948,
+        "occupancy_max_absolute_error": 0.0625,
+        "fleet_distribution_total_variation": 0.0625,
+        "ideal_iid_fleet_distribution_total_variation": 0.05078125,
+        "fleet_distribution_tv_excess_vs_iid": 0.01171875,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.017361111111111112,
+          "occupancy_root_mean_squared_error": 0.03682847818679935,
+          "occupancy_max_absolute_error": 0.078125,
+          "fleet_distribution_total_variation": 0.078125,
+          "ideal_iid_fleet_distribution_total_variation": 0.03125,
+          "fleet_distribution_tv_excess_vs_iid": 0.046875,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.003472222222222222,
+          "occupancy_root_mean_squared_error": 0.00736569563735987,
+          "occupancy_max_absolute_error": 0.015625,
+          "fleet_distribution_total_variation": 0.015625,
+          "ideal_iid_fleet_distribution_total_variation": 0.0625,
+          "fleet_distribution_tv_excess_vs_iid": -0.046875,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.024305555555555556,
+          "occupancy_root_mean_squared_error": 0.05155986946151909,
+          "occupancy_max_absolute_error": 0.109375,
+          "fleet_distribution_total_variation": 0.109375,
+          "ideal_iid_fleet_distribution_total_variation": 0.046875,
+          "fleet_distribution_tv_excess_vs_iid": 0.0625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.010416666666666666,
+          "occupancy_root_mean_squared_error": 0.02209708691207961,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.046875,
+          "ideal_iid_fleet_distribution_total_variation": 0.0625,
+          "fleet_distribution_tv_excess_vs_iid": -0.015625,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "one-ship-center-hit-corner-miss",
+      "exact_fleet_count": 4,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.013888888888888888,
+        "occupancy_root_mean_squared_error": 0.0249419980887038,
+        "occupancy_max_absolute_error": 0.05859375,
+        "fleet_distribution_total_variation": 0.0625,
+        "ideal_iid_fleet_distribution_total_variation": 0.09375,
+        "fleet_distribution_tv_excess_vs_iid": -0.03125,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.013888888888888888,
+          "occupancy_root_mean_squared_error": 0.02209708691207961,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.0625,
+          "ideal_iid_fleet_distribution_total_variation": 0.140625,
+          "fleet_distribution_tv_excess_vs_iid": -0.078125,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.017361111111111112,
+          "occupancy_root_mean_squared_error": 0.03375385780420761,
+          "occupancy_max_absolute_error": 0.078125,
+          "fleet_distribution_total_variation": 0.078125,
+          "ideal_iid_fleet_distribution_total_variation": 0.046875,
+          "fleet_distribution_tv_excess_vs_iid": 0.03125,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.013888888888888888,
+          "occupancy_root_mean_squared_error": 0.024429248749080364,
+          "occupancy_max_absolute_error": 0.0625,
+          "fleet_distribution_total_variation": 0.0625,
+          "ideal_iid_fleet_distribution_total_variation": 0.09375,
+          "fleet_distribution_tv_excess_vs_iid": -0.03125,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.010416666666666666,
+          "occupancy_root_mean_squared_error": 0.01948779888944761,
+          "occupancy_max_absolute_error": 0.046875,
+          "fleet_distribution_total_variation": 0.046875,
+          "ideal_iid_fleet_distribution_total_variation": 0.09375,
+          "fleet_distribution_tv_excess_vs_iid": -0.046875,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "two-ship-corner-miss",
+      "exact_fleet_count": 32,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.03819444444444444,
+        "occupancy_root_mean_squared_error": 0.053648509088040114,
+        "occupancy_max_absolute_error": 0.109375,
+        "fleet_distribution_total_variation": 0.28125,
+        "ideal_iid_fleet_distribution_total_variation": 0.2890625,
+        "fleet_distribution_tv_excess_vs_iid": -0.0078125,
+        "exact_support_coverage": 0.8671875,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.04513888888888889,
+          "occupancy_root_mean_squared_error": 0.061184063148285055,
+          "occupancy_max_absolute_error": 0.125,
+          "fleet_distribution_total_variation": 0.25,
+          "ideal_iid_fleet_distribution_total_variation": 0.296875,
+          "fleet_distribution_tv_excess_vs_iid": -0.046875,
+          "exact_support_coverage": 0.875,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.027777777777777776,
+          "occupancy_root_mean_squared_error": 0.042312700024145625,
+          "occupancy_max_absolute_error": 0.09375,
+          "fleet_distribution_total_variation": 0.296875,
+          "ideal_iid_fleet_distribution_total_variation": 0.296875,
+          "fleet_distribution_tv_excess_vs_iid": 0.0,
+          "exact_support_coverage": 0.875,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.03125,
+          "occupancy_root_mean_squared_error": 0.047735163489123336,
+          "occupancy_max_absolute_error": 0.109375,
+          "fleet_distribution_total_variation": 0.296875,
+          "ideal_iid_fleet_distribution_total_variation": 0.265625,
+          "fleet_distribution_tv_excess_vs_iid": 0.03125,
+          "exact_support_coverage": 0.875,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.04861111111111111,
+          "occupancy_root_mean_squared_error": 0.06336210969060645,
+          "occupancy_max_absolute_error": 0.109375,
+          "fleet_distribution_total_variation": 0.28125,
+          "ideal_iid_fleet_distribution_total_variation": 0.296875,
+          "fleet_distribution_tv_excess_vs_iid": -0.015625,
+          "exact_support_coverage": 0.84375,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    },
+    {
+      "name": "two-ship-edge-miss",
+      "exact_fleet_count": 14,
+      "exact_posterior": true,
+      "sample_count": 64,
+      "repetitions": 4,
+      "mean_metrics": {
+        "occupancy_mean_absolute_error": 0.0220734126984127,
+        "occupancy_root_mean_squared_error": 0.041726558067210984,
+        "occupancy_max_absolute_error": 0.09709821428571427,
+        "fleet_distribution_total_variation": 0.1964285714285714,
+        "ideal_iid_fleet_distribution_total_variation": 0.18861607142857145,
+        "fleet_distribution_tv_excess_vs_iid": 0.007812499999999958,
+        "exact_support_coverage": 1.0,
+        "unexpected_sample_mass": 0.0,
+        "restart_count": 0.0,
+        "backtrack_count": 0.0
+      },
+      "replicates": [
+        {
+          "occupancy_mean_absolute_error": 0.027777777777777776,
+          "occupancy_root_mean_squared_error": 0.05227430973288778,
+          "occupancy_max_absolute_error": 0.11607142857142855,
+          "fleet_distribution_total_variation": 0.2366071428571428,
+          "ideal_iid_fleet_distribution_total_variation": 0.1941964285714286,
+          "fleet_distribution_tv_excess_vs_iid": 0.04241071428571419,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.01934523809523809,
+          "occupancy_root_mean_squared_error": 0.037719618617965994,
+          "occupancy_max_absolute_error": 0.08705357142857145,
+          "fleet_distribution_total_variation": 0.171875,
+          "ideal_iid_fleet_distribution_total_variation": 0.14732142857142855,
+          "fleet_distribution_tv_excess_vs_iid": 0.024553571428571452,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.011904761904761911,
+          "occupancy_root_mean_squared_error": 0.02112361542645594,
+          "occupancy_max_absolute_error": 0.05357142857142855,
+          "fleet_distribution_total_variation": 0.2120535714285714,
+          "ideal_iid_fleet_distribution_total_variation": 0.1785714285714286,
+          "fleet_distribution_tv_excess_vs_iid": 0.033482142857142794,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        },
+        {
+          "occupancy_mean_absolute_error": 0.029265873015873023,
+          "occupancy_root_mean_squared_error": 0.05578868849153422,
+          "occupancy_max_absolute_error": 0.13169642857142855,
+          "fleet_distribution_total_variation": 0.1651785714285714,
+          "ideal_iid_fleet_distribution_total_variation": 0.234375,
+          "fleet_distribution_tv_excess_vs_iid": -0.0691964285714286,
+          "exact_support_coverage": 1.0,
+          "unexpected_sample_mass": 0.0,
+          "restart_count": 0,
+          "backtrack_count": 0
+        }
+      ]
+    }
+  ],
+  "git_commit": "23988d46b8effaef24fef7e285b2ea0e2d182eb5-dirty",
+  "working_tree_dirty": true,
+  "campaign": "v0.9-bayes-sampler-calibration",
+  "case_set": "extended",
+  "smoke": true,
+  "importance_resamples": 4,
+  "mcmc_steps": 64,
+  "elapsed_seconds": 0.12580419999721926
+}

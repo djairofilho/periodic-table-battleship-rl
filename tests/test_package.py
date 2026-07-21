@@ -8,7 +8,7 @@ from periodic_table_battleship_rl.visualization import plot_attack_comparison
 
 
 def test_version_is_defined() -> None:
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.9.0"
 
 
 def test_environment_public_exports_are_available() -> None:
