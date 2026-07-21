@@ -1,0 +1,71 @@
+{
+  "schema_version": "v0.9-bayes-sampler-ablation-v1",
+  "campaign": "v0.9-bayes-sampler-ablation",
+  "seed": 7300,
+  "sample_count": 64,
+  "repetitions": 3,
+  "importance_resamples": 4,
+  "mcmc_steps": 32,
+  "samplers": [
+    {
+      "sampler_id": "constrained-backtracking-v1",
+      "status": "ok",
+      "runtime_seconds": 0.11875929999223445,
+      "occupancy_mae": 0.024810708838486614,
+      "occupancy_rmse": 0.035847100001951765,
+      "fleet_tv": 0.1546925296925297,
+      "tv_excess_vs_iid": 0.005948912198912194,
+      "support_coverage": 0.9283355533355535,
+      "unexpected_sample_mass": 0.0,
+      "backtrack_count": 0.0,
+      "runtime_penalty_rank": 1.0,
+      "tv_excess_rank": 0.0
+    },
+    {
+      "sampler_id": "constrained-backtracking-short-v1",
+      "status": "ok",
+      "runtime_seconds": 0.14154089998919517,
+      "occupancy_mae": 0.024810708838486614,
+      "occupancy_rmse": 0.035847100001951765,
+      "fleet_tv": 0.1546925296925297,
+      "tv_excess_vs_iid": 0.005948912198912194,
+      "support_coverage": 0.9283355533355535,
+      "unexpected_sample_mass": 0.0,
+      "backtrack_count": 0.0,
+      "runtime_penalty_rank": 1.1918300292983404,
+      "tv_excess_rank": 0.0
+    },
+    {
+      "sampler_id": "importance-v1",
+      "status": "ok",
+      "runtime_seconds": 0.4548077000072226,
+      "occupancy_mae": 0.024083298388853945,
+      "occupancy_rmse": 0.034335676014278026,
+      "fleet_tv": 0.14696877196877198,
+      "tv_excess_vs_iid": -0.0017748455248455303,
+      "support_coverage": 0.9410450660450661,
+      "unexpected_sample_mass": 0.0,
+      "backtrack_count": 0.0,
+      "runtime_penalty_rank": 3.829659656439218,
+      "tv_excess_rank": -0.007723757723757724
+    },
+    {
+      "sampler_id": "mcmc-v1",
+      "status": "failed",
+      "runtime_seconds": 0.3734334000037052,
+      "failure": "constrained sampler emitted a fleet outside exact support",
+      "runtime_penalty_rank": null,
+      "tv_excess_rank": null
+    }
+  ],
+  "case_count": 13,
+  "smoke": true,
+  "recommendation": {
+    "status": "ok",
+    "best_sampler": "importance-v1",
+    "best_tv_excess": -0.0017748455248455303,
+    "best_runtime_seconds": 0.4548077000072226
+  },
+  "git_commit": "23988d46b8effaef24fef7e285b2ea0e2d182eb5-dirty",
+  "working_tree_dirty": true
+}

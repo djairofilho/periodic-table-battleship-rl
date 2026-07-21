@@ -1,0 +1,4 @@
+topology,candidate_mean_valid_shots,reference_mean_valid_shots,delta_mean,ci_lower,ci_upper,improves
+battleship,35.0,51.0,-16.0,-18.0,-14.0,True
+dense-118,53.5,61.0,-7.5,-8.0,-7.0,True
+periodic-table-battleship,44.5,64.0,-19.5,-33.0,-6.0,True

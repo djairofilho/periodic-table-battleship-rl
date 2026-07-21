@@ -1,0 +1,1170 @@
+{
+  "schema_version": "v0.9-bayesian-students-v1",
+  "campaign": "v0.9-bayesian-students",
+  "split": "validation",
+  "smoke": false,
+  "train_seeds": [
+    15001,
+    15002,
+    15003,
+    15004
+  ],
+  "validation_seeds": [
+    16001,
+    16002,
+    16003,
+    16004
+  ],
+  "sample_count": 8,
+  "epochs": 4,
+  "architectures": [
+    "cnn",
+    "gnn"
+  ],
+  "hidden_dims": [
+    16
+  ],
+  "soft_target_weights": [
+    0.0,
+    0.5
+  ],
+  "topologies": {
+    "battleship": {
+      "valid_cells": 100,
+      "hunt_target": {
+        "policy_id": "hunt-target-v1",
+        "mean_valid_shots": 63.75,
+        "episodes": [
+          {
+            "seed": 16001,
+            "valid_shots": 43
+          },
+          {
+            "seed": 16002,
+            "valid_shots": 64
+          },
+          {
+            "seed": 16003,
+            "valid_shots": 80
+          },
+          {
+            "seed": 16004,
+            "valid_shots": 68
+          }
+        ]
+      },
+      "students": [
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15001,
+          "mean_valid_shots": 76.25,
+          "mean_auc_discovery": 0.6904411764705882,
+          "validation_teacher_action_agreement": 0.055276382714509964,
+          "training_action_agreement": 0.07555555552244186,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.208312511444092,
+          "losses": [
+            4.216104984283447,
+            4.213574409484863,
+            4.214520335197449,
+            4.208312511444092
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15001,
+          "mean_valid_shots": 73.75,
+          "mean_auc_discovery": 0.6795588235294118,
+          "validation_teacher_action_agreement": 0.07035175710916519,
+          "training_action_agreement": 0.07555555552244186,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.6442384719848633,
+          "losses": [
+            2.6634126901626587,
+            2.6607210636138916,
+            2.6485047936439514,
+            2.6442384719848633
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15001,
+          "mean_valid_shots": 55.25,
+          "mean_auc_discovery": 0.7319117647058824,
+          "validation_teacher_action_agreement": 0.12060301750898361,
+          "training_action_agreement": 0.06666667014360428,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.223004460334778,
+          "losses": [
+            4.218711733818054,
+            4.220844149589539,
+            4.224740028381348,
+            4.223004460334778
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15001,
+          "mean_valid_shots": 60.25,
+          "mean_auc_discovery": 0.7275,
+          "validation_teacher_action_agreement": 0.08040200918912888,
+          "training_action_agreement": 0.035555556416511536,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.654487371444702,
+          "losses": [
+            2.663605272769928,
+            2.6643868684768677,
+            2.65489399433136,
+            2.654487371444702
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15002,
+          "mean_valid_shots": 66.25,
+          "mean_auc_discovery": 0.6788235294117647,
+          "validation_teacher_action_agreement": 0.035175878554582596,
+          "training_action_agreement": 0.035555556416511536,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.197910189628601,
+          "losses": [
+            4.218356966972351,
+            4.2111029624938965,
+            4.210215926170349,
+            4.197910189628601
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15002,
+          "mean_valid_shots": 73.0,
+          "mean_auc_discovery": 0.6939705882352941,
+          "validation_teacher_action_agreement": 0.07537688314914703,
+          "training_action_agreement": 0.08888889104127884,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.656221032142639,
+          "losses": [
+            2.663134515285492,
+            2.6616848707199097,
+            2.6481582522392273,
+            2.656221032142639
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15002,
+          "mean_valid_shots": 94.0,
+          "mean_auc_discovery": 0.45044117647058823,
+          "validation_teacher_action_agreement": 0.030150754377245903,
+          "training_action_agreement": 0.03999999910593033,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.210436463356018,
+          "losses": [
+            4.215741038322449,
+            4.213727116584778,
+            4.218342065811157,
+            4.210436463356018
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15002,
+          "mean_valid_shots": 77.75,
+          "mean_auc_discovery": 0.5976470588235294,
+          "validation_teacher_action_agreement": 0.035175878554582596,
+          "training_action_agreement": 0.04888888821005821,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.667103409767151,
+          "losses": [
+            2.6618524193763733,
+            2.664615511894226,
+            2.654760003089905,
+            2.667103409767151
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15003,
+          "mean_valid_shots": 72.5,
+          "mean_auc_discovery": 0.6973529411764705,
+          "validation_teacher_action_agreement": 0.030150754377245903,
+          "training_action_agreement": 0.031111111864447594,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.188211560249329,
+          "losses": [
+            4.228204727172852,
+            4.215139031410217,
+            4.195065855979919,
+            4.188211560249329
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15003,
+          "mean_valid_shots": 78.25,
+          "mean_auc_discovery": 0.6648529411764705,
+          "validation_teacher_action_agreement": 0.02010050229728222,
+          "training_action_agreement": 0.04444444552063942,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.6378448605537415,
+          "losses": [
+            2.6554659008979797,
+            2.6583405137062073,
+            2.646502375602722,
+            2.6378448605537415
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15003,
+          "mean_valid_shots": 57.75,
+          "mean_auc_discovery": 0.7102941176470589,
+          "validation_teacher_action_agreement": 0.09045226126909256,
+          "training_action_agreement": 0.09333333373069763,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.213949680328369,
+          "losses": [
+            4.2303407192230225,
+            4.225217342376709,
+            4.213375568389893,
+            4.213949680328369
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15003,
+          "mean_valid_shots": 71.5,
+          "mean_auc_discovery": 0.7029411764705882,
+          "validation_teacher_action_agreement": 0.02010050229728222,
+          "training_action_agreement": 0.017777778208255768,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.661743998527527,
+          "losses": [
+            2.6589925289154053,
+            2.6679930686950684,
+            2.66302353143692,
+            2.661743998527527
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15004,
+          "mean_valid_shots": 70.5,
+          "mean_auc_discovery": 0.7160294117647059,
+          "validation_teacher_action_agreement": 0.08040200918912888,
+          "training_action_agreement": 0.07999999821186066,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.200936555862427,
+          "losses": [
+            4.22435986995697,
+            4.204984188079834,
+            4.209168553352356,
+            4.200936555862427
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15004,
+          "mean_valid_shots": 73.5,
+          "mean_auc_discovery": 0.6998529411764706,
+          "validation_teacher_action_agreement": 0.05025125667452812,
+          "training_action_agreement": 0.06222222372889519,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-cnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.639382541179657,
+          "losses": [
+            2.6617485880851746,
+            2.6583264470100403,
+            2.653465986251831,
+            2.639382541179657
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 225,
+          "train_seed": 15004,
+          "mean_valid_shots": 59.0,
+          "mean_auc_discovery": 0.7313235294117647,
+          "validation_teacher_action_agreement": 0.07537688314914703,
+          "training_action_agreement": 0.09333333373069763,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.218614935874939,
+          "losses": [
+            4.226754307746887,
+            4.2117167711257935,
+            4.2212642431259155,
+            4.218614935874939
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 225,
+          "train_seed": 15004,
+          "mean_valid_shots": 61.75,
+          "mean_auc_discovery": 0.7472058823529412,
+          "validation_teacher_action_agreement": 0.04522613063454628,
+          "training_action_agreement": 0.057777777314186096,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\battleship-gnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.6546512246131897,
+          "losses": [
+            2.664147734642029,
+            2.6649850606918335,
+            2.6639782190322876,
+            2.6546512246131897
+          ],
+          "seed_offset": 3
+        }
+      ]
+    },
+    "dense-118": {
+      "valid_cells": 118,
+      "hunt_target": {
+        "policy_id": "hunt-target-v1",
+        "mean_valid_shots": 65.5,
+        "episodes": [
+          {
+            "seed": 16001,
+            "valid_shots": 82
+          },
+          {
+            "seed": 16002,
+            "valid_shots": 52
+          },
+          {
+            "seed": 16003,
+            "valid_shots": 60
+          },
+          {
+            "seed": 16004,
+            "valid_shots": 68
+          }
+        ]
+      },
+      "students": [
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15001,
+          "mean_valid_shots": 93.0,
+          "mean_auc_discovery": 0.7128614157527418,
+          "validation_teacher_action_agreement": 0.04787234216928482,
+          "training_action_agreement": 0.057692307978868484,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.441326022148132,
+          "losses": [
+            4.462716817855835,
+            4.462321758270264,
+            4.4411860704422,
+            4.441326022148132
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15001,
+          "mean_valid_shots": 94.5,
+          "mean_auc_discovery": 0.6844466600199401,
+          "validation_teacher_action_agreement": 0.04787234216928482,
+          "training_action_agreement": 0.0625,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.782315731048584,
+          "losses": [
+            2.8017630577087402,
+            2.782021403312683,
+            2.788691520690918,
+            2.782315731048584
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15001,
+          "mean_valid_shots": 95.25,
+          "mean_auc_discovery": 0.5953389830508474,
+          "validation_teacher_action_agreement": 0.021276595070958138,
+          "training_action_agreement": 0.024038461968302727,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.4532095193862915,
+          "losses": [
+            4.462430477142334,
+            4.466745376586914,
+            4.447664499282837,
+            4.4532095193862915
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15001,
+          "mean_valid_shots": 95.25,
+          "mean_auc_discovery": 0.6246261216350948,
+          "validation_teacher_action_agreement": 0.005319148767739534,
+          "training_action_agreement": 0.009615384973585606,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.7910924553871155,
+          "losses": [
+            2.800218343734741,
+            2.784095823764801,
+            2.7934372425079346,
+            2.7910924553871155
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15002,
+          "mean_valid_shots": 88.0,
+          "mean_auc_discovery": 0.6041874376869392,
+          "validation_teacher_action_agreement": 0.021276595070958138,
+          "training_action_agreement": 0.07692307978868484,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.4227399826049805,
+          "losses": [
+            4.4444581270217896,
+            4.427010536193848,
+            4.427142262458801,
+            4.4227399826049805
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15002,
+          "mean_valid_shots": 86.25,
+          "mean_auc_discovery": 0.681580259222333,
+          "validation_teacher_action_agreement": 0.0904255285859108,
+          "training_action_agreement": 0.08653846383094788,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.7606411576271057,
+          "losses": [
+            2.7758132219314575,
+            2.805121958255768,
+            2.7711099982261658,
+            2.7606411576271057
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15002,
+          "mean_valid_shots": 107.5,
+          "mean_auc_discovery": 0.5042372881355932,
+          "validation_teacher_action_agreement": 0.021276595070958138,
+          "training_action_agreement": 0.05288461595773697,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.444782376289368,
+          "losses": [
+            4.448147892951965,
+            4.43674623966217,
+            4.44193708896637,
+            4.444782376289368
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15002,
+          "mean_valid_shots": 86.0,
+          "mean_auc_discovery": 0.6331006979062812,
+          "validation_teacher_action_agreement": 0.005319148767739534,
+          "training_action_agreement": 0.0625,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.7762574553489685,
+          "losses": [
+            2.777657687664032,
+            2.812270700931549,
+            2.7819038033485413,
+            2.7762574553489685
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15003,
+          "mean_valid_shots": 85.25,
+          "mean_auc_discovery": 0.67759222333001,
+          "validation_teacher_action_agreement": 0.026595745235681534,
+          "training_action_agreement": 0.04326923191547394,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.438660144805908,
+          "losses": [
+            4.454225182533264,
+            4.448407411575317,
+            4.410022497177124,
+            4.438660144805908
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15003,
+          "mean_valid_shots": 87.25,
+          "mean_auc_discovery": 0.6587736789631107,
+          "validation_teacher_action_agreement": 0.03191489353775978,
+          "training_action_agreement": 0.03365384787321091,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.7788878679275513,
+          "losses": [
+            2.7860057950019836,
+            2.77628892660141,
+            2.8086583018302917,
+            2.7788878679275513
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15003,
+          "mean_valid_shots": 92.25,
+          "mean_auc_discovery": 0.5849950149551346,
+          "validation_teacher_action_agreement": 0.01595744676887989,
+          "training_action_agreement": 0.03365384787321091,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.446909427642822,
+          "losses": [
+            4.451348304748535,
+            4.451585292816162,
+            4.412198185920715,
+            4.446909427642822
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15003,
+          "mean_valid_shots": 105.25,
+          "mean_auc_discovery": 0.5796360917248256,
+          "validation_teacher_action_agreement": 0.005319148767739534,
+          "training_action_agreement": 0.01923076994717121,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.7889984846115112,
+          "losses": [
+            2.7860758900642395,
+            2.7807981371879578,
+            2.812619686126709,
+            2.7889984846115112
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15004,
+          "mean_valid_shots": 81.25,
+          "mean_auc_discovery": 0.7188434695912264,
+          "validation_teacher_action_agreement": 0.12234042584896088,
+          "training_action_agreement": 0.057692307978868484,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.416901588439941,
+          "losses": [
+            4.465327858924866,
+            4.466066122055054,
+            4.448621988296509,
+            4.416901588439941
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15004,
+          "mean_valid_shots": 79.0,
+          "mean_auc_discovery": 0.7204636091724825,
+          "validation_teacher_action_agreement": 0.10638298094272614,
+          "training_action_agreement": 0.07211538404226303,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-cnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.7734082341194153,
+          "losses": [
+            2.8119213581085205,
+            2.770147740840912,
+            2.801178753376007,
+            2.7734082341194153
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 208,
+          "train_seed": 15004,
+          "mean_valid_shots": 80.0,
+          "mean_auc_discovery": 0.6699900299102692,
+          "validation_teacher_action_agreement": 0.03191489353775978,
+          "training_action_agreement": 0.09615384787321091,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.428913116455078,
+          "losses": [
+            4.4648826122283936,
+            4.469033718109131,
+            4.457397937774658,
+            4.428913116455078
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 208,
+          "train_seed": 15004,
+          "mean_valid_shots": 79.0,
+          "mean_auc_discovery": 0.6870638085742772,
+          "validation_teacher_action_agreement": 0.026595745235681534,
+          "training_action_agreement": 0.07211538404226303,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\dense-118-gnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.782866060733795,
+          "losses": [
+            2.8115493655204773,
+            2.7730571031570435,
+            2.8076838850975037,
+            2.782866060733795
+          ],
+          "seed_offset": 3
+        }
+      ]
+    },
+    "periodic-table-battleship": {
+      "valid_cells": 118,
+      "hunt_target": {
+        "policy_id": "hunt-target-v1",
+        "mean_valid_shots": 52.0,
+        "episodes": [
+          {
+            "seed": 16001,
+            "valid_shots": 63
+          },
+          {
+            "seed": 16002,
+            "valid_shots": 68
+          },
+          {
+            "seed": 16003,
+            "valid_shots": 46
+          },
+          {
+            "seed": 16004,
+            "valid_shots": 31
+          }
+        ]
+      },
+      "students": [
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15001,
+          "mean_valid_shots": 93.25,
+          "mean_auc_discovery": 0.6860667996011964,
+          "validation_teacher_action_agreement": 0.0223214291036129,
+          "training_action_agreement": 0.07017543911933899,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.453829646110535,
+          "losses": [
+            4.473453879356384,
+            4.473435640335083,
+            4.462244510650635,
+            4.453829646110535
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15001,
+          "mean_valid_shots": 89.75,
+          "mean_auc_discovery": 0.7109920239282154,
+          "validation_teacher_action_agreement": 0.01785714365541935,
+          "training_action_agreement": 0.048245612531900406,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.840593099594116,
+          "losses": [
+            2.8507100343704224,
+            2.8407665491104126,
+            2.8422241806983948,
+            2.840593099594116
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15001,
+          "mean_valid_shots": 65.5,
+          "mean_auc_discovery": 0.722333000997009,
+          "validation_teacher_action_agreement": 0.0669642835855484,
+          "training_action_agreement": 0.09210526198148727,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.00-s15001\\student.pt",
+          "loss_last": 4.465286612510681,
+          "losses": [
+            4.476278901100159,
+            4.479277491569519,
+            4.47114634513855,
+            4.465286612510681
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15001,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15001,
+          "mean_valid_shots": 73.25,
+          "mean_auc_discovery": 0.6940428713858424,
+          "validation_teacher_action_agreement": 0.02678571455180645,
+          "training_action_agreement": 0.035087719559669495,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.50-s15001\\student.pt",
+          "loss_last": 2.8471792936325073,
+          "losses": [
+            2.850775122642517,
+            2.842913806438446,
+            2.846599757671356,
+            2.8471792936325073
+          ],
+          "seed_offset": 0
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15002,
+          "mean_valid_shots": 93.0,
+          "mean_auc_discovery": 0.7134845463609173,
+          "validation_teacher_action_agreement": 0.0401785708963871,
+          "training_action_agreement": 0.07894736528396606,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.442701458930969,
+          "losses": [
+            4.47152042388916,
+            4.464810729026794,
+            4.449270844459534,
+            4.442701458930969
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15002,
+          "mean_valid_shots": 86.5,
+          "mean_auc_discovery": 0.7323030907278165,
+          "validation_teacher_action_agreement": 0.0714285746216774,
+          "training_action_agreement": 0.09649122506380081,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.8299659490585327,
+          "losses": [
+            2.8507405519485474,
+            2.847227990627289,
+            2.8391606211662292,
+            2.8299659490585327
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15002,
+          "mean_valid_shots": 112.0,
+          "mean_auc_discovery": 0.5022432701894317,
+          "validation_teacher_action_agreement": 0.0223214291036129,
+          "training_action_agreement": 0.01315789483487606,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.00-s15002\\student.pt",
+          "loss_last": 4.463471174240112,
+          "losses": [
+            4.471710562705994,
+            4.470665097236633,
+            4.462341785430908,
+            4.463471174240112
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15002,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15002,
+          "mean_valid_shots": 105.25,
+          "mean_auc_discovery": 0.5787637088733799,
+          "validation_teacher_action_agreement": 0.0223214291036129,
+          "training_action_agreement": 0.008771929889917374,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.50-s15002\\student.pt",
+          "loss_last": 2.8468610048294067,
+          "losses": [
+            2.8523035645484924,
+            2.853078603744507,
+            2.8504634499549866,
+            2.8468610048294067
+          ],
+          "seed_offset": 1
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15003,
+          "mean_valid_shots": 95.75,
+          "mean_auc_discovery": 0.6273678963110668,
+          "validation_teacher_action_agreement": 0.0357142873108387,
+          "training_action_agreement": 0.04385964944958687,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.450448989868164,
+          "losses": [
+            4.478441476821899,
+            4.461012482643127,
+            4.455264210700989,
+            4.450448989868164
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15003,
+          "mean_valid_shots": 92.75,
+          "mean_auc_discovery": 0.654037886340977,
+          "validation_teacher_action_agreement": 0.0491071417927742,
+          "training_action_agreement": 0.061403509229421616,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.821286916732788,
+          "losses": [
+            2.8452876806259155,
+            2.8423988819122314,
+            2.831536114215851,
+            2.821286916732788
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15003,
+          "mean_valid_shots": 65.5,
+          "mean_auc_discovery": 0.7102442671984048,
+          "validation_teacher_action_agreement": 0.0982142835855484,
+          "training_action_agreement": 0.10964912176132202,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.00-s15003\\student.pt",
+          "loss_last": 4.4729613065719604,
+          "losses": [
+            4.477777123451233,
+            4.468051910400391,
+            4.470425367355347,
+            4.4729613065719604
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15003,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15003,
+          "mean_valid_shots": 76.0,
+          "mean_auc_discovery": 0.7030159521435693,
+          "validation_teacher_action_agreement": 0.0491071417927742,
+          "training_action_agreement": 0.06578947603702545,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.50-s15003\\student.pt",
+          "loss_last": 2.839520573616028,
+          "losses": [
+            2.84710955619812,
+            2.8492239713668823,
+            2.843815267086029,
+            2.839520573616028
+          ],
+          "seed_offset": 2
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.00",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15004,
+          "mean_valid_shots": 71.0,
+          "mean_auc_discovery": 0.7220837487537388,
+          "validation_teacher_action_agreement": 0.0669642835855484,
+          "training_action_agreement": 0.07456140220165253,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.440795302391052,
+          "losses": [
+            4.467377781867981,
+            4.460888147354126,
+            4.450005888938904,
+            4.440795302391052
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "cnn-h16-s0.50",
+          "architecture": "cnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15004,
+          "mean_valid_shots": 76.75,
+          "mean_auc_discovery": 0.7114905284147557,
+          "validation_teacher_action_agreement": 0.09375,
+          "training_action_agreement": 0.11403508484363556,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-cnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.831153988838196,
+          "losses": [
+            2.844099521636963,
+            2.842806100845337,
+            2.836729049682617,
+            2.831153988838196
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.00",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.0,
+          "train_decisions": 228,
+          "train_seed": 15004,
+          "mean_valid_shots": 73.25,
+          "mean_auc_discovery": 0.6541625124626121,
+          "validation_teacher_action_agreement": 0.0892857164144516,
+          "training_action_agreement": 0.08771929889917374,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.00-s15004\\student.pt",
+          "loss_last": 4.463031649589539,
+          "losses": [
+            4.471327066421509,
+            4.470314621925354,
+            4.466426253318787,
+            4.463031649589539
+          ],
+          "seed_offset": 3
+        },
+        {
+          "seed": 15004,
+          "ablation": "gnn-h16-s0.50",
+          "architecture": "gnn",
+          "hidden_dim": 16,
+          "soft_target_weight": 0.5,
+          "train_decisions": 228,
+          "train_seed": 15004,
+          "mean_valid_shots": 73.0,
+          "mean_auc_discovery": 0.6900548354935194,
+          "validation_teacher_action_agreement": 0.03125,
+          "training_action_agreement": 0.061403509229421616,
+          "checkpoint": ".local-runs\\v0.9-bayesian-students\\periodic-table-battleship-gnn-h16-s0.50-s15004\\student.pt",
+          "loss_last": 2.847179651260376,
+          "losses": [
+            2.847516715526581,
+            2.8502055406570435,
+            2.8483689427375793,
+            2.847179651260376
+          ],
+          "seed_offset": 3
+        }
+      ]
+    }
+  }
+}

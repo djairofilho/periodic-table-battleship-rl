@@ -1,0 +1,69 @@
+{
+  "campaign": "v0.9-bayesian-demonstrations",
+  "dataset_version": "v0.9",
+  "smoke": true,
+  "train_seed_count": 1,
+  "validation_seed_count": 1,
+  "sample_count": 2,
+  "sampler_seed": 19001,
+  "topologies": {
+    "battleship": {
+      "valid_cells": 100,
+      "train_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\battleship-v0.9-train\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\battleship-v0.9-train\\dataset.json",
+        "decisions": 45,
+        "sha256": "6f1a6e0185bc64668500a0186df28f92d5d3056305aac52badbdcfa419cf44f8",
+        "file_sha256": "6f1a6e0185bc64668500a0186df28f92d5d3056305aac52badbdcfa419cf44f8",
+        "exists": true
+      },
+      "validation_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\battleship-v0.9-validation\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\battleship-v0.9-validation\\dataset.json",
+        "decisions": 53,
+        "sha256": "42aa7be357edd89d9272ae1e378f5dc385f74da7ca82c7c10667a6edf9096b9f",
+        "file_sha256": "42aa7be357edd89d9272ae1e378f5dc385f74da7ca82c7c10667a6edf9096b9f",
+        "exists": true
+      }
+    },
+    "dense-118": {
+      "valid_cells": 118,
+      "train_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\dense-118-v0.9-train\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\dense-118-v0.9-train\\dataset.json",
+        "decisions": 33,
+        "sha256": "c0b9849966bd79039ada912be307fde900c4d2073c8850e5b563c725a2d3a917",
+        "file_sha256": "c0b9849966bd79039ada912be307fde900c4d2073c8850e5b563c725a2d3a917",
+        "exists": true
+      },
+      "validation_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\dense-118-v0.9-validation\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\dense-118-v0.9-validation\\dataset.json",
+        "decisions": 78,
+        "sha256": "65b07c9ad647ed8442f7917b3f83fbf7202a8d3466ab2eb3b136ed2c924eb329",
+        "file_sha256": "65b07c9ad647ed8442f7917b3f83fbf7202a8d3466ab2eb3b136ed2c924eb329",
+        "exists": true
+      }
+    },
+    "periodic-table-battleship": {
+      "valid_cells": 118,
+      "train_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\periodic-table-battleship-v0.9-train\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\periodic-table-battleship-v0.9-train\\dataset.json",
+        "decisions": 76,
+        "sha256": "7b2d0827475aceb9cce556079d821099cc3cad785c56663e8e52c43f8367521a",
+        "file_sha256": "7b2d0827475aceb9cce556079d821099cc3cad785c56663e8e52c43f8367521a",
+        "exists": true
+      },
+      "validation_dataset": {
+        "path": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\periodic-table-battleship-v0.9-validation\\demonstrations.npz",
+        "metadata": "artifacts\\v0.9-demonstrations\\bayesian-teacher-v0.9\\periodic-table-battleship-v0.9-validation\\dataset.json",
+        "decisions": 90,
+        "sha256": "fa1af0dabb868d497b871f539d4eb05c5bf9fed121262bd6a775c22015308b88",
+        "file_sha256": "fa1af0dabb868d497b871f539d4eb05c5bf9fed121262bd6a775c22015308b88",
+        "exists": true
+      }
+    }
+  },
+  "total_decisions": 375
+}
